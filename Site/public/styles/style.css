@@ -47,6 +47,12 @@ button:active {
     border: rgb(57, 57, 57) inset 10px;
 }
 
+.desc {
+    font-size: 20px !important;
+    margin: 0px;
+    background-color: black;
+}
+
 
 /*INICIANDO HEADER */
 .header {
@@ -117,6 +123,61 @@ button:active {
 
 /* TERMINANDO HEADER */
 
+
+/* INICIANDO FOOTER */
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(93, 3, 212);
+    border-top: white solid 8px;
+    font-size: 20px;
+}
+
+.footer h3 {
+    margin: 5px;
+}
+
+.footer h2 {
+    margin-bottom: 10px;
+}
+
+.footer img {
+    width: 400px;
+}
+
+
+.footer .footerPages {
+    margin-right: 500px;
+    font-size: 30px;
+    text-align: left;
+}
+
+.footer .footerPages li :hover {
+    text-decoration: underline;
+}
+
+
+/* TERMINANDO RODAPÉ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------INICIANDO INDEX.HTML--------- */
 /* INICIANDO PRINCIPAL */
 .principal {
 
@@ -258,7 +319,7 @@ button:active {
     height: 100px;
 }
 
-/* TERMINANDO PRINCIPAL */
+/* TERMINANDO ATUALIZACAO */
 
 /* INICIANDO RESUMO */
 
@@ -340,37 +401,251 @@ button:active {
 }
 
 /* TERMINANDO DELTARUNEPROMO */
+/* --------TERMINANDO INDEX.HTML ---------- */
 
-/* INICIANDO FOOTER */
-.footer {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------INICIANDO SOBRE.HTML ----------- */
+/* INICIANDO SOBRE O SITE */
+.sobreSite {
+    width: 100%;
+    height: 700px;
+    background-image: url('/public/assets/img/sobreSiteBG.png');
+    background-position: center;
+    background-size: 100% 1200px;
+    margin-bottom: 200px;
+}
+
+.sobreSite p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100px;
+    text-decoration: underline 2px;
+    margin: 0px;
+}
+
+.sobreSite .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sobreSite .container .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    background-color: black;
+    margin: 140px 80px 0px 80px;
+    border: white solid 3px;
+}
+
+.sobreSite .container .content img {
+    width: 200px;
+}
+
+.sobreSite .container .content .SPTechLogo {
+    width: 250px;
+    margin: 50px 0px 40px 0px;
+}
+
+
+.sobreSite .container .content p {
+    width: 90%;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* TERMINANDO SOBRE O SITE */
+
+/* INICIANDO SOBRE O JOGO */
+.sobreJogo {
+    width: 100%;
+    height: 820px;
+    background-image: url('/public/assets/img/sobreJogoBG.png');
+    background-position: center;
+    background-size: 105%;
+    margin-bottom: 200px;
+
+}
+
+.sobreJogo p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100px;
+    text-decoration: underline 2px;
+    margin: 0px;
+}
+
+.sobreJogo .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sobreJogo .container .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    background-color: black;
+    margin: 170px 50px 0px 50px;
+    border: white solid 3px;
+}
+
+.sobreJogo .container .content img {
+    width: 200px;
+}
+
+
+.sobreJogo .container .content p {
+    width: 90%;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+/* TERMINANDO SOBRE O JOGO */
+
+/* INICIANDO SOBRE MIM */
+.sobreMim {
+    width: 100%;
+    height: 1300px;
+    background-image: url('/public/assets/img/sobreMimBG.png');
+    background-position: 180px 520px;
+    background-size: 80%;
+    border-top: solid white 3px;
+    border-bottom: solid white 3px;
+    background-repeat: no-repeat;
+}
+
+.sobreMim .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 100px;
+    text-decoration: underline 2px;
+    margin: 0px;
+}
+
+.sobreMim .container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.sobreMim .container .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 550px;
+    background-color: black;
+    margin: 50px 50px 0px 50px;
+    border: white solid 3px;
+}
+
+.sobreMim .container .content img {
+    width: 200px;
+}
+
+
+.sobreMim .container .content p {
+    width: 90%;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.sobreMim .container .me {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    background-color: black;
+    margin: 0px 50px 0px 50px;
+
+}
+
+/* TERMINANDO SOBRE MIM */
+
+/* INICIANDO O FIM */
+.fim {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    background-image: url('/public/assets/img/fimBG.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.fim .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    background-color: black;
+    font-size: 20px;
+    border: white solid 8px;
+    margin-top: 50px;
+}
+
+.fim .container h3 {
+    margin-top: 0px;
+}
+
+.fim .container h1 {
+    margin-bottom: 0px;
+}
+
+
+.fim .Bfim {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(93, 3, 212);
-    border-top: white solid 8px;
-    font-size: 20px;
 }
 
-.footer h3 {
-    margin: 5px;
+.fim .RBfim {
+    display: flex;
+    flex-direction: column;
 }
 
-.footer h2 {
-    margin-bottom: 10px;
-}
-
-.footer img {
-    width: 400px;
-}
-
-
-.footer .footerPages {
-    margin-right: 500px;
-    font-size: 30px;
-    text-align: left;
-}
-
-.footer .footerPages li :hover {
-    text-decoration: underline;
-}
+/* TERMINANDO O FIM */
+/* --------TERMINANDO SOBRE.HTML----------- */
