@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icon/iconCellphone.ico">
+    <title>Undernet - Home</title>
+
+
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+
+
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img src="assets/img/logoSITE.png" alt="">
+            <ul class="navbar">
+
+                <a href="index.html">Home</a>
+                <li> | </li>
+                <a href="sobre.html">Sobre o site</a>
+                <li> | </li>
+                <a href="forum.html">Fórum</a>
+                <li> | </li>
+                <a href="minigames.html">Minigames</a>
+                <li> | </li>
+                <a style="color: red;" href="https://deltarune.com">Deltarune</a>
+            </ul>
+
+
+            <!-- <ul id="perfil" class="perfil">
+
+            </ul> -->
+
+
+            <ul id="login_cadastro" class="login_cadastro">
+                <a href="login.html">Login</a>
+                <li> | </li>
+                <a style="color: yellow;" href="cadastro.html">Cadastro</a>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <br><br>
+    <br><br>
+    <br><br>
+
+
+
+    <div class="formulario">
+        <div class="container">
+            <h1>Cadastre-se</h1>
+
+            <h3>Nome:</h3>
+            <input class="inputs" id="ipt_nome" type="text">
+
+            <h3>Email:</h3>
+            <input class="inputs" id="ipt_email" type="text">
+
+            <h3>Telefone:</h3>
+            <input class="inputs" id="ipt_telefone" type="text">
+
+            <h3>Crie uma senha:</h3>
+            <input class="inputs" id="ipt_senha" type="password">
+
+            <h3>Confirme sua senha:</h3>
+            <input class="inputs" id="ipt_senhaConfirm" type="password">
+
+            <h3>Escolha uma foto de perfil:</h3>
+
+
+            <div class="escolherPerfil">
+                <div onclick="escolherFoto()" class="imgPerfil">
+                    <img src="assets/img/escolherPerfil.png" alt="">
+                </div>
+            </div>
+
+
+            <button onclick="cadastrar()">Cadastrar</button>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="footer">
+        <img src="/public/assets/img/logoSITE.png" alt="">
+
+        <ul class="footerPages">
+            <li><a href="index.html">Home</a></li>
+
+
+            <li><a href="sobre.html">Sobre o site</a></li>
+
+
+            <li><a href="forum.html">Fórum</a></li>
+
+
+            <li><a href="minigames.html">Minigames</a></li>
+
+
+            <li><a href="https://deltarune.com">Deltarune</a></li>
+
+        </ul>
+
+        <div class="infoCredits">
+            <h2>Email:</h2>
+            <h3>lucas.previtero@sptech.school</h3>
+            <h2>Créditos:</h2>
+            <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
+            <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+
+<script>
+function escolherFoto() {
+    
+}
+
+
+
+
+
+
+
+
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var telefoneVar = ipt_telefone.value;
+        var senhaVar = ipt_senha.value;
+        var confirmacaoSenhaVar = ipt_senhaConfirm.value;
+
+
+        // Verificando se há algum campo em branco
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            telefoneVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // verificando o nome
+        if (
+            nomeVar.length <= 1
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Nome muito curto!";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+
+
+        // verificando o email
+        if (
+            emailVar.indexOf('@') < 0 ||
+            emailVar.indexOf('.') < 0
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Email precisa conter um ponto e um arroba!";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+
+        // verificando senha
+        if (
+            senhaVar <= 6
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Senha muito curta (mínimo 7 caracteres)!";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+
+        // verificando senha de confirmação
+        if (
+            confirmacaoSenhaVar != senhaVar
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Senha e senha de confirmação devem ser iguais!";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+
+        // verifiando CPF
+        if (
+            CPFVar.length != 11
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "CPF deve conter 11 dígitos (apenas números)!";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                senhaServer: senhaVar,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+    // Listando empresas cadastradas 
+    function listar() {
+        fetch("/empresas/listar", {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((empresas) => {
+                    empresas.forEach((empresa) => {
+                        listaEmpresasCadastradas.push(empresa);
+
+                        console.log("listaEmpresasCadastradas")
+                        console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+                    });
+                });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+
+</script>
