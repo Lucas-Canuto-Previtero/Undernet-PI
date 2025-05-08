@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Cadastro</title>
+    <title>Undernet - Login</title>
 
 
 
@@ -40,9 +40,9 @@
 
 
             <ul id="login_cadastro" class="login_cadastro">
-                <a href="login.html">Login</a>
+                <a style="color: yellow;"  href="login.html">Login</a>
                 <li> | </li>
-                <a style="color: yellow;" href="cadastro.html">Cadastro</a>
+                <a href="cadastro.html">Cadastro</a>
             </ul>
         </div>
     </div>
@@ -58,36 +58,17 @@
 
     <div class="formulario">
         <div class="container">
-            <h1>Cadastre-se</h1>
+            <h1>Login</h1>
 
-            <h3>Nome:</h3>
-            <input class="inputs" id="ipt_nome" type="text">
 
             <h3>Email:</h3>
             <input class="inputs" id="ipt_email" type="text">
 
-            <h3>Telefone:</h3>
-            <input class="inputs" id="ipt_telefone" type="text">
-
-            <h3>Crie uma senha:</h3>
+            <h3>Senha:</h3>
             <input class="inputs" id="ipt_senha" type="password">
 
-            <h3>Confirme sua senha:</h3>
-            <input class="inputs" id="ipt_senhaConfirm" type="password">
 
-            <h3>Escolha uma foto de perfil:</h3>
-
-
-
-            <div id="chooseImg">
-                <img id="imgEscolhida" src="assets/img/escolherPerfil.png" alt="">
-            </div>
-
-
-           
-
-
-            <button onclick="cadastrar()">Cadastrar</button>
+            <button onclick="login()">Entrar</button>
         </div>
     </div>
 

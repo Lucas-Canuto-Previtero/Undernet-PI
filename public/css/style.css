@@ -13,7 +13,7 @@ body {
     padding: 0px;
     font-family: "Pixel Operator", pixelify sans, Arial, Helvetica, sans-serif;
     color: white;
-    zoom: 85%;
+    zoom: 80%;
 }
 
 img {
@@ -158,6 +158,19 @@ button:active {
     text-decoration: underline;
 }
 
+.infoCredits a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0px;
+    font-size: 20px;
+}
+
+.infoCredits a:hover {
+    text-decoration: underline;
+
+}
+
 
 /* TERMINANDO RODAPÉ */
 
@@ -184,7 +197,7 @@ button:active {
     height: 500px;
     width: 100%;
     color: white;
-    background-image: url('/public/assets/img/principalBG.png');
+    background-image: url('/public/assets/img/Backgrounds/principalBG.png');
     background-position: center;
     background-size: 1400px 1000px;
 }
@@ -193,11 +206,11 @@ button:active {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    font-size: 20px;
 }
 
 .logoFrase img {
-    width: 400px;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,7 +273,7 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('/public/assets/img/TileBG1.png');
+    background-image: url('/public/assets/img/Backgrounds/TileBG1.png');
 }
 
 .atualizacoes img {
@@ -328,7 +341,7 @@ button:active {
     margin-top: 80px;
     width: 100%;
     height: 700px;
-    background-image: url('/public/assets/img/resumoBG.png');
+    background-image: url('/public/assets/img/Backgrounds/resumoBG.png');
     background-position: center;
     background-size: 100% 1200px;
 }
@@ -390,7 +403,7 @@ button:active {
     width: 60%;
     height: 700px;
     font-size: 25px;
-    background-image: url('/public/assets/img/deltaruneBG.png');
+    background-image: url('/public/assets/img/Backgrounds/deltaruneBG.png');
     background-position: center;
     background-size: 100% 100%;
 }
@@ -427,7 +440,7 @@ button:active {
 .sobreSite {
     width: 100%;
     height: 700px;
-    background-image: url('/public/assets/img/sobreSiteBG.png');
+    background-image: url('/public/assets/img/Backgrounds/sobreSiteBG.png');
     background-position: center;
     background-size: 100% 1200px;
     margin-bottom: 200px;
@@ -484,7 +497,7 @@ button:active {
 .sobreJogo {
     width: 100%;
     height: 820px;
-    background-image: url('/public/assets/img/sobreJogoBG.png');
+    background-image: url('/public/assets/img/Backgrounds/sobreJogoBG.png');
     background-position: center;
     background-size: 105%;
     margin-bottom: 200px;
@@ -538,7 +551,7 @@ button:active {
 .sobreMim {
     width: 100%;
     height: 1300px;
-    background-image: url('/public/assets/img/sobreMimBG.png');
+    background-image: url('/public/assets/img/Backgrounds/sobreMimBG.png');
     background-position: 180px 520px;
     background-size: 80%;
     border-top: solid white 3px;
@@ -608,7 +621,7 @@ button:active {
     align-items: center;
     width: 100%;
     height: 500px;
-    background-image: url('/public/assets/img/fimBG.png');
+    background-image: url('/public/assets/img/Backgrounds/fimBG.png');
     background-size: 100% 100%;
     background-position: center;
 }
@@ -655,15 +668,32 @@ button:active {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* -------- INICIANDO CADASTRO.HTML ---------- */
 .formulario {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 950px;
-    background-image: url('/public/assets/img/cadastroBG.png');
+    background-image: url('/public/assets/img/Backgrounds/cadastroBG.png');
     background-size: 2500px 1850px;
     background-position: center;
 }
@@ -671,7 +701,7 @@ button:active {
 
 .formulario .container {
     width: 25%;
-    height: 900px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -686,16 +716,18 @@ button:active {
     margin: 0px 50px 0px 50px;
     background-color: rgb(230, 230, 230);
     border-radius: 5px;
+    font-size: 22px;
+    font-family: "Pixel Operator", pixelify sans, Arial, Helvetica, sans-serif;
 }
 
 .formulario .container button {
     margin: 20px;
-    
+
 }
 
 .formulario .container h3 {
     width: 90%;
-    font-size: 25px;
+    font-size: 28px;
     margin-bottom: 5px;
 }
 
@@ -705,8 +737,9 @@ button:active {
 }
 
 .formulario .container img {
-    width: 200px;
+    width: 125px;
 }
+/* -------- TERMINANDO CADASTRO/LOGIN.HTML ---------- */
 
 
 
@@ -714,4 +747,26 @@ button:active {
 
 
 
-/* -------- TERMINANDO CADASTRO.HTML ---------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------- INICIANDO MINIGAMES.HTML ---------- */
+
+
+
+
+
+/* --------- TERMINANDO MINIGAMES.HTML ---------- */
