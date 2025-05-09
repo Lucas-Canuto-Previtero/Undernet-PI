@@ -75,16 +75,15 @@
             <h3>Confirme sua senha:</h3>
             <input class="inputs" id="ipt_senhaConfirm" type="password">
 
-            <h3>Escolha uma foto de perfil:</h3>
+            <h3>Insira a url (link) de uma foto de perfil:</h3>
+            <input oninput="exibirImg()" class="inputs" id="ipt_imagem" type="text">
 
 
-
-            <div id="chooseImg">
-                <img id="imgEscolhida" src="assets/img/escolherPerfil.png" alt="">
+            <div style="display: block; background-color: aliceblue; color: black;" id="previewImg">
+                
             </div>
 
 
-           
 
 
             <button onclick="cadastrar()">Cadastrar</button>
@@ -119,7 +118,9 @@
             <h3>lucas.previtero@sptech.school</h3>
             <h2>Créditos:</h2>
             <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
-            <a href="https://github.com/jcw87"><h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3></a>
+            <a href="https://github.com/jcw87">
+                <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            </a>
             <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
         </div>
     </div>
@@ -128,7 +129,13 @@
 
 
 </body>
-
 </html>
 
+<script>
 
+    function exibirImg() {
+        var imagem = ipt_imagem.value;
+        previewImg.innerHTML += `<img src="${imagem}" alt="" style="width: auto ; height: auto;">`;
+    }
+
+</script>
