@@ -6,6 +6,7 @@ Create table usuario (
 idUsuario int not null primary key auto_increment,
 nome varchar (50),
 email varchar (50),
+telefone char (11),
 senha varchar (30),
 fotoPerfil varchar (200)
 );
