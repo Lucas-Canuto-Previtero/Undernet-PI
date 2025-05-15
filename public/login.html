@@ -7,7 +7,7 @@
     <link rel="icon" href="assets/icon/iconCellphone.ico">
     <title>Undernet - Login</title>
 
-
+    <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -40,7 +40,7 @@
 
 
             <ul id="login_cadastro" class="login_cadastro">
-                <a style="color: yellow;"  href="login.html">Login</a>
+                <a style="color: yellow;" href="login.html">Login</a>
                 <li> | </li>
                 <a href="cadastro.html">Cadastro</a>
             </ul>
@@ -68,7 +68,7 @@
             <input class="inputs" id="ipt_senha" type="password">
 
 
-            <button onclick="login()">Entrar</button>
+            <button onclick="entrar()">Entrar</button>
         </div>
     </div>
 
@@ -100,7 +100,9 @@
             <h3>lucas.previtero@sptech.school</h3>
             <h2>Créditos:</h2>
             <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
-            <a href="https://github.com/jcw87"><h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3></a>
+            <a href="https://github.com/jcw87">
+                <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            </a>
             <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
         </div>
     </div>
@@ -156,7 +158,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.FOTO_PERFIL = json.fotoPerfil
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
@@ -186,5 +188,3 @@
     }
 
 </script>
-
-

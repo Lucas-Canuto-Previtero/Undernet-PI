@@ -746,7 +746,7 @@ button:active {
     display: none;
     background-color: black;
     color: rgb(255, 51, 51);
-    width: 300px;
+    width: 350px;
     position: fixed;
     border: #ffffff 7px solid;
     padding: 10px;
@@ -755,8 +755,20 @@ button:active {
   
   .card_erro #mensagem_erro{
     font-weight: 500;
-    font-size: 30px;
+    font-size: 40px;
   }
+
+
+  .loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
 /* -------- TERMINANDO CADASTRO/LOGIN.HTML ---------- */
 
 

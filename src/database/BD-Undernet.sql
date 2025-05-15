@@ -8,7 +8,7 @@ nome varchar (50),
 email varchar (50),
 telefone char (11),
 senha varchar (30),
-fotoPerfil varchar (200)
+fotoPerfil varchar (2000)
 );
 
 Create table resultadoQuiz (
@@ -21,6 +21,7 @@ erros int,
 constraint fkUsuarioQuiz foreign key (fk_idUsuario) references usuario(idUsuario),
 Primary key (idResultadoQuiz)
 );
+
 
 Create table resultadoPersona (
 idResultadoPersona int not null auto_increment,
@@ -77,3 +78,4 @@ CPS decimal(6,2),
 Constraint fkUsuarioCorrida foreign key (fk_idUsuario) references usuario(idUsuario),
 Primary key (idResultadoCorrida)
 );
+

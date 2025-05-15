@@ -7,7 +7,7 @@
   <link rel="icon" href="assets/icon/iconCellphone.ico">
   <title>Undernet - Cadastro</title>
 
-
+  <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -51,47 +51,51 @@
   <br><br>
 
 
-  
-
-  <div class="alerta_erro">
-    <div class="card_erro" id="cardErro">
-      <span id="mensagem_erro"></span>
-    </div>
-  </div>
-  <div class="formulario">
-    <div class="container">
-      <h1>Cadastre-se</h1>
-
-      <h3>Nome:</h3>
-      <input class="inputs" id="ipt_nome" type="text">
-
-      <h3>Email:</h3>
-      <input class="inputs" id="ipt_email" type="text">
-
-      <h3>Telefone:</h3>
-      <input class="inputs" id="ipt_telefone" type="text">
-
-      <h3>Crie uma senha:</h3>
-      <input class="inputs" id="ipt_senha" type="password">
-
-      <h3>Confirme sua senha:</h3>
-      <input class="inputs" id="ipt_senhaConfirm" type="password">
-
-      <h3>Insira a url (link) de uma foto de perfil:</h3>
-      <input oninput="exibirImg()" class="inputs" id="ipt_imagem" type="text">
 
 
-      <div style="display: block; background-color: aliceblue; color: black;" id="previewImg">
-
+  <div class="login">
+    <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
       </div>
+    </div>
+    <div class="formulario">
+      <div class="container">
+        <h1>Cadastre-se</h1>
+
+        <h3>Nome:</h3>
+        <input class="inputs" id="ipt_nome" type="text">
+
+        <h3>Email:</h3>
+        <input class="inputs" id="ipt_email" type="text">
+
+        <h3>Telefone:</h3>
+        <input class="inputs" id="ipt_telefone" type="text">
+
+        <h3>Crie uma senha:</h3>
+        <input class="inputs" id="ipt_senha" type="password">
+
+        <h3>Confirme sua senha:</h3>
+        <input class="inputs" id="ipt_senhaConfirm" type="password">
+
+        <h3>Insira a url (link) de uma foto de perfil:</h3>
+        <input oninput="exibirImg()" class="inputs" id="ipt_imagem" type="text">
+
+
+        <div style="display: block; background-color: aliceblue; color: black;" id="previewImg">
+        </div>
+
+        <div id="div_aguardar" class="loading-div">
+          <img src="/assets/img/aguarde-pink.gif" id="loading-gif" />
+        </div>
+
+
+        <button onclick="cadastrar()">Cadastrar</button>
 
 
 
-
-      <button onclick="cadastrar()">Cadastrar</button>
-
-
-      
+        <div id="div_erros_login"></div>
+      </div>
     </div>
   </div>
 
@@ -146,8 +150,6 @@
 
 
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -159,10 +161,12 @@
     var telefoneVar = ipt_telefone.value;
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_senhaConfirm.value;
-    var imgVar = ipt_imagem.value
+    var imgVar = ipt_imagem.value;
+
+    var emailTemArroba = emailVar.indexOf('@');
+    var emailTemPonto = emailVar.indexOf('.');
 
 
-    // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
@@ -177,21 +181,36 @@
 
       finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 500);
-    }
+    } else if (emailTemArroba < 0 || emailTemPonto < 0) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Email inválido. Deve conter @ e .";
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
+      finalizarAguardar();
+      return false;
+    } else if (telefoneVar.length < 11 || telefoneVar.length > 11) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Telefone inválido. Deve conter 11 dígitos numéricos.";
+
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar.length < 8) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Senha inválida. Deve conter no mínimo 8 dígitos.";
+
+      finalizarAguardar();
+      return false;
+    } else if (confirmacaoSenhaVar != senhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Campo senha e confirmação de senha devem ser iguais.";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
     }
 
     // Enviando o valor da nova input
@@ -206,6 +225,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
+        telefoneServer: telefoneVar,
         fotoPerfilServer: imgVar
       }),
     })
