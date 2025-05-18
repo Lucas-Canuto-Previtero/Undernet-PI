@@ -57,6 +57,11 @@
 
 
     <div class="formulario">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="container">
             <h1>Login</h1>
 
@@ -70,6 +75,11 @@
 
             <button onclick="entrar()">Entrar</button>
         </div>
+        <div id="div_aguardar" class="loading-div">
+            <img src="assets/img/aguarde-pink.gif" id="loading-gif">
+        </div>
+
+        <div id="div_erros_login"></div>
     </div>
 
 
@@ -114,19 +124,18 @@
 
 </html>
 
-
 <script>
 
 
     function entrar() {
         aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Preencha todos os campos.";
             finalizarAguardar();
             return false;
         }
@@ -158,10 +167,9 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.FOTO_PERFIL = json.fotoPerfil
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "usuario.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

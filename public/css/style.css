@@ -557,7 +557,7 @@ button:active {
     border-top: solid white 3px;
     border-bottom: solid white 3px;
     background-repeat: no-repeat;
-    background-color: rgb(6,6,18);
+    background-color: rgb(6, 6, 18);
 }
 
 .sobreMim .title {
@@ -751,24 +751,25 @@ button:active {
     border: #ffffff 7px solid;
     padding: 10px;
     margin-right: 10%;
-  }
-  
-  .card_erro #mensagem_erro{
+}
+
+.card_erro #mensagem_erro {
     font-weight: 500;
     font-size: 40px;
-  }
+}
 
 
-  .loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
 }
 
 .loading-div img {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
 }
+
 /* -------- TERMINANDO CADASTRO/LOGIN.HTML ---------- */
 
 
@@ -794,8 +795,88 @@ button:active {
 
 
 /* --------- INICIANDO MINIGAMES.HTML ---------- */
+.minigameMain {
+    background-image: url("/assets/img/Backgrounds/minigameBG.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
 
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.l1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.l2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.minigameMain .content {
+    border: 5px white solid;
+    background-color: black;
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+}
+
+.minigameMain img {
+    width: 500px;
+    height: 350PX;
+    border-bottom: 2px white solid;
+}
+
+.minigameMain h1 {
+    font-size: 90px;
+    text-decoration: underline 3px;
+    margin: 2px;
+}
+
+.minigameMain .content:hover {
+    border: 10px yellow solid;
+    cursor: pointer;
+}
+
+.iframe {
+    background-image: url("/assets/img/Backgrounds/lastCorridor.png");
+    background-size: 2200px 1300px;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+}
+
+iframe {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 600px;
+    border: 10px solid white;
+}
 
 
 
