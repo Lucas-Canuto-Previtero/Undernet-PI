@@ -26,17 +26,12 @@
                 <li> | </li>
                 <a href="sobre.html">Sobre o site</a>
                 <li> | </li>
-                <a href="forum.html">Fórum</a>
+                <a href="login.html">Fórum</a>
                 <li> | </li>
-                <a href="minigames.html">Minigames</a>
+                <a href="login.html">Minigames</a>
                 <li> | </li>
                 <a style="color: red;" href="https://deltarune.com">Deltarune</a>
             </ul>
-
-
-            <!-- <ul id="perfil" class="perfil">
-
-            </ul> -->
 
 
             <ul id="login_cadastro" class="login_cadastro">
@@ -74,9 +69,10 @@
 
 
             <button onclick="entrar()">Entrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-            <img src="assets/img/aguarde-pink.gif" id="loading-gif">
+            <p>Não tem uma conta? <a href="cadastro.html"><b><u>Cadastre-se!</u></b></p></a>
+            <div id="div_aguardar" class="loading-div">
+                <img src="assets/img/aguarde-pink.gif" id="loading-gif">
+            </div>
         </div>
 
         <div id="div_erros_login"></div>
@@ -95,10 +91,10 @@
             <li><a href="sobre.html">Sobre o site</a></li>
 
 
-            <li><a href="forum.html">Fórum</a></li>
+            <li><a href="login.html">Fórum</a></li>
 
 
-            <li><a href="minigames.html">Minigames</a></li>
+            <li><a href="login.html">Minigames</a></li>
 
 
             <li><a href="https://deltarune.com">Deltarune</a></li>
@@ -158,6 +154,8 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
+            console.log(resposta)
+
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -169,7 +167,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "usuario.html";
+                        window.location = "index-logado.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

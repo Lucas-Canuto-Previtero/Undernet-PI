@@ -8,6 +8,7 @@
     <title>Undernet - Usuário</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
             <img src="assets/img/logoSITE.png" alt="">
             <ul class="navbar">
 
-                <a style="color: yellow;" href="index.html">Home</a>
+                <a href="index-logado.html">Home</a>
                 <li> | </li>
                 <a href="sobre.html">Sobre o site</a>
                 <li> | </li>
@@ -29,16 +30,8 @@
             </ul>
 
 
-            <!-- <ul id="perfil" class="perfil">
-
-            </ul> -->
-
-            <div id="userLogado" class="userLogado">
-                <ul id="login_cadastro" class="login_cadastro">
-                    <a href="login.html">Login</a>
-                    <li> | </li>
-                    <a href="cadastro.html">Cadastro</a>
-                </ul>
+            <div class="hello">
+                <a style="color: yellow;">Olá, <span id="b_usuario">usuário</span>!</a>
             </div>
         </div>
     </div>

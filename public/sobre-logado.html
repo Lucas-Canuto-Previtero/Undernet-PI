@@ -8,6 +8,7 @@
     <title>Undernet - Sobre</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
@@ -17,23 +18,21 @@
             <img src="assets/img/logoSITE.png" alt="">
             <ul class="navbar">
 
-                <a href="index.html">Home</a>
+                <a href="index-logado.html">Home</a>
                 <li> | </li>
-                <a style="color: yellow;" href="sobre.html">Sobre o site</a>
+                <a style="color: yellow;" href="sobre-logado.html">Sobre o site</a>
                 <li> | </li>
-                <a href="login.html">Fórum</a>
+                <a href="forum.html">Fórum</a>
                 <li> | </li>
-                <a href="login.html">Minigames</a>
+                <a href="minigames.html">Minigames</a>
                 <li> | </li>
                 <a style="color: red;" href="https://deltarune.com">Deltarune</a>
             </ul>
 
 
-            <ul id="login_cadastro" class="login_cadastro">
-                <a href="login.html">Login</a>
-                <li> | </li>
-                <a href="cadastro.html">Cadastro</a>
-            </ul>
+            <div class="hello">
+                <a>Olá, <span id="b_usuario">usuário</span>!</a>
+            </div>
         </div>
     </div>
 
@@ -142,8 +141,8 @@
             </div>
 
             <div class="RBfim">
-                <a href="login.html"><button>Acessar o fórum</button></a>
-                <a href="login.html"><button>Acessar os minigames</button></a>
+                <a href="forum.html"><button>Acessar o fórum</button></a>
+                <a href="minigames.html"><button>Acessar os minigames</button></a>
             </div>
 
         </div>
@@ -159,16 +158,16 @@
         <img src="/assets/img/logoSITE.png" alt="">
 
         <ul class="footerPages">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index-logado.html">Home</a></li>
 
 
-            <li><a href="sobre.html">Sobre o site</a></li>
+            <li><a href="sobre-logado.html">Sobre o site</a></li>
 
 
-            <li><a href="login.html">Fórum</a></li>
+            <li><a href="forum.html">Fórum</a></li>
 
 
-            <li><a href="login.html">Minigames</a></li>
+            <li><a href="minigames.html">Minigames</a></li>
 
 
             <li><a href="https://deltarune.com">Deltarune</a></li>

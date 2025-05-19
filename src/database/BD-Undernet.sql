@@ -38,7 +38,7 @@ chanceFrisk int,
 chanceChara int,
 chanceMettaton int,
 chanceAsgore int,
-chanceAsruel int,
+chanceAsriel int,
 Constraint fkUsuarioTeste foreign key (fk_idUsuario) references usuario(idUsuario),
 Primary key (idResultadoPersona)
 );
