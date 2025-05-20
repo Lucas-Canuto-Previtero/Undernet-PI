@@ -95,9 +95,28 @@ button:active {
     color: white;
 }
 
+#loading-gif {
+    width: 200px;
+    height: 200px;
+}
+
+.loading-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+}
+
 .login_cadastro a:hover {
     color: rgb(255, 255, 101) !important;
 }
+
+
+
+
+
 
 
 
@@ -115,11 +134,21 @@ button:active {
 }
 
 .header .container img {
-    width: 245px;
+    /* width: 245px; */
     height: 50px;
     margin-left: 35px;
 
 }
+
+.hello {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    width: 300px;
+}
+
+
 
 /* TERMINANDO HEADER */
 
@@ -553,7 +582,7 @@ button:active {
     height: 1300px;
     background-image: url('/assets/img/Backgrounds/sobreMimBG.png');
     background-position: 180px 520px;
-    background-size: 80%;
+    background-size: 83%;
     border-top: solid white 3px;
     border-bottom: solid white 3px;
     background-repeat: no-repeat;
@@ -857,6 +886,8 @@ button:active {
     cursor: pointer;
 }
 
+/*INICIANDO BAD TIME SIMULATOR*/
+
 .iframe {
     background-image: url("/assets/img/Backgrounds/lastCorridor.png");
     background-size: 2200px 1300px;
@@ -865,7 +896,7 @@ button:active {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 800px;
+    height: 660px;
 }
 
 iframe {
@@ -874,10 +905,10 @@ iframe {
     justify-content: center;
     align-items: center;
     width: 45%;
-    height: 600px;
+    height: 630px;
     border: 10px solid white;
 }
 
-
+/*TERMINANDO BAD TIME SIMULATOR*/
 
 /* --------- TERMINANDO MINIGAMES.HTML ---------- */

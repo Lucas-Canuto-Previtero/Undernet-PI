@@ -50,13 +50,13 @@
     <br><br>
 
 
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
 
     <div class="formulario">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
-        </div>
         <div class="container">
             <h1>Login</h1>
 
@@ -69,7 +69,7 @@
 
 
             <button onclick="entrar()">Entrar</button>
-            <p>Não tem uma conta? <a href="cadastro.html"><b><u>Cadastre-se!</u></b></p></a>
+            <p style="font-size: 25px;">Não tem uma conta? <a href="cadastro.html"><b><u>Cadastre-se!</u></b></a></p>
             <div id="div_aguardar" class="loading-div">
                 <img src="assets/img/aguarde-pink.gif" id="loading-gif">
             </div>
@@ -164,7 +164,8 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.FOTO_PERFIL = json.fotoPerfil;
 
                     setTimeout(function () {
                         window.location = "index-logado.html";

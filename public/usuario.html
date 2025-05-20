@@ -31,7 +31,12 @@
 
 
             <div class="hello">
-                <a style="color: yellow;">Olá, <span id="b_usuario">usuário</span>!</a>
+                <a href="usuario.html">
+                    <div id="fotoPerfil"></div>
+                </a>
+                <a style="color: yellow;" href="usuario.html">
+                    <span id="b_usuario">usuário</span>
+                </a>
             </div>
         </div>
     </div>
@@ -40,3 +45,47 @@
     <br><br>
     <br><br>
     <br><br>
+
+    
+
+
+    <!-- <div class="footer">
+        <img src="/assets/img/logoSITE.png" alt="">
+
+        <ul class="footerPages">
+            <li><a href="index-logado.html">Home</a></li>
+
+
+            <li><a href="sobre-logado.html">Sobre o site</a></li>
+
+
+            <li><a href="forum.html">Fórum</a></li>
+
+
+            <li><a href="minigames.html">Minigames</a></li>
+
+
+            <li><a href="https://deltarune.com">Deltarune</a></li>
+
+        </ul>
+
+        <div class="infoCredits">
+            <h2>Email:</h2>
+            <h3>lucas.previtero@sptech.school</h3>
+            <h2>Créditos:</h2>
+            <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
+            <a href="https://github.com/jcw87">
+                <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            </a>
+            <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
+        </div>
+    </div> -->
+</body>
+
+</html>
+
+<script>
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
+</script>

@@ -8,8 +8,9 @@ nome varchar (50),
 email varchar (50),
 telefone char (11),
 senha varchar (30),
-fotoPerfil varchar (2000)
+fotoPerfil varchar (10000)
 );
+
 
 Create table resultadoQuiz (
 idResultadoQuiz int not null auto_increment,
@@ -38,7 +39,7 @@ chanceFrisk int,
 chanceChara int,
 chanceMettaton int,
 chanceAsgore int,
-chanceAsriel int,
+chanceAsruel int,
 Constraint fkUsuarioTeste foreign key (fk_idUsuario) references usuario(idUsuario),
 Primary key (idResultadoPersona)
 );
@@ -74,8 +75,9 @@ idResultadoCorrida int not null auto_increment,
 fk_idUsuario int not null,
 tempoPermanencia int,
 dataHora timestamp default current_timestamp,
-CPS decimal(6,2),
+CPS int,
 Constraint fkUsuarioCorrida foreign key (fk_idUsuario) references usuario(idUsuario),
 Primary key (idResultadoCorrida)
 );
 
+select * from usuario;

@@ -8,7 +8,6 @@
     <title>Undernet - Sobre</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
 
                 <a href="index-logado.html">Home</a>
                 <li> | </li>
-                <a style="color: yellow;" href="sobre-logado.html">Sobre o site</a>
+                <a style="color: yellow;" href="sobre.html">Sobre o site</a>
                 <li> | </li>
                 <a href="forum.html">Fórum</a>
                 <li> | </li>
@@ -31,7 +30,12 @@
 
 
             <div class="hello">
-                <a>Olá, <span id="b_usuario">usuário</span>!</a>
+                <a href="usuario.html">
+                    <div id="fotoPerfil"></div>
+                </a>
+                <a href="usuario.html">
+                    <span id="b_usuario">usuário</span>
+                </a>
             </div>
         </div>
     </div>
@@ -137,7 +141,7 @@
 
         <div class="Bfim">
             <div class="LBfim">
-                <a href="index.html"><button>Voltar para a home</button></a>
+                <a href="index-logado.html"><button>Voltar para a home</button></a>
             </div>
 
             <div class="RBfim">
@@ -179,7 +183,9 @@
             <h3>lucas.previtero@sptech.school</h3>
             <h2>Créditos:</h2>
             <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
-            <a href="https://github.com/jcw87"><h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3></a>
+            <a href="https://github.com/jcw87">
+                <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            </a>
             <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
         </div>
     </div>
@@ -187,3 +193,9 @@
 </body>
 
 </html>
+
+<script>
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
+</script>

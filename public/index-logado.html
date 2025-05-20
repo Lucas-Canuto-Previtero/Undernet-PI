@@ -31,8 +31,14 @@
 
 
             <div class="hello">
-                <a>Olá, <span id="b_usuario">usuário</span>!</a>
+                <a href="usuario.html">
+                    <div id="fotoPerfil"></div>
+                </a>
+                <a href="usuario.html">
+                    <span id="b_usuario">usuário</span>
+                </a>
             </div>
+
         </div>
     </div>
 
@@ -117,7 +123,7 @@
                 <p>Esse site é inspirado na franquia de UNDERTALE, criada por Toby Fox. Aqui, você pode jogar, competir,
                     interagir nos fóruns e personalizar seu perfil de várias formas possíveis!
                 </p>
-                <a href="sobre.html">
+                <a href="sobre-logado.html">
                     <button>Saiba mais</button>
                 </a>
             </div>
@@ -200,10 +206,18 @@
             <h3>lucas.previtero@sptech.school</h3>
             <h2>Créditos:</h2>
             <h3>Lucas Canuto Previtero (Criador do site UNDERNET)</h3>
-            <a href="https://github.com/jcw87"><h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3></a>
+            <a href="https://github.com/jcw87">
+                <h3>Jcw87 (Criador do minigame Bad Time Simulator)</h3>
+            </a>
             <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
+</script>

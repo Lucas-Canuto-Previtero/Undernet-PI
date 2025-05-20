@@ -30,8 +30,13 @@
             </ul>
 
 
-            <div class="hello">
-                <a>Olá, <span id="b_usuario">usuário</span>!</a>
+          <div class="hello">
+                <a href="usuario.html">
+                    <div id="fotoPerfil"></div>
+                </a>
+                <a href="usuario.html">
+                    <span id="b_usuario">usuário</span>
+                </a>
             </div>
         </div>
     </div>
@@ -123,3 +128,9 @@
 </body>
 
 </html>
+
+<script>
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
+</script>
