@@ -40,15 +40,15 @@
         </div>
 
 
-      <br>
-        
-        
+        <br>
+
+
 
         <div class="iframe">
             <iframe allowfullscreen="true" src="https://jcw87.github.io/c2-sans-fight/" frameborder="0"></iframe>
         </div>
 
-        
+
 
         <div class="footer">
             <img src="/assets/img/logoSITE.png" alt="">
@@ -89,4 +89,15 @@
     var foto_usuario = sessionStorage.FOTO_PERFIL;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
+
+
+
+    let tempoBT = 0;
+
+    function atualizartempoBTS() {
+        tempoBT++;
+    }
+    const intervalo = setInterval(atualizartempoBT, 1000);
+
+
 </script>
