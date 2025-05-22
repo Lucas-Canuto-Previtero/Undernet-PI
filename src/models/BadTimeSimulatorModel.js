@@ -33,8 +33,7 @@ module.exports = {
     atualizar
 };
 
-// Aqui é como se fosse um arquivo para guardar as funções que serão utilizadas para consulta no banco de dados. É aqui que tenho que
-// fazer as verificações de possibilidade de um valor nulo, coletar os dados dos bancos, mexer neles aqui e depois retornar.
+// Aqui é como se fosse um arquivo para guardar as funções que serão utilizadas para consulta no banco de dados. 
 // Aqui eu crio a função, configuro ela e depois retorno para o front.
 //OBS: Aqui vai pegar as configurações do arquivo /database/config.js e declarar o valor da variavel resultado. Esse resultado já é 
 // transformado em um json para facilitar a manipulação e vizzualização nossa e da máquina.
