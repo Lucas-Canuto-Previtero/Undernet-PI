@@ -90,14 +90,38 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
 
-
-
     let tempoBT = 0;
 
-    function atualizartempoBTS() {
+    function atualizartempoBT() {
         tempoBT++;
+        // console.log("Tempo:", tempoBT);
     }
-    const intervalo = setInterval(atualizartempoBT, 1000);
+    setInterval(atualizartempoBT, 1000); 
+
+
+    function enviarTempo() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/BadTimeSimulator/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+                tempoBT: tempoBT
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log(msg);
+            })
+            .catch(err => {
+                console.error("Erro ao enviar tempo:", err);
+            });
+    }
+
+    window.addEventListener("beforeunload", enviarTempo);
 
 
 </script>

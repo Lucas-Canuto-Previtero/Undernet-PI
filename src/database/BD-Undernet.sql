@@ -60,6 +60,7 @@ Constraint fkUsuarioBad foreign key (fk_idUsuario) references usuario(idUsuario)
 Primary key (idResultadoBadTime)
 );
 
+
 Create table postagem (
 idPostagem int not null auto_increment,
 fk_idUsuario int not null,
@@ -80,4 +81,5 @@ Constraint fkUsuarioCorrida foreign key (fk_idUsuario) references usuario(idUsua
 Primary key (idResultadoCorrida)
 );
 
-select * from usuario;
+select * from Undernet.usuario;
+delete from Undernet.usuario where idUsuario = 3;
