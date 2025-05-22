@@ -151,6 +151,14 @@ button:active {
     color: rgb(255, 255, 101);
 }
 
+.hello .btSair {
+    border: solid white 3px;
+    background-color: black;
+    /*font-size: 25px;*/                                                                                                                            
+    color: white;
+}
+
+
 
 
 /* TERMINANDO HEADER */

@@ -18,7 +18,7 @@
             <img src="assets/img/logoSITE.png" alt="">
             <ul class="navbar">
 
-                <a style="color: yellow;" href="index.html">Home</a>
+                <a style="color: yellow;" href="index-logado.html">Home</a>
                 <li> | </li>
                 <a href="sobre-logado.html">Sobre o site</a>
                 <li> | </li>
@@ -37,7 +37,10 @@
                 <a href="usuario.html">
                     <span id="b_usuario">usuário</span>
                 </a>
+                <a href="index.html">
+                    <a onclick="limparSessão()" class="btSair"><p>Sair</p></a>
             </div>
+
 
         </div>
     </div>
@@ -217,6 +220,10 @@
 </html>
 
 <script>
+    function limparSessão() {
+        sessionStorage.clear();
+    }
+
     var foto_usuario = sessionStorage.FOTO_PERFIL;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
