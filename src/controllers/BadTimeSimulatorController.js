@@ -45,4 +45,6 @@ module.exports = {
 // Aqui será meio que a corrente entre o front e o backend. Na hora de listar ele ira acessar o json do resultado do ultimo arquivo Model
 // (resultado = resultado da consulta no banco) na posição 0, pois como existe uma programação para select, inserir apenas 1 dado e atualizar
 // esse mesmo dado em uma condição específica, a posição desse json na array sempre será 0, pois sempre será cadastrado um dado por usuario,
-// qualquer alteração será feita via update
+// qualquer alteração será feita via update.
+// É aqui que tenho que
+// fazer as verificações de possibilidade de um valor nulo, coletar os dados dos bancos, mexer neles aqui e depois retornar.
