@@ -46,8 +46,9 @@
     <br><br>
     <br><br>
 
-    
-
+    <a href="index.html" onclick="limparSessão()" class="btSair">
+        <p>Sair</p>
+    </a>
 
     <!-- <div class="footer">
         <img src="/assets/img/logoSITE.png" alt="">
@@ -85,6 +86,10 @@
 </html>
 
 <script>
+    function limparSessão() {
+        sessionStorage.clear();
+    }
+
     var foto_usuario = sessionStorage.FOTO_PERFIL;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;

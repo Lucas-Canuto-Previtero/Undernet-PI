@@ -144,19 +144,16 @@ button:active {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 300px;
+    width: 350px;
+    height: 90px;
 }
 
 .hello span:hover {
     color: rgb(255, 255, 101);
 }
 
-.hello .btSair {
-    border: solid white 3px;
-    background-color: black;
-    /*font-size: 25px;*/                                                                                                                            
-    color: white;
-}
+
+
 
 
 

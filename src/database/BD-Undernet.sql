@@ -65,7 +65,8 @@ Create table postagem (
 idPostagem int not null auto_increment,
 fk_idUsuario int not null,
 dataHora timestamp default current_timestamp,
-texto varchar(500),
+texto varchar(1000),
+tipoPostagem varchar(30),
 imagem varchar(200),
 Constraint fkUsuarioPostagem foreign key (fk_idUsuario) references usuario(idUsuario),
 primary key (idPostagem)
@@ -82,4 +83,5 @@ Primary key (idResultadoCorrida)
 );
 
 select * from Undernet.usuario;
-delete from Undernet.usuario where idUsuario = 3;
+
+select * from postagem;

@@ -37,10 +37,9 @@
                 <a href="usuario.html">
                     <span id="b_usuario">usuário</span>
                 </a>
-                <a href="index.html">
-                    <a onclick="limparSessão()" class="btSair"><p>Sair</p></a>
             </div>
-
+            
+            
 
         </div>
     </div>
@@ -220,10 +219,6 @@
 </html>
 
 <script>
-    function limparSessão() {
-        sessionStorage.clear();
-    }
-
     var foto_usuario = sessionStorage.FOTO_PERFIL;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}">`;
