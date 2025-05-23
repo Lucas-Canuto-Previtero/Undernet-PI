@@ -85,6 +85,10 @@ button:active {
 }
 
 
+.formulario {
+    margin-bottom: 30px;
+}
+
 .login_cadastro {
     display: flex;
     align-items: center;
@@ -895,16 +899,16 @@ button:active {
 }
 
 /*INICIANDO BAD TIME SIMULATOR*/
-
 .iframe {
     background-image: url("/assets/img/Backgrounds/lastCorridor.png");
     background-size: 2200px 1300px;
     background-position: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 660px;
+    height: 900px;
+
 }
 
 iframe {
@@ -912,11 +916,46 @@ iframe {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 45%;
-    height: 630px;
+    width: 1000px;
+    height: 700px;
     border: 10px solid white;
+}
+
+.creditoBadTime {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-left: 10px white solid;
+    border-right: 10px white solid;
+    height: 40px;
+    width: 1000px;
+    font-size: 25px;
+    text-decoration: underline;
 }
 
 /*TERMINANDO BAD TIME SIMULATOR*/
 
 /* --------- TERMINANDO MINIGAMES.HTML ---------- */
+
+
+
+
+
+
+/* --------- INICIANDO FÓRUM.HTML ------------*/
+.publicacao span {
+    font-size: 30px;
+}
+
+.publicacao b {
+    font-size: 25px;
+}
+
+.publicacao-descricao {
+    font-size: 25px;
+
+}
+
+/* --------- TERMINANDO FÓRUM.HTML ------------*/

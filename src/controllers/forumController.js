@@ -74,11 +74,8 @@ function publicar(req, res) {
         res.status(403).send("O id do usuário está indefinido!");
     } else if (img == undefined) {
         res.status(403).send("A imagem esta indefinida!")
-    } else if (img.length <= 0) {
-        img = null
-    }
-    else {
-        forumModel.publicar(idUsuario, descricao, img, tipo)
+    } else {
+        forumModel.publicar(idUsuario, descricao, tipo, img)
             .then(
                 function (resultado) {
                     res.json(resultado);

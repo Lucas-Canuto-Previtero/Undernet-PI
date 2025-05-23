@@ -16,6 +16,7 @@ router.get("/pesquisar/:descricao", function (req, res) {
 });
 
 router.post("/publicar/:idUsuario", function (req, res) {
+    console.log("teste")
     forumController.publicar(req, res);
 });
 

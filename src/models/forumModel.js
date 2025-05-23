@@ -7,6 +7,7 @@ function listar() {
             p.idPostagem,
             p.texto AS descricao,
             p.fk_idUsuario,
+            p.tipoPostagem,
             u.idUsuario,
             u.nome,
             u.email,
@@ -26,6 +27,7 @@ function pesquisarDescricao(texto) {
             p.idPostagem,
             p.texto AS descricao,
             p.fk_idUsuario,
+            p.tipoPostagem,
             u.idUsuario,
             u.nome,
             u.email,
@@ -46,6 +48,7 @@ function listarPorUsuario(idUsuario) {
             p.idPostagem,
             p.texto AS descricao,
             p.fk_idUsuario,
+            p.tipoPostagem,
             u.idUsuario,
             u.nome,
             u.email,
@@ -60,7 +63,7 @@ function listarPorUsuario(idUsuario) {
 }
 
 function publicar(idUsuario, descricao, tipoPostagem, imagem) {
-    console.log("ACESSEI O postagem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", descricao, tipoPostagem, imagem, idUsuario);
+    console.log("ACESSEI O postagem MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", idUsuario, descricao, tipoPostagem, imagem);
     var instrucaoSql = `
         INSERT INTO postagem (fk_idUsuario, texto, tipoPostagem, imagem) VALUES ( ${idUsuario}, '${descricao}', '${tipoPostagem}', '${imagem}');
     `;
@@ -80,7 +83,7 @@ function editar(novaDescricao, idPostagem) {
 function deletar(idPostagem) {
     console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idPostagem);
     var instrucaoSql = `
-        DELETE FROM postagem WHERE id = ${idPostagem};
+        DELETE FROM postagem WHERE idPostagem = ${idPostagem};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

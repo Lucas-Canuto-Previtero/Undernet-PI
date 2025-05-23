@@ -86,13 +86,15 @@
                     </form>
                 </div>
                 <h1>Postagens:</h1>
+
+
+                <div class="postImg"></div>
                 <div class="div-results">
                     <div id="feed_container" class="feed-container">
                     </div>
                 </div>
             </div>
         </div>
-
     </body>
 
 </html>
@@ -112,7 +114,7 @@
 
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
-
+v
         var corpo = {
             descricao: form_postagem.descricao.value,
             tipo: form_postagem.tipo.value,
@@ -125,7 +127,6 @@
             },
             body: JSON.stringify(corpo)
         }).then(function (resposta) {
-console.log("TESTE")
 
             console.log("resposta: ", resposta);
 
@@ -198,25 +199,26 @@ console.log("TESTE")
                         var publicacao = resposta[i];
 
                         // criando e manipulando elementos do HTML via JavaScript
+                        var divpostImg = document.createElement("img")
                         var divPublicacao = document.createElement("div");
                         var spanID = document.createElement("span");
                         var spanNome = document.createElement("span");
+                        var spanTipo = document.createElement("span");
                         var divDescricao = document.createElement("div");
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
 
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idPostagem + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        divpostImg.innerHTML = `<img src="${publicacao.img}">`;
+                        spanID.innerHTML = "ID: <b>" + publicacao.idPostagem + "</b><br>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b><br>";
+                        spanTipo.innerHTML = "Tipo do post: <b>" + publicacao.tipoPostagem + "</b><br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b><br>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idPostagem;
                         spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
 
                         divButtons.className = "div-buttons"
@@ -231,6 +233,7 @@ console.log("TESTE")
 
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanTipo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
                         divButtons.appendChild(btnEditar);
