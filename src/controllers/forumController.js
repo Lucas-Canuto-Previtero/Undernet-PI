@@ -14,10 +14,10 @@ function listar(req, res) {
     });
 }
 
-function listarPorUsuario(req, res) {
-    var idUsuario = req.params.idUsuario;
+function listarPorTipo(req, res) {
+    var tipoFiltro = req.params.tipoFiltro;
 
-    forumModel.listarPorUsuario(idUsuario)
+    forumModel.listarPorTipo(tipoFiltro)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -39,26 +39,6 @@ function listarPorUsuario(req, res) {
         );
 }
 
-function pesquisarDescricao(req, res) {
-    var descricao = req.params.descricao;
-
-    forumModel.pesquisarDescricao(descricao)
-        .then(
-            function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                }
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao buscar os postagens: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
 
 function publicar(req, res) {
     var idUsuario = req.params.idUsuario;
@@ -131,8 +111,7 @@ function deletar(req, res) {
 
 module.exports = {
     listar,
-    listarPorUsuario,
-    pesquisarDescricao,
+    listarPorTipo,
     publicar,
     editar,
     deletar

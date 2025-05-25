@@ -849,7 +849,7 @@ button:active {
     width: 100%;
 }
 
-.container {
+.minigameMain .container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -929,6 +929,7 @@ iframe {
     background-color: black;
     border-left: 10px white solid;
     border-right: 10px white solid;
+    border-bottom: 10px white solid;
     height: 40px;
     width: 1000px;
     font-size: 25px;
@@ -945,17 +946,143 @@ iframe {
 
 
 /* --------- INICIANDO FÓRUM.HTML ------------*/
+.bodyForum {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.filtro-addPost {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    margin-top: 90px;
+    border-right: white 3px solid;
+    border-top: white 3px solid;
+    padding: 10px;
+    background-color: black;
+}
+
+.postagens span {
+    font-size: 50px;
+}
+
+.filtro-addPost h1 {
+    margin: 2px;
+}
+
+.filtro-addPost img {
+    border: white solid 5px;
+}
+
+#tipoFiltro {
+    font-size: 30px;
+    font-family: 'Pixel Operator';
+}
+
+#tipoPostagem {
+    font-size: 30px;
+    font-family: 'Pixel Operator';
+}
+
+#ipt_imagem {
+    font-size: 30px;
+    font-family: 'Pixel Operator';
+}
+
+
+.filtro-addPost .container {
+    width: 100%;
+}
+
 .publicacao span {
     font-size: 30px;
 }
 
 .publicacao b {
-    font-size: 25px;
+    font-size: 40px;
+    color: rgb(255, 255, 100);
 }
 
 .publicacao-descricao {
-    font-size: 25px;
+    font-size: 40px;
+    overflow-wrap: anywhere;
+}
+
+
+.publicacao-imgPerfil img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: white solid 5px;
+    margin: 10px;
+}
+
+.publicacao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    width: 100%;
+    border: white solid 3px;
+    padding: 5px;
+}
+
+.publicacao-tipo {
+    text-transform: uppercase;
+    font-size: 40px !important;
+    border: white 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.postagens {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 500px;
+    margin-right: 50px;
+    width: 100%;
 
 }
+
+
+.div-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.div-buttons button {
+    width: 150px;
+    margin: 5px;
+}
+
+.FotoContent {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.publicacao-img img {
+    width: 800px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.dadosPubli {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
 
 /* --------- TERMINANDO FÓRUM.HTML ------------*/

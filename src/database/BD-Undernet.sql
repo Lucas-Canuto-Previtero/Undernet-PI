@@ -67,7 +67,7 @@ fk_idUsuario int not null,
 dataHora timestamp default current_timestamp,
 texto varchar(1000),
 tipoPostagem varchar(30),
-imagem varchar(200),
+imagem varchar(10000),
 Constraint fkUsuarioPostagem foreign key (fk_idUsuario) references usuario(idUsuario),
 primary key (idPostagem)
 );
@@ -85,3 +85,19 @@ Primary key (idResultadoCorrida)
 select * from Undernet.usuario;
 
 select * from postagem;
+
+ SELECT 
+            p.idPostagem,
+            p.texto AS descricao,
+            p.fk_idUsuario,
+            p.tipoPostagem,
+            p.imagem,
+            (SELECT DATE_FORMAT(p.dataHora, '%d/%m/%Y %H:%i:%s')) as dataHora_Formatada,
+            u.fotoPerfil,
+            u.idUsuario,
+            u.nome,
+            u.email,
+            u.senha
+        FROM postagem p
+            INNER JOIN usuario u
+                ON p.fk_idUsuario = u.idUsuario order by idPostagem desc;

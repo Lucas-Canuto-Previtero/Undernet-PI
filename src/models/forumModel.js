@@ -8,40 +8,23 @@ function listar() {
             p.texto AS descricao,
             p.fk_idUsuario,
             p.tipoPostagem,
+            p.imagem,
+            (SELECT DATE_FORMAT(p.dataHora, '%d/%m/%Y %H:%i:%s'))  as dataHora_Formatada,
+            u.fotoPerfil,
             u.idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM postagem p
             INNER JOIN usuario u
-                ON p.fk_idUsuario = u.idUsuario;
+                ON p.fk_idUsuario = u.idUsuario order by idPostagem desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function pesquisarDescricao(texto) {
-    console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
-    var instrucaoSql = `
-        SELECT 
-            p.idPostagem,
-            p.texto AS descricao,
-            p.fk_idUsuario,
-            p.tipoPostagem,
-            u.idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM postagem p
-            INNER JOIN usuario u
-                ON p.fk_idUsuario = u.idUsuario
-        WHERE p.texto LIKE '${texto}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 
-function listarPorUsuario(idUsuario) {
+function listarPorTipo(tipoFiltro) {
     console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
     var instrucaoSql = `
         SELECT 
@@ -49,14 +32,18 @@ function listarPorUsuario(idUsuario) {
             p.texto AS descricao,
             p.fk_idUsuario,
             p.tipoPostagem,
+            p.imagem,
+            (SELECT DATE_FORMAT(p.dataHora, '%d/%m/%Y %H:%i:%s'))  as dataHora_Formatada,
+            u.fotoPerfil,
             u.idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM postagem p
             INNER JOIN usuario u
-                ON p.fk_idUsuario = u.idUsuario
-        WHERE u.idUsuario = ${idUsuario};
+                ON p.fk_idUsuario = u.idUsuario 
+                WHERE p.tipoPostagem LIKE "${tipoFiltro}"
+                 order by p.idPostagem desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -91,8 +78,7 @@ function deletar(idPostagem) {
 
 module.exports = {
     listar,
-    listarPorUsuario,
-    pesquisarDescricao,
+    listarPorTipo,
     publicar,
     editar,
     deletar
