@@ -52,7 +52,7 @@
             <img src="assets/img/aguarde-pink.gif" id="loading-gif">
         </div>
 
-        <h1>Filtros:</h1>
+        <p class="filtro">Filtros:</p>
         <select name="tipoFiltro" id="tipoFiltro" onchange="atualizarFiltro()">
             <option value="none">Nenhum</option>
             <option value="geral">Geral</option>
@@ -80,11 +80,12 @@
                     <br>
                     <br>
                     <label>
-                        <h1>Escreva seu post:</h1>
+                        <h1>Escreva seu post (max. de 1000 caracteres):</h1>
                         <br>
-                        <textarea name="descricao" id="textarea_descricao" maxlength="1000" rows="5"
-                            placeholder="Digite aqui..."
+                        <textarea oninput="atualizarCaracteres()" name="descricao" id="textarea_descricao"
+                            maxlength="1000" rows="5" placeholder="Digite aqui..."
                             style="font-size: 30px; font-family: 'Pixel Operator';"></textarea>
+                        <div style="font-size: 40px;" id="qtd_caracteres">0</div>
                     </label>
 
                     <h1>Insira o link de uma imagem (opcional):</h1>
@@ -118,6 +119,11 @@
 
 
 <script>
+    function atualizarCaracteres() {
+        var caracteres = textarea_descricao.value.length;
+        qtd_caracteres.innerHTML = `${caracteres}`
+    }
+
     function exibirImg() {
         var imagem = ipt_imagem.value;
         previewImg.innerHTML = `<img src="${imagem}" alt="" style="width: auto ; height: 150px; margin: 8px;">`;

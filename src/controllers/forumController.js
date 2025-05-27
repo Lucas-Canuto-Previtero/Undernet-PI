@@ -71,11 +71,11 @@ function publicar(req, res) {
     }
 }
 
-function editar(req, res) {
+function editarTexto(req, res) {
     var novaDescricao = req.body.descricao;
     var idPostagem = req.params.idPostagem;
 
-    forumModel.editar(novaDescricao, idPostagem)
+    forumModel.editarTexto(novaDescricao, idPostagem)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -88,7 +88,25 @@ function editar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+}
 
+function editarImagem(req, res) {
+    var novaImagem = req.body.imagem;
+    var idPostagem = req.params.idPostagem;
+
+    forumModel.editarImagem(novaImagem, idPostagem)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function deletar(req, res) {
@@ -113,6 +131,7 @@ module.exports = {
     listar,
     listarPorTipo,
     publicar,
-    editar,
+    editarTexto,
+    editarImagem,
     deletar
 }

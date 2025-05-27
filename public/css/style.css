@@ -964,14 +964,22 @@ iframe {
     border-top: white 3px solid;
     padding: 10px;
     background-color: black;
+    font-size: 15px;
 }
 
-.postagens span {
-    font-size: 50px;
-}
 
 .filtro-addPost h1 {
     margin: 2px;
+}
+
+.filtro-addPost p {
+    margin: 30px;
+    font-size: 50px;
+    text-align: center;
+}
+
+hr {
+    margin-bottom: 50px;
 }
 
 .filtro-addPost img {
@@ -993,7 +1001,6 @@ iframe {
     font-family: 'Pixel Operator';
 }
 
-
 .filtro-addPost .container {
     width: 100%;
 }
@@ -1011,6 +1018,8 @@ iframe {
     font-size: 40px;
     overflow-wrap: anywhere;
 }
+
+
 
 
 .publicacao-imgPerfil img {
@@ -1048,9 +1057,18 @@ iframe {
     margin-left: 500px;
     margin-right: 50px;
     width: 100%;
-
 }
 
+.postagens span {
+    font-size: 50px;
+}
+
+.postagens h1 {
+    font-size: 80px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
 
 .div-buttons {
     display: flex;
@@ -1068,7 +1086,6 @@ iframe {
     flex-direction: row;
 }
 
-
 .publicacao-img img {
     width: 800px;
     object-fit: cover;
@@ -1084,5 +1101,49 @@ iframe {
 
 
 
+
+/*edição de forum*/
+
+.container-edicao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.container-edicao input {
+    width: 600px;
+    height: 35px;
+    font-size: 30px;
+    font-family: "Pixel Operator";
+}
+
+
+.container-edicao h1 {
+    font-size: 70px;
+}
+
+.container-edicao textarea {
+    width: 700px;
+    height: 200px;
+    font-size: 30px;
+    font-family: "Pixel Operator";
+}
+
+.container-edicao .div-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container-edicao .div-form label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /* --------- TERMINANDO FÓRUM.HTML ------------*/

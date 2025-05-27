@@ -58,10 +58,19 @@ function publicar(idUsuario, descricao, tipoPostagem, imagem) {
     return database.executar(instrucaoSql);
 }
 
-function editar(novaDescricao, idPostagem) {
-    console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idPostagem);
+function editarTexto(novaDescricao, idPostagem) {
+    console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editarTexto(): ", novaDescricao, idPostagem);
     var instrucaoSql = `
-        UPDATE postagem SET descricao = '${novaDescricao}' WHERE idPostagem = ${idPostagem};
+        UPDATE postagem SET texto = '${novaDescricao}' WHERE idPostagem = ${idPostagem};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function editarImagem(novaImagem, idPostagem) {
+    console.log("ACESSEI O FORUM MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editarImagem(): ", novaImagem, idPostagem);
+    var instrucaoSql = `
+        UPDATE postagem SET imagem = '${novaImagem}' WHERE idPostagem = ${idPostagem};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -80,6 +89,7 @@ module.exports = {
     listar,
     listarPorTipo,
     publicar,
-    editar,
+    editarTexto,
+    editarImagem,
     deletar
 }

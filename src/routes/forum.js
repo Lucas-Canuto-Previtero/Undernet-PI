@@ -11,14 +11,17 @@ router.get("/listarPorTipo/:tipoFiltro", function (req, res) {
     forumController.listarPorTipo(req, res);
 });
 
-
 router.post("/publicar/:idUsuario", function (req, res) {
     console.log("teste")
     forumController.publicar(req, res);
 });
 
-router.put("/editar/:idPostagem", function (req, res) {
-    forumController.editar(req, res);
+router.put("/editarTexto/:idPostagem", function (req, res) {
+    forumController.editarTexto(req, res);
+});
+
+router.put("/editarImagem/:idPostagem", function (req, res) {
+    forumController.editarImagem(req, res);
 });
 
 router.delete("/deletar/:idPostagem", function (req, res) {
