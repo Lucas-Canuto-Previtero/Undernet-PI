@@ -96,6 +96,12 @@
     }
 
     function editarTexto() {
+
+        if (ipt_imagem.value.length >= 10000) {
+            alert("URL da imagem muito grande")
+            return;
+        }
+
         fetch(`/forum/editarTexto/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
@@ -119,10 +125,7 @@
     }
 
     function editarImagem() {
-        if (ipt_imagem.value.length >= 10000) {
-            alert("URL da imagem muito grande")
-            return;
-        }
+        
         fetch(`/forum/editarImagem/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
