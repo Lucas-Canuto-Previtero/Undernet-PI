@@ -68,6 +68,14 @@
 
 </html>
 
+<style>
+    .grafico {
+        width: 250px;
+        height: 250px;
+        zoom: 150% !important;
+    }
+</style>
+
 <script>
     function tocarAudio() {
         document.getElementById('audio').play();
@@ -77,7 +85,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
-
+    var idUsuario = sessionStorage.ID_USUARIO;
+    console.log(idUsuario)
 
     var chanceToriel = 0;
     var chanceSans = 0;
@@ -315,35 +324,93 @@
 
         div_contentQuiz.innerHTML = `
          <h1>E o resultado final é...<br>
-         ${nomeChanceMaior}!</h1>
+         !</h1>
 
-            <img src="${imgResultado}" alt="">
+            <img src="" alt="">
 
-            <h3>${mensagemResultado}</h3>
+            <h3></h3>
 
-            <div class="graficoOnQuiz">
-            <canvas id="graficoChances"></canvas>
-            </div>`
-        const ctx = document.getElementById('graficoChances');
+         <div class="grafico">
+            <canvas id="graficoPersona"></canvas>
+        </div>`
+
+        const ctx = document.getElementById('graficoPersona');
 
         new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Chance em %',
                     data: [12, 19, 3, 5, 2, 3],
                     borderWidth: 1
                 }]
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
         });
     }
+
+
+
+
+
+
+    function listar(idUsuario) {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        console.log(idUsuario)
+        fetch(`/quizPersonalidade/listar/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    div_contentQuiz.innerHTML = `<h1> Você já respondeu o teste e não pode refaze - lo.</h1>
+                    <h3>Para ver o resultado do teste clique no botão abaixo para ser redirecionado para a página de usuário ou acesse diretamente a página.</h3>
+                    <button onclick="window.location = 'usuario.html'">Ir para a página de usuário</button>`
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+
+
+    function cadastrar() {
+        fetch("/quizPersonalidade/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chanceToriel: chanceToriel,
+                chanceSans: chanceSans,
+                chancePapyrus: chancePapyrus,
+                chanceNapstablook: chanceNapstablook,
+                chanceUndyne: chanceUndyne,
+                chanceFlowey: chanceFlowey,
+                chanceFrisk: chanceFrisk,
+                chanceChara: chanceChara,
+                chanceMettaton: chanceMettaton,
+                chanceAsgore: chanceAsgore,
+                chanceAsriel: chanceAsriel,
+                idUsuario: idUsuario
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log(msg);
+            })
+            .catch(err => {
+                console.error("Erro ao enviar resultado:", err);
+            });
+    }
+
+
+
 
 </script>

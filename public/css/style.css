@@ -912,7 +912,8 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 900px;
+    height: 740px;
+    overflow: scroll;
 
 }
 
@@ -987,7 +988,19 @@ iframe {
 }
 
 
+.graficoOnQuiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+}
 
+/* canvas {
+    align-self: center;
+    margin-bottom: 100px;
+    width: 100%;
+} */
 
 
 
@@ -1014,13 +1027,14 @@ iframe {
     position: fixed;
     flex-direction: column;
     width: 20%;
-    height: 100%;
+    height: 700px;
     margin-top: 90px;
     border-right: white 3px solid;
     border-top: white 3px solid;
     padding: 10px;
     background-color: black;
     font-size: 15px;
+    overflow: scroll;
 }
 
 

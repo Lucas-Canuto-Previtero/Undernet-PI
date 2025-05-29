@@ -53,7 +53,7 @@ CREATE TABLE resultadoCorrida (
 
 
 CREATE TABLE resultadoPersona (
-  idResultadoPersona INT NOT NULL AUTO_INCREMENT,
+  idResultadoPersona INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   chanceToriel INT,
   chanceSans INT,

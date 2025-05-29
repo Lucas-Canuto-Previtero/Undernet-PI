@@ -1,7 +1,9 @@
 var quizPersonalidadeModel = require("../models/quizPersonalidadeModel");
 
 function listar(req, res) {
-    quizPersonalidadeModel.listar().then(function (resultado) {
+    var idUsuario = req.params.idUsuario;
+
+    quizPersonalidadeModel.listar(`${idUsuario}`).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -9,13 +11,12 @@ function listar(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        console.log("Houve um erro ao buscar o registro:", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
 function Cadastrar(req, res) {
-    var idUsuario = req.body.idUsuario;
     var chanceToriel = req.body.chanceToriel;
     var chanceSans = req.body.chanceSans;
     var chancePapyrus = req.body.chancePapyrus;
@@ -27,6 +28,8 @@ function Cadastrar(req, res) {
     var chanceMettaton = req.body.chanceMettaton;
     var chanceAsgore = req.body.chanceAsgore;
     var chanceAsriel = req.body.chanceAsriel;
+    var idUsuario = req.body.idUsuario;
+
 
     quizPersonalidadeModel.listar(idUsuario).then(function (resultado) {
         if (resultado.length > 0) {
