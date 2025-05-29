@@ -26,7 +26,7 @@ CREATE TABLE postagem (
   CONSTRAINT fkUsuarioPostagem FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
   
-  
+  select * from undernet.postagem;
 
 
 
@@ -52,11 +52,9 @@ CREATE TABLE resultadoCorrida (
   );
 
 
-
 CREATE TABLE resultadoPersona (
   idResultadoPersona INT NOT NULL AUTO_INCREMENT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  tempoPermanencia INT,
   chanceToriel INT,
   chanceSans INT,
   chancePapyrus INT,
@@ -67,7 +65,7 @@ CREATE TABLE resultadoPersona (
   chanceChara INT,
   chanceMettaton INT,
   chanceAsgore INT,
-  chanceAsruel INT,
+  chanceAsriel INT,
   fk_idUsuario INT NOT NULL,
   PRIMARY KEY (idResultadoPersona),
   CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)

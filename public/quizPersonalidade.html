@@ -5,15 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Teste de Personalidade</title>
+    <title>Undernet - Fórum</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="../js/sessao.js"></script>
+    <script src="js/sessao.js"></script>
 </head>
 
-
-<body>
-
+<body class="bodyPersona" onclick="tocarAudio()" onload="listar()">
     <div class="header">
         <div class="container">
             <img src="assets/img/logoSITE.png" alt="">
@@ -25,7 +24,7 @@
                 <li> | </li>
                 <a href="forum.html">Fórum</a>
                 <li> | </li>
-                <a href="minigames.html">Minigames</a>
+                <a style="color: yellow;" href="minigames.html">Minigames</a>
                 <li> | </li>
                 <a style="color: red;" href="https://deltarune.com">Deltarune</a>
             </ul>
@@ -42,169 +41,309 @@
         </div>
     </div>
 
-
     <br><br>
     <br><br>
     <br><br>
 
+    <audio id="audio">
+        <source src="/assets/vesselCreator.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="mainQuiz">
+        <div id="div_contentQuiz" class="contentQuiz">
+            <h1>Bem-vindo(a) ao teste de personalidade!</h1>
+
+            <h3>Clique no botão "Iniciar" para realizar um teste de personalidade de 10 perguntas.
+                <br>
+                Aqui, você descobrirá com qual personagem sua personalidade se parece.
+                <br>
+                Esse quiz só poderá ser respondido uma vez, então responda com sinceridade e cautela!
+                <br>
+                Após as 10 perguntas, você verá o resultado final aqui e na página de usuario.
+            </h3>
+            <button onclick="rodarQuiz()">Iniciar</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function tocarAudio() {
+        document.getElementById('audio').play();
+    }
+
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
 
-    <!-- 1. Como você se descreveria em poucas palavras?
-a) Protetor(a) e gentil.
-→ +1 Toriel, +1 Frisk, +1 Asgore
 
-b) Divertido(a) e sarcástico(a).
-→ +1 Sans
+    var chanceToriel = 0;
+    var chanceSans = 0;
+    var chancePapyrus = 0;
+    var chanceNapstablook = 0;
+    var chanceUndyne = 0;
+    var chanceFlowey = 0;
+    var chanceFrisk = 0;
+    var chanceChara = 0;
+    var chanceMettaton = 0;
+    var chanceAsgore = 0;
+    var chanceAsriel = 0;
 
-c) Determinado(a) e corajoso(a).
-→ +1 Undyne, +1 Chara
 
-d) Sensível e melancólico(a).
-→ +1 Napstablook, +1 Asriel
+    var nPergunta = 0;
 
-e) Ambicioso(a) e manipulador(a).
-→ +1 Flowey, +1 Mettaton
+    var pergunta1 = ` <h1>1º Pergunta: <br>
+             Como você se descreveria em poucas palavras?</h1>
+             <br>
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, chanceAsgore++, nPergunta++, rodarQuiz()">Protetor(a) e gentil</button>
 
-2. O que você faria ao encontrar um monstro hostil?
-a) Tentaria conversar e resolver pacificamente.
-→ +1 Toriel, +1 Frisk
+             <button onclick="chanceSans++, nPergunta++, rodarQuiz()">Divertido(a) e sarcástico(a)</button>
 
-b) Lutaria para proteger os outros.
-→ +1 Undyne, +1 Asgore
+             <br>
 
-c) Fugiria e evitaria confronto.
-→ +1 Napstablook, +1 Asriel
+             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">Determinado(a) e corajoso(a)</button>
 
-d) Usaria truques ou palavras afiadas.
-→ +1 Sans, +1 Chara
+             <button onclick="chanceNapstablook++, chanceAsriel++, nPergunta++, rodarQuiz()">Sensível e melancólico(a)</button>
 
-e) Tentaria usar o monstro para seus próprios fins.
-→ +1 Flowey
+             <button onclick="chanceFlowey++, chanceMettaton++, nPergunta++, rodarQuiz()">Ambicioso(a) e manipulador(a)</button>
+        </div>`
 
-3. Qual dessas atividades parece mais divertida?
-a) Cozinhar algo gostoso.
-→ +1 Toriel, +1 Papyrus
+    var pergunta2 = `
+    <h1>2º Pergunta: <br>
+             O que você faria ao encontrar um monstro hostil?</h1>
+             <br>
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">Tentaria conversar e resolver pacificamente</button>
 
-b) Fazer um show!
-→ +1 Mettaton, +1 Papyrus
+             <button onclick="chanceUndyne++, chanceAsgore++, nPergunta++, rodarQuiz()">Lutaria para proteger os outros</button>
 
-c) Escrever músicas ou ficar ouvindo lo-fi.
-→ +1 Napstablook, +1 Asriel
+             <br>
 
-d) Explorar lugares perigosos e lutar contra injustiças.
-→ +1 Undyne, +1 Chara
+             <button onclick="chanceNapstablook++, chanceAsriel++, nPergunta++, rodarQuiz()">Fugiria e evitaria confronto</button>
 
-e) Relaxar e fazer piadas com amigos.
-→ +1 Sans, +1 Frisk
+             <button onclick="chanceSans++, chanceChara++, nPergunta++, rodarQuiz()">Usaria truques ou palavras afiadas</button>
 
-4. Você vê alguém triste. O que faz?
-a) Ofereço apoio e fico do lado da pessoa.
-→ +1 Toriel, +1 Frisk
+             <button onclick="chanceFlowey++, nPergunta++, rodarQuiz()">Tentaria usar o monstro para seus próprios fins</button>
+        </div>`
 
-b) Tento fazê-la rir com piadas.
-→ +1 Sans, +1 Papyrus
+    var pergunta3 = `
+    <h1>3º Pergunta: <br>
+             Qual dessas atividades parece mais divertida?</h1>
+             <br>
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chancePapyrus++, nPergunta++, rodarQuiz()">Cozinhar algo gostoso</button>
 
-c) Fico perto em silêncio, respeitando o espaço dela.
-→ +1 Napstablook, +1 Asriel
+             <button onclick="chanceMettaton++, chancePapyrus++, nPergunta++, rodarQuiz()">Fazer um show!</button>
 
-d) Me afasto, pois não sei lidar com emoções.
-→ +1 Flowey, +1 Chara
+             <br>
 
-e) Transformo a situação em algo teatral e emocional.
-→ +1 Mettaton
+             <button onclick="chanceNapstablook++, chanceAsriel++, nPergunta++, rodarQuiz()">Escrever músicas ou ficar ouvindo lo-fi</button>
 
-5. Você se considera mais...
-a) Calmo(a) e protetor(a).
-→ +1 Toriel, +1 Asgore
+             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">Explorar lugares perigosos e lutar contra injustiças</button>
 
-b) Intenso(a) e emocional.
-→ +1 Undyne, +1 Asriel
+             <button onclick="chanceSans++, chanceFrisk++, nPergunta++, rodarQuiz()">Relaxar e fazer piadas com amigos</button>
+        </div>`
 
-c) Racional e distante.
-→ +1 Sans, +1 Flowey
+    var pergunta4 = `
+    <h1>4º Pergunta: <br>
+           Você vê alguém triste. O que faz?</h1>
 
-d) Alegre e cheio(a) de energia.
-→ +1 Papyrus, +1 Mettaton
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">Ofereço apoio e fico do lado da pessoa</button>
 
-e) Curioso(a) e reflexivo(a).
-→ +1 Frisk, +1 Napstablook
+             <button onclick="chanceSans++, chancePapyrus++, nPergunta++, rodarQuiz()">Tento fazê-la rir com piadas</button>
 
-6. Qual dessas frases combina com você?
-a) “Sempre há um caminho pacífico.”
-→ +1 Frisk, +1 Toriel
+             <br>
 
-b) “A justiça é feita com ação!”
-→ +1 Undyne, +1 Chara
+             <button onclick="chanceNapstablook++, chanceAsriel++, nPergunta++, rodarQuiz()">Fico perto em silêncio, respeitando o espaço dela</button>
 
-c) “Nada importa de verdade, né?”
-→ +1 Sans, +1 Flowey
+             <button onclick="chanceFlowey++, chanceChara++, nPergunta++, rodarQuiz()">Me afasto, pois não gosto de lidar com emoções</button>
 
-d) “Você quer ouvir minha nova mixtape?”
-→ +1 Napstablook
+             <button onclick="chanceMettaton++, nPergunta++, rodarQuiz()">Transformo a situação em algo teatral e emocional</button>
+        </div>`
 
-e) “As luzes... as câmeras... sou eu, baby!”
-→ +1 Mettaton
+    var pergunta5 = `
+    <h1>5º Pergunta: <br>
+          Você se considera mais...</h1>
 
-7. Se alguém não gosta de você, o que você pensa?
-a) "Quero entender o motivo e melhorar."
-→ +1 Frisk, +1 Toriel
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceAsgore++, nPergunta++, rodarQuiz()">Calmo(a) e protetor(a)</button>
 
-b) "Problema é dela!"
-→ +1 Sans, +1 Mettaton
+             <button onclick="chanceUndyne++, chanceAsriel++, nPergunta++, rodarQuiz()">Intenso(a) e emocional</button>
 
-c) "Isso me machuca mais do que deveria..."
-→ +1 Asriel, +1 Napstablook
+             <br>
 
-d) "É só mais uma fraqueza dos outros."
-→ +1 Chara, +1 Flowey
+             <button onclick="chanceSans++, chanceFlowey++, nPergunta++, rodarQuiz()">Racional e distante</button>
 
-e) "Vou convencê-la do contrário!"
-→ +1 Papyrus
+             <button onclick="chancePapyrus++, chanceMettaton++, nPergunta++, rodarQuiz()">Alegre e cheio(a) de energia</button>
 
-8. Como você age com novas pessoas?
-a) Acolhedor(a) e protetor(a).
-→ +1 Toriel, +1 Asgore
+             <button onclick="chanceFrisk++, chanceNapstablook, nPergunta++, rodarQuiz()">Curioso(a) e reflexivo(a)</button>
+        </div>`
 
-b) Extrovertido(a) e engraçado(a).
-→ +1 Sans, +1 Papyrus
 
-c) Cauteloso(a), mas curioso(a).
-→ +1 Frisk, +1 Napstablook
 
-d) Desconfiado(a) e na defensiva.
-→ +1 Chara, +1 Flowey
+    var pergunta6 = `
+    <h1>6º Pergunta: <br>
+         Qual dessas frases combina com você?</h1>
 
-e) Sedutor(a) e performático(a).
-→ +1 Mettaton
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">“Sempre há um caminho pacífico.”</button>
 
-9. Qual dessas palavras te define melhor?
-a) Compaixão
-→ +1 Frisk, +1 Toriel
+             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">“A justiça é feita com ação!”</button>
 
-b) Coragem
-→ +1 Undyne, +1 Chara
+             <br>
 
-c) Solidão
-→ +1 Napstablook, +1 Asriel
+             <button onclick="chanceSans++, chanceFlowey++, nPergunta++, rodarQuiz()">“Nada importa de verdade, né?”</button>
 
-d) Estilo
-→ +1 Mettaton, +1 Papyrus
+             <button onclick="chanceNapstablook++, nPergunta++, rodarQuiz()">“Você quer ouvir minha nova mixtape?”</button>
 
-e) Sarcasmo
-→ +1 Sans, +1 Flowey
+             <button onclick="chanceMettaton, nPergunta++, rodarQuiz()">“O que é aquela estrela vindo? Ah sim, sou eu!”</button>
+        </div>`
 
-10. Como você encara seu passado?
-a) Com saudade e esperança de redenção.
-→ +1 Asgore, +1 Asriel
 
-b) Como algo que me tornou mais forte.
-→ +1 Chara, +1 Flowey
 
-c) Tento não pensar muito nisso.
-→ +1 Sans, +1 Napstablook
+    var pergunta7 = `
+    <h1>7º Pergunta: <br>
+        Se alguém não gosta de você, o que você pensa?</h1>
 
-d) Me orgulho de quem fui.
-→ +1 Papyrus, +1 Mettaton
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">"Quero entender o motivo e melhorar."</button>
 
-e) Levo lições valiosas para seguir melhor.
-→ +1 Frisk, +1 Toriel -->
+             <button onclick="chanceSans++, chanceMettaton++, nPergunta++, rodarQuiz()">"Problema é dela!"</button>
+
+             <br>
+
+             <button onclick="chanceAsriel++, chanceNapstablook++, nPergunta++, rodarQuiz()">"Isso me machuca mais do que deveria..."</button>
+
+             <button onclick="chanceChara++, chanceFlowey, nPergunta++, rodarQuiz()">"É só mais uma fraqueza dos outros."</button>
+
+             <button onclick="chancePapyrus, nPergunta++, rodarQuiz()">"Vou convencê-la do contrário!"
+             </button>
+        </div>`
+
+
+
+    var pergunta8 = `
+    <h1>8º Pergunta: <br>
+        Como você age com novas pessoas?</h1>
+
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceAsgore++, nPergunta++, rodarQuiz()">Acolhedor(a) e protetor(a)</button>
+
+             <button onclick="chanceSans++, chancePapyrus++, nPergunta++, rodarQuiz()">Extrovertido(a) e engraçado(a)</button>
+
+             <br>
+
+             <button onclick="chanceFrisk++, chanceNapstablook++, nPergunta++, rodarQuiz()">Cauteloso(a), mas curioso(a)</button>
+
+             <button onclick="chanceChara++, chanceFlowey++, nPergunta++, rodarQuiz()">Desconfiado(a) e na defensiva</button>
+
+             <button onclick="chanceMettaton++, nPergunta++, rodarQuiz()">Sedutor(a) e performático(a)
+             </button>
+        </div>`
+
+
+
+    var pergunta9 = `
+    <h1>9º Pergunta: <br>
+       Qual dessas palavras te define melhor?</h1>
+
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">Compaixão</button>
+
+             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">Coragem</button>
+
+             <br>
+
+             <button onclick="chanceAsriel++, chanceNapstablook++, nPergunta++, rodarQuiz()">Solidão</button>
+
+             <button onclick="chanceMettaton++, chancePapyrus++, nPergunta++, rodarQuiz()">Estilo</button>
+
+             <button onclick="chanceSans++, chanceFlowey++, nPergunta++, rodarQuiz()">Sarcasmo
+             </button>
+        </div>`
+
+
+
+    var pergunta10 = `
+    <h1>10º Pergunta: <br>
+     Como você encara seu passado?</h1>
+
+             <br>
+             
+         <div class="pergunta">
+             <button onclick="chanceAsgore++, chanceAsriel++, finalizarQuiz()">Com saudade e esperança de redenção</button>
+
+             <button onclick="chanceFlowey++, chanceChara++, finalizarQuiz()">Como algo que me tornou mais forte</button>
+
+             <br>
+
+             <button onclick="chanceSans++, chanceNapstablook++, finalizarQuiz()">Tento não pensar muito nisso</button>
+
+             <button onclick="chanceMettaton++, chancePapyrus++, finalizarQuiz()">Me orgulho de quem fui</button>
+
+             <button onclick="chanceFrisk++, chanceToriel++, finalizarQuiz()">Levo lições valiosas para seguir melhor
+             </button>
+        </div>`
+
+
+
+    function rodarQuiz() {
+        const perguntas = [pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, pergunta9, pergunta10]
+        div_contentQuiz.innerHTML = `${perguntas[nPergunta]}`
+    }
+
+    // const chances = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
+
+    function finalizarQuiz() {
+        cadastrar();
+
+        div_contentQuiz.innerHTML = `
+         <h1>E o resultado final é...<br>
+         ${nomeChanceMaior}!</h1>
+
+            <img src="${imgResultado}" alt="">
+
+            <h3>${mensagemResultado}</h3>
+
+            <div class="graficoOnQuiz">
+            <canvas id="graficoChances"></canvas>
+            </div>`
+        const ctx = document.getElementById('graficoChances');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+</script>

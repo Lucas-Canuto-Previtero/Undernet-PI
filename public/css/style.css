@@ -5,6 +5,11 @@
     src: url(/assets/pixel_operator/PixelOperator-Bold.ttf) format('truetype');
 }
 
+html {
+    scrollbar-color: white rgb(15, 15, 15);
+}
+
+
 
 
 body {
@@ -937,6 +942,57 @@ iframe {
 }
 
 /*TERMINANDO BAD TIME SIMULATOR*/
+
+/*INICIANDO TESTE PERSONALIDADE*/
+.bodyPersona {
+    background-image: url(/assets/img/Backgrounds/vesselCreator.gif);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 130% 1010px;
+}
+
+.mainQuiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 100%;
+    height: 900px;
+    text-align: center;
+
+}
+
+.mainQuiz button {
+    margin: 20px;
+    width: 400px;
+    height: 80px;
+}
+
+.contentQuiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    border: white 3px solid;
+    background-color: rgba(0, 0, 0, 0.366);
+}
+
+.pergunta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+/*TERMINANDO TESTE PERSONALIDADE*/
 
 /* --------- TERMINANDO MINIGAMES.HTML ---------- */
 

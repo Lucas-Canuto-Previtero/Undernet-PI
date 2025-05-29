@@ -19,9 +19,8 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var forumRouter = require("./src/routes/forum");
 var medidasRouter = require("./src/routes/medidas");
-var empresasRouter = require("./src/routes/empresas");
 var BadTimeSimulatorRouter = require("./src/routes/BadTimeSimulator");
-
+var quizPersonalidadeRouter = require("./src/routes/quizPersonalidade");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,8 +32,8 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/forum", forumRouter);
 app.use("/medidas", medidasRouter);
-app.use("/empresas", empresasRouter);
 app.use("/BadTimeSimulator", BadTimeSimulatorRouter);
+app.use("/quizPersonalidade", quizPersonalidadeRouter);
 // Aqui é onde tenho que criar as rotas entre os arquivos Routers.
 
 app.listen(PORTA_APP, function () {
