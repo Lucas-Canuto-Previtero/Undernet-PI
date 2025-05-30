@@ -26,7 +26,6 @@ CREATE TABLE postagem (
   CONSTRAINT fkUsuarioPostagem FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
   
-  select * from undernet.postagem;
 
 
 
@@ -55,22 +54,21 @@ CREATE TABLE resultadoCorrida (
 CREATE TABLE resultadoPersona (
   idResultadoPersona INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  chanceToriel INT,
-  chanceSans INT,
-  chancePapyrus INT,
-  chanceNapstablook INT,
-  chanceUndyne INT,
-  chanceFlowey INT,
-  chanceFrisk INT,
-  chanceChara INT,
-  chanceMettaton INT,
-  chanceAsgore INT,
-  chanceAsriel INT,
+  chanceToriel DECIMAL(5,2),
+  chanceSans DECIMAL(5,2),
+  chancePapyrus DECIMAL(5,2),
+  chanceNapstablook DECIMAL(5,2),
+  chanceUndyne DECIMAL(5,2),
+  chanceFlowey DECIMAL(5,2),
+  chanceFrisk DECIMAL(5,2),
+  chanceChara DECIMAL(5,2),
+  chanceMettaton DECIMAL(5,2),
+  chanceAsgore DECIMAL(5,2),
+  chanceAsriel DECIMAL(5,2),
   fk_idUsuario INT NOT NULL,
   PRIMARY KEY (idResultadoPersona),
   CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
 );
-
 
 CREATE TABLE resultadoPiano (
   idResultadoPiano INT NOT NULL AUTO_INCREMENT,
@@ -92,7 +90,3 @@ CREATE TABLE resultadoQuiz (
   PRIMARY KEY (idResultadoQuiz), 
   CONSTRAINT fk_resultadoquiz_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
     );
-
-select * from resultadoBadTime;
-select * from usuario;
-select * from postagem;

@@ -994,13 +994,17 @@ iframe {
     justify-content: center;
     align-items: flex-start;
     width: 50%;
+    
 }
 
-/* canvas {
-    align-self: center;
-    margin-bottom: 100px;
-    width: 100%;
-} */
+
+
+.grafico {
+    height: 350px;
+    width: 300px;
+    zoom: 140% !important;
+    margin: 20px;
+}
 
 
 

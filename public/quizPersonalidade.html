@@ -68,14 +68,6 @@
 
 </html>
 
-<style>
-    .grafico {
-        width: 250px;
-        height: 250px;
-        zoom: 150% !important;
-    }
-</style>
-
 <script>
     function tocarAudio() {
         document.getElementById('audio').play();
@@ -317,7 +309,6 @@
         div_contentQuiz.innerHTML = `${perguntas[nPergunta]}`
     }
 
-    // const chances = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
 
     function finalizarQuiz() {
         cadastrar();
@@ -334,6 +325,30 @@
             <canvas id="graficoPersona"></canvas>
         </div>`
 
+
+        const chances = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
+        var totalPontos = 0;
+
+        for (var i = 0; i < chances.length; i++) {
+            totalPontos += chances[i];
+        }
+
+        console.log(chances);
+
+
+
+        chanceToriel = (chanceToriel * 100 / totalPontos).toFixed(2);
+        chanceSans = (chanceSans * 100 / totalPontos).toFixed(2);
+        chancePapyrus = (chancePapyrus * 100 / totalPontos).toFixed(2);
+        chanceNapstablook = (chanceNapstablook * 100 / totalPontos).toFixed(2);
+        chanceUndyne = (chanceUndyne * 100 / totalPontos).toFixed(2);
+        chanceFlowey = (chanceFlowey * 100 / totalPontos).toFixed(2);
+        chanceFrisk = (chanceFrisk * 100 / totalPontos).toFixed(2);
+        chanceChara = (chanceChara * 100 / totalPontos).toFixed(2);
+        chanceMettaton = (chanceMettaton * 100 / totalPontos).toFixed(2);
+        chanceAsgore = (chanceAsgore * 100 / totalPontos).toFixed(2);
+        chanceAsriel = (chanceAsriel * 100 / totalPontos).toFixed(2);
+
         const ctx = document.getElementById('graficoPersona');
 
         new Chart(ctx, {
@@ -342,8 +357,23 @@
                 labels: ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
                 datasets: [{
                     label: 'Chance em %',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
+                    backgroundColor: [
+                        'purple',
+                        'lightseagreen',
+                        'orange',
+                        'white',
+                        'blue',
+                        'yellow',
+                        'red',
+                        'darkred',
+                        'pink',
+                        '#966100',
+                        'lightsalmon',
+                        '#00000000'
+                    ],
+                    data: [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel],
+                    borderWidth: 3,
+                    borderColor: '#383838'
                 }]
             },
         });
@@ -381,23 +411,30 @@
 
 
     function cadastrar() {
+        const chances = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
+        var totalPontos = 0;
+
+        for (var i = 0; i < chances.length; i++) {
+            totalPontos += chances[i];
+        }
+
         fetch("/quizPersonalidade/registrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                chanceToriel: chanceToriel,
-                chanceSans: chanceSans,
-                chancePapyrus: chancePapyrus,
-                chanceNapstablook: chanceNapstablook,
-                chanceUndyne: chanceUndyne,
-                chanceFlowey: chanceFlowey,
-                chanceFrisk: chanceFrisk,
-                chanceChara: chanceChara,
-                chanceMettaton: chanceMettaton,
-                chanceAsgore: chanceAsgore,
-                chanceAsriel: chanceAsriel,
+                chanceToriel: (chanceToriel * 100 / totalPontos).toFixed(2),
+                chanceSans: (chanceSans * 100 / totalPontos).toFixed(2),
+                chancePapyrus: (chancePapyrus * 100 / totalPontos).toFixed(2),
+                chanceNapstablook: (chanceNapstablook * 100 / totalPontos).toFixed(2),
+                chanceUndyne: (chanceUndyne * 100 / totalPontos).toFixed(2),
+                chanceFlowey: (chanceFlowey * 100 / totalPontos).toFixed(2),
+                chanceFrisk: (chanceFrisk * 100 / totalPontos).toFixed(2),
+                chanceChara: (chanceChara * 100 / totalPontos).toFixed(2),
+                chanceMettaton: (chanceMettaton * 100 / totalPontos).toFixed(2),
+                chanceAsgore: (chanceAsgore * 100 / totalPontos).toFixed(2),
+                chanceAsriel: (chanceAsriel * 100 / totalPontos).toFixed(2),
                 idUsuario: idUsuario
             })
         })
