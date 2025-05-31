@@ -53,14 +53,14 @@
         <div id="div_contentQuiz" class="contentQuiz">
             <h1>Bem-vindo(a) ao teste de personalidade!</h1>
 
-            <h3>Clique no botão "Iniciar" para realizar um teste de personalidade de 10 perguntas.
+            <h2>Clique no botão "Iniciar" para realizar um teste de personalidade de 10 perguntas.
                 <br>
                 Aqui, você descobrirá com qual personagem sua personalidade se parece.
                 <br>
                 Esse quiz só poderá ser respondido uma vez, então responda com sinceridade e cautela!
                 <br>
                 Após as 10 perguntas, você verá o resultado final aqui e na página de usuario.
-            </h3>
+            </h2>
             <button onclick="rodarQuiz()">Iniciar</button>
         </div>
     </div>
@@ -143,7 +143,7 @@
 
              <button onclick="chanceNapstablook++, chanceAsriel++, nPergunta++, rodarQuiz()">Escrever músicas ou ficar ouvindo lo-fi</button>
 
-             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">Explorar lugares perigosos e lutar contra injustiças</button>
+             <button onclick="chanceUndyne++, nPergunta++, rodarQuiz()">Explorar lugares perigosos e lutar contra injustiças</button>
 
              <button onclick="chanceSans++, chanceFrisk++, nPergunta++, rodarQuiz()">Relaxar e fazer piadas com amigos</button>
         </div>`
@@ -199,7 +199,7 @@
          <div class="pergunta">
              <button onclick="chanceToriel++, chanceFrisk++, nPergunta++, rodarQuiz()">“Sempre há um caminho pacífico.”</button>
 
-             <button onclick="chanceUndyne++, chanceChara++, nPergunta++, rodarQuiz()">“A justiça é feita com ação!”</button>
+             <button onclick="chanceUndyne++, nPergunta++, rodarQuiz()">“A justiça é feita com ação!”</button>
 
              <br>
 
@@ -313,28 +313,13 @@
     function finalizarQuiz() {
         cadastrar();
 
-        div_contentQuiz.innerHTML = `
-         <h1>E o resultado final é...<br>
-         !</h1>
-
-            <img src="" alt="">
-
-            <h3></h3>
-
-         <div class="grafico">
-            <canvas id="graficoPersona"></canvas>
-        </div>`
-
-
         const chances = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
         var totalPontos = 0;
+
 
         for (var i = 0; i < chances.length; i++) {
             totalPontos += chances[i];
         }
-
-        console.log(chances);
-
 
 
         chanceToriel = (chanceToriel * 100 / totalPontos).toFixed(2);
@@ -349,12 +334,104 @@
         chanceAsgore = (chanceAsgore * 100 / totalPontos).toFixed(2);
         chanceAsriel = (chanceAsriel * 100 / totalPontos).toFixed(2);
 
+
+        const resultado = [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel];
+        var fotoPersonagem;
+        var descPersona = '';
+        var nomePersonagem = '';
+        var personagemFinal = 0;
+
+
+        for (var i = 0; i < resultado.length; i++) {
+            if (Number(resultado[i]) > personagemFinal || Number(resultado[i]) == personagemFinal) {
+                personagemFinal = Number(resultado[i]);
+            }
+            console.log(i)
+        }
+        console.log(resultado)
+
+        console.log(personagemFinal)
+
+
+        if (personagemFinal == chanceToriel) {
+            fotoPersonagem = '/assets/img/personagemResult/Toriel.png'
+            nomePersonagem = 'Toriel'
+        } else if (personagemFinal == chanceSans) {
+            fotoPersonagem = '/assets/img/personagemResult/Sans.png'
+            nomePersonagem = 'Sans'
+        } else if (personagemFinal == chancePapyrus) {
+            fotoPersonagem = '/assets/img/personagemResult/Papyrus.png'
+            nomePersonagem = 'Papyrus'
+        } else if (personagemFinal == chanceNapstablook) {
+            fotoPersonagem = '/assets/img/personagemResult/napstablook.png'
+            nomePersonagem = 'Napstablook'
+        } else if (personagemFinal == chanceUndyne) {
+            fotoPersonagem = '/assets/img/personagemResult/undyne.png'
+            nomePersonagem = 'Undyne'
+        } else if (personagemFinal == chanceFlowey) {
+            fotoPersonagem = '/assets/img/personagemResult/flowey.png'
+            nomePersonagem = 'Flowey'
+        } else if (personagemFinal == chanceFrisk) {
+            fotoPersonagem = '/assets/img/personagemResult/frisk.png'
+            nomePersonagem = 'Frisk'
+        } else if (personagemFinal == chanceChara) {
+            fotoPersonagem = '/assets/img/personagemResult/chara.png'
+            nomePersonagem = 'Chara'
+        } else if (personagemFinal == chanceMettaton) {
+            fotoPersonagem = '/assets/img/personagemResult/Mettaton.png'
+            nomePersonagem = 'Mettaton'
+        } else if (personagemFinal == chanceAsgore) {
+            fotoPersonagem = '/assets/img/personagemResult/asgore.png'
+            nomePersonagem = 'Asgore'
+        } else if (personagemFinal == chanceAsriel) {
+            fotoPersonagem = '/assets/img/personagemResult/asriel.png'
+            nomePersonagem = 'Asriel'
+        }
+
+
+        if (personagemFinal == chanceToriel) {
+            descPersona = 'Assim como a Toriel, você é naturalmente protetor(a) e acolhedor(a). Tem uma alma maternal (ou paternal) e se preocupa profundamente com o bem-estar daqueles ao seu redor, mesmo que isso signifique se sacrificar em silêncio. Prefere resolver conflitos com carinho e conversa, e muitas vezes assume responsabilidades emocionais que ninguém te pediu para carregar. Seu senso de empatia e desejo por um ambiente de paz tornam você um ponto de equilíbrio em meio ao caos.'
+        } else if (personagemFinal == chanceSans) {
+            descPersona = 'Você compartilha da essência de Sans: alguém que esconde uma mente afiada por trás de um sorriso preguiçoso e piadas sarcásticas. Seu senso de humor é uma defesa contra um mundo que você já analisou profundamente demais. Você prefere observar antes de agir, e embora pareça distante, se importa mais do que demonstra. Seu maior conflito talvez seja entre a vontade de fazer diferença e o cansaço existencial que carrega. E mesmo assim, você continua sorrindo.'
+        } else if (personagemFinal == chancePapyrus) {
+            descPersona = 'Assim como Papyrus, você tem uma energia vibrante e um coração imenso. Gosta de agradar, busca reconhecimento e, mais do que tudo, quer ser valorizado pelas suas intenções puras. Pode parecer ingênuo(a) em alguns momentos, mas por trás dessa ingenuidade está uma força emocional enorme: você não desiste das pessoas, acredita no bem e encara cada falha como uma nova tentativa. Sua autenticidade e entusiasmo são raros — e inspiradores.'
+        } else if (personagemFinal == chanceNapstablook) {
+            descPersona = 'Você se identifica com Napstablook: introspectivo(a), sensível e emocionalmente profundo(a). Gosta de ficar no seu canto, absorvendo o mundo através da arte, da música ou da contemplação silenciosa. Às vezes sente que não se encaixa ou que não é notado(a), mas isso só torna sua alma ainda mais gentil e compreensiva. Você tem uma conexão única com sentimentos que a maioria prefere ignorar. Sua presença é silenciosa, mas inesquecível.'
+        } else if (personagemFinal == chanceUndyne) {
+            descPersona = 'Como Undyne, você é movido(a) por paixão, coragem e senso de justiça. É o tipo de pessoa que defende o que acredita sem hesitar, mesmo quando o mundo parece contra você. Em sua essência, há força e lealdade — duas qualidades que te tornam alguém que todos gostariam de ter ao lado em tempos difíceis. Sua impulsividade vem do coração: você sente tudo com intensidade e age com bravura, porque prefere errar lutando do que se esconder.'
+        } else if (personagemFinal == chanceFlowey) {
+            descPersona = 'Você se parece com Flowey em um aspecto mais complexo: você já viu o lado duro do mundo e isso moldou sua visão sobre ele. Sua racionalidade e estratégia muitas vezes se sobrepõem à emoção, criando uma postura mais fria, mas altamente eficaz. Você sabe o que quer, e mesmo que esconda seus sentimentos, nada escapa ao seu olhar crítico. Há poder em sua maneira de pensar — mas também um chamado interno por transformação, que talvez ainda esteja em silêncio.'
+        } else if (personagemFinal == chanceFrisk) {
+            descPersona = 'Assim como Frisk, você é curioso(a), silenciosamente corajoso(a) e guiado(a) por um forte senso de moral. Você observa, sente, entende… e então age com intenção e cuidado. Não busca brilhar, mas sim construir pontes, criar entendimento e crescer com cada passo. Sua maior força é sua empatia ativa — você se conecta com as pessoas mesmo sem palavras, e isso te torna alguém que deixa marcas profundas, mesmo que discretas.'
+        } else if (personagemFinal == chanceChara) {
+            descPersona = 'Você reflete os aspectos mais diretos e sombrios de Chara: inteligência, observação e um certo desencanto com o mundo. Você é alguém que prefere a verdade, por mais dura que seja, e não tem medo de mergulhar nas complexidades da própria mente. Existe uma dualidade em você — uma mistura de luz e sombra — e é exatamente isso que te torna tão único(a). Você não se esconde da dor: a transforma em força.'
+        } else if (personagemFinal == chanceMettaton) {
+            descPersona = 'Como Mettaton, você ama o palco — literal ou metaforicamente. Você se expressa com intensidade, seja com arte, fala ou presença. Existe em você um desejo legítimo de ser visto(a), admirado(a), e de deixar uma marca memorável. Seu carisma pode esconder inseguranças, mas é na performance que você encontra sentido. Você sabe que a vida é um espetáculo — e está aqui para fazer o seu brilhar.'
+        } else if (personagemFinal == chanceAsgore) {
+            descPersona = 'Você é como Asgore: uma alma bondosa, presa entre o dever e o coração. Sua gentileza natural às vezes entra em conflito com escolhas difíceis, e você sofre profundamente quando precisa tomar decisões que afetam os outros. Você lidera com compaixão, mas também carrega culpa e saudade. Seu silêncio carrega histórias que poucos conhecem. Ainda assim, seu desejo de redenção e de fazer o bem prevalece — e isso é nobre.'
+        } else if (personagemFinal == chanceAsriel) {
+            descPersona = 'Você compartilha da alma de Asriel: alguém que sente tudo de forma intensa, profunda e honesta. Ama de verdade, sofre com o passado, e deseja genuinamente consertar o que foi quebrado. Existe em você uma grande dualidade: força e fragilidade, luz e sombra, esperança e medo. Mas, acima de tudo, há amor. Amor que deseja proteger, reconstruir e recomeçar — mesmo que isso signifique se reinventar completamente.'
+        }
+
+        div_contentQuiz.innerHTML = `
+             <h1>E o resultado final é...<br>
+             ${nomePersonagem}!</h1>
+    
+                <img src="${fotoPersonagem}" alt="">
+    
+                <h2>${descPersona}</h2>
+    
+             <div class="grafico">
+                <canvas id="graficoPersona"></canvas>
+            </div>`
+
         const ctx = document.getElementById('graficoPersona');
 
         new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
+                labels:
+                    ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
                 datasets: [{
                     label: 'Chance em %',
                     backgroundColor: [
@@ -366,19 +443,29 @@
                         'yellow',
                         'red',
                         'darkred',
-                        'pink',
+                        '#ff00a6',
                         '#966100',
                         'lightsalmon',
                         '#00000000'
                     ],
                     data: [chanceToriel, chanceSans, chancePapyrus, chanceNapstablook, chanceUndyne, chanceFlowey, chanceFrisk, chanceChara, chanceMettaton, chanceAsgore, chanceAsriel],
-                    borderWidth: 3,
-                    borderColor: '#383838'
+                    borderWidth: 1,
+                    borderColor: 'white'
                 }]
             },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        display: true
+                    }
+                }
+            }
         });
-    }
 
+
+
+    }
 
 
 
@@ -397,7 +484,7 @@
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                     div_contentQuiz.innerHTML = `<h1> Você já respondeu o teste e não pode refaze - lo.</h1>
-                    <h3>Para ver o resultado do teste clique no botão abaixo para ser redirecionado para a página de usuário ou acesse diretamente a página.</h3>
+                    <h2>Para ver o resultado do teste clique no botão abaixo para ser redirecionado para a página de usuário ou acesse diretamente a página.</h2>
                     <button onclick="window.location = 'usuario.html'">Ir para a página de usuário</button>`
                 });
             } else {

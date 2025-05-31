@@ -13,7 +13,6 @@
     <script src="../js/sessao.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-
 </head>
 
 <body onload="validarSessao(), listarInfosDeUm()">
@@ -77,6 +76,11 @@
 </html>
 
 <script>
+    function atualizarCaracteres() {
+        var caracteres = textarea_descricao.value.length;
+        qtd_caracteres.innerHTML = `${caracteres}`
+    }
+
     function exibirImg() {
         var imagem = ipt_imagem.value;
         previewImg.innerHTML = `<img src="${imagem}" alt="" style="width: auto ; height: 150px; margin: 8px;">`;
@@ -87,10 +91,6 @@
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
 
-    function atualizarCaracteres() {
-        var caracteres = textarea_descricao.value.length;
-        qtd_caracteres.innerHTML = `${caracteres}`
-    }
 
     function listarInfosDeUm() {
         console.log("Criar função de trazer informações de post escolhido");
@@ -139,7 +139,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = 'orum.html"' = "/forum.html"
+                window.location = 'forum.html';
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

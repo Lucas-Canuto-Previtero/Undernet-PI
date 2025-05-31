@@ -899,8 +899,9 @@ button:active {
 }
 
 .minigameMain .content:hover {
-    border: 10px yellow solid;
+    border: 5px yellow solid;
     cursor: pointer;
+    color: #a1a1a1;
 }
 
 /*INICIANDO BAD TIME SIMULATOR*/
@@ -957,7 +958,7 @@ iframe {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-size: 20px;
     width: 100%;
     height: 900px;
     text-align: center;
@@ -975,9 +976,25 @@ iframe {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 70%;
     border: white 3px solid;
     background-color: rgba(0, 0, 0, 0.366);
+}
+
+.contentQuiz img {
+    width: 150px;
+    height: 200px;
+    margin: 5px;
+    object-fit: cover;
+}
+
+
+.contentQuiz h1 {
+    margin: 5px;
+}
+
+.contentQuiz h2 {
+    margin: 0px;
 }
 
 .pergunta {
@@ -988,22 +1005,18 @@ iframe {
 }
 
 
-.graficoOnQuiz {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 50%;
-    
+#graficoPersona {
+    size: 50px;
 }
 
-
-
 .grafico {
-    height: 350px;
-    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 500px;
     zoom: 140% !important;
-    margin: 20px;
 }
 
 

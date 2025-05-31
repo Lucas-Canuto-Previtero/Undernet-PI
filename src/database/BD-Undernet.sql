@@ -70,6 +70,8 @@ CREATE TABLE resultadoPersona (
   CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
 );
 
+
+
 CREATE TABLE resultadoPiano (
   idResultadoPiano INT NOT NULL AUTO_INCREMENT,
   fk_idUsuario INT NOT NULL,
