@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Bad time Simulator</title>
+    <title>Undernet - Piano</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -44,14 +44,9 @@
     <br><br>
     <br><br>
     <br><br>
-    <br><br>
 
 
-    <div class="iframe">
-        <iframe src="https://jcw87.github.io/c2-sans-fight/" frameborder="0"></iframe>
-    </div>
 
-    <br><br>
 
     <div class="footer">
         <img src="/assets/img/logoSITE.png" alt="">
@@ -93,25 +88,25 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
-    let tempoBT = 0;
+    let tempoPiano = 0;
 
-    function atualizartempoBT() {
-        tempoBT++;
+    function atualizarTempoPiano() {
+        tempoPiano++;
     }
-    setInterval(atualizartempoBT, 1000);
+    setInterval(atualizartempoPiano, 1000);
 
 
     function enviarTempo() {
         const idUsuario = sessionStorage.ID_USUARIO;
 
-        fetch("/BadTimeSimulator/registrar", {
+        fetch("/piano/registrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 idUsuario: idUsuario,
-                tempoBT: tempoBT
+                tempoPiano: tempoPiano
             })
         })
             .then(res => res.text())

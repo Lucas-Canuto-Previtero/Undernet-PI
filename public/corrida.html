@@ -54,7 +54,7 @@
     </div>
 
     <div class="mainCorrida">
-        <div id="contagem"> </div>
+        <div id="div_contagem"></div>
         <div class="pista">
             <img id="caracol" src="/assets/img/caracol.png" alt="">
         </div>
@@ -106,41 +106,130 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
+
     var contagem = 3;
-
-    function contagem() {
-        contagem--;
-    }
-
-    contagem.innerHTML = `<h1 style="color: red; font-size: 50px;">${contagem}</h1>`
+    var distancia = 0;
+    var valendo = false;
+    var tempoTotal = 10;
+    var cliques = 0;
 
     function iniciarCorrida() {
+        contagemIniciar();
+    }
+
+
+    function contagemIniciar() {
         if (contagem > 0) {
-            if (contagem == 0) {
-                contagem = 'VAI!'
+            console.log(contagem);
+            div_contagem.innerHTML = `<h1>${contagem}</h1>`
+            contagem--;
+            setTimeout(() => contagemIniciar(), 1000);
+        } else if (contagem == 0) {
+            contagem = 'VAI!';
+            div_contagem.innerHTML = `<h1>${contagem}</h1>`
+            valendo = true;
+
+            if (valendo = true) {
+
+                somarMargem();
+
+                setTimeout(() => contagemRegressiva(), 1000);
+
+
+                function contagemRegressiva() {
+                    contarR();
+                }
+
+
+                function contarR() {
+                    if (tempoTotal > 0) {
+                        div_contagem.innerHTML = `<h1>${tempoTotal}</h1>`
+                        tempoTotal--;
+                        setTimeout(() => contarR(), 1000);
+                    } else if (tempoTotal == 0) {
+                        tempoTotal = 'Acabou o tempo!';
+                        div_contagem.innerHTML = `<h1 style="color: red">${tempoTotal}</h1>`
+
+                    }
+                }
+
+
+                function andarCaracol() {
+                    var caracol = document.getElementById("caracol");
+                    caracol.style.marginRight = `${distancia}%`;
+                }
+
+                function somarMargem() {
+                    document.addEventListener('keyup', function (event) {
+
+                        if (tempoTotal >= -1) {
+                            if (distancia >= 95) {
+                                tempoTotal = "Você venceu!";
+                                div_contagem.innerHTML = `<h1  style="color: green">${tempoTotal}</h1>`
+
+                                // calcularExibir();
+                                return;
+                            }
+                            if (event.key == 'z') {
+                                distancia += 0.85;
+                                cliques++;
+                                andarCaracol();
+                            }
+                        } else {
+                            // calcularExibir();
+
+                        }
+                    });
+                }
             }
-            setInterval(contagem, 1000)
         }
     }
 
-    var distancia = 0;
 
 
-    function andarCaracol() {
-        var caracol = document.getElementById("caracol");
-        caracol.style.marginRight = `${distancia}px`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let tempoCorrida = 0;
+
+    function atualizartempoCorrida() {
+        tempoCorrida++;
+    }
+    setInterval(atualizartempoCorrida, 1000);
+
+
+    function enviarTempo() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/corrida/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuario: idUsuario,
+                tempoBT: tempoCorrida
+            })
+        })
+            .then(res => res.text())
+            .then(msg => {
+                console.log(msg);
+            })
+            .catch(err => {
+                console.error("Erro ao enviar tempo:", err);
+            });
     }
 
-    document.addEventListener('keypress', function (event) {
-        if (distancia >= 1045) {
-            // calcularExibir();
-            return;
-        }
-        if (event.key == 'z') {
-            distancia += 5;
-            andarCaracol();
-            console.log('Você pressionou: ' + event.key);
-        }
-    });
 
 </script>
