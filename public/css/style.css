@@ -885,11 +885,12 @@ button:active {
     font-size: 30px;
     text-align: center;
     margin: 10px;
+    width: 400px;
 }
 
 .minigameMain img {
-    width: 500px;
-    height: 350PX;
+    width: 400px;
+    height: 300PX;
     border-bottom: 2px white solid;
 }
 
@@ -1052,10 +1053,61 @@ iframe {
 
 }
 
-
 /*TERMINANDO MTTGAMESHOW*/
 
+/*INICIANDO CORRIDA DE CARACOL*/
+.bodyCorrida {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.bemVindo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: white solid 5px;
+    padding: 20px;
+    width: 68%;
+}
+
+.mainCorrida {
+    background-image: url(/assets/img/corrida.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 700px;
+    border: white solid 5px;
+}
+
+
+.pista {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 75%;
+}
+
+#caracol {
+    margin-right: 0px;
+}
+
+.btnCorrida {
+    margin: 20px;
+    width: 400px;
+    height: 80px;
+    font-size: 50px;
+}
+
+/*TERMINANDO CORRIDA DE CARACOL*/
 
 
 

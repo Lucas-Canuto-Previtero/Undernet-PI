@@ -70,8 +70,7 @@ CREATE TABLE resultadoPersona (
   CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
 );
 
-use undernet;
-truncate resultadoPersona;
+
 
 CREATE TABLE resultadoPiano (
   idResultadoPiano INT NOT NULL AUTO_INCREMENT,
@@ -80,7 +79,6 @@ CREATE TABLE resultadoPiano (
   PRIMARY KEY (idResultadoPiano),
   CONSTRAINT fkUsuarioPiano FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
-
 
  
 CREATE TABLE resultadoQuiz (
@@ -92,3 +90,5 @@ CREATE TABLE resultadoQuiz (
   PRIMARY KEY (idResultadoQuiz), 
   CONSTRAINT fk_resultadoquiz_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
     );
+    
+    select * from resultadoQuiz;

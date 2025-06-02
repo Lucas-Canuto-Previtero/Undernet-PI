@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Minigames</title>
+    <title>Undernet - Corrida de Lesmas</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="../js/sessao.js"></script>
 </head>
 
-<body>
 
+<body class="bodyCorrida">
     <div class="header">
         <div class="container">
             <img src="assets/img/logoSITE.png" alt="">
@@ -46,56 +45,23 @@
     <br><br>
     <br><br>
 
+    <div class="bemVindo">
+        <h1 style="font-size: 50px;">Bem-vindo(a) à <br> 🔥ThunderSnail🔥<br>A corrida de lesmas do napstablook!</h1>
+        <h1>Clique no botão 'Começar' abaixo da pista para inicar a corrida. A diferença daqui para o jogo, é que aqui
+            você realmente
+            tem que clicar o botão Z o mais rápido possível! <br> No final, será exibido o seu resultado de CPS e sua
+            posição no ranking de jogadores! <br>Boa sorte, corredor!</h1>
+    </div>
 
-
-
-    <div class="minigameMain">
-        <div class="container">
-            <h1>Minigames</h1>
-
-            <div class="l1">
-                <a href="BadTimeSimulator.html">
-                    <div class="content">
-                        <img src="assets/img/BadTimeS.png" alt="">
-                        <p>Bad Time Simulator <br> (by Jcw87)</p>
-                    </div>
-                </a>
-
-
-
-                <div class="content">
-                    <img src="assets/img/pianoGame.png" alt="">
-                    <p>Piano de Waterfall</p>
-                </div>
-
-
-                <a href="corrida.html">
-                    <div class="content">
-                        <img src="assets/img/corridaCaracol.png" alt="">
-                        <p>🔥ThunderSnail🔥<br>Corrida de lesmas do Napstablook</p>
-                    </div>
-                </a>
-
-            </div>
-
-            <h1 style="background-color: black; border-radius: 5px; padding: 10px;">Quizes</h1>
-            <div class="l2">
-                <a href="quizPersonalidade.html">
-                    <div class="content">
-                        <img src="assets/img/testePersonagem.png" alt="">
-                        <p>Teste de personalidade</p>
-                    </div>
-                </a>
-
-                <a href="mttgameshow.html">
-                    <div class="content">
-                        <img src="assets/img/MTTgameshow.png" alt="">
-                        <p>&star; MTT Gameshow &star;</p>
-                    </div>
-                </a>
-            </div>
+    <div class="mainCorrida">
+        <div id="contagem"> </div>
+        <div class="pista">
+            <img id="caracol" src="/assets/img/caracol.png" alt="">
         </div>
     </div>
+
+    <button onclick="iniciarCorrida()" class="btnCorrida">Começar</button>
+
 
 
 
@@ -139,4 +105,42 @@
     var foto_usuario = sessionStorage.FOTO_PERFIL;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
+
+    var contagem = 3;
+
+    function contagem() {
+        contagem--;
+    }
+
+    contagem.innerHTML = `<h1 style="color: red; font-size: 50px;">${contagem}</h1>`
+
+    function iniciarCorrida() {
+        if (contagem > 0) {
+            if (contagem == 0) {
+                contagem = 'VAI!'
+            }
+            setInterval(contagem, 1000)
+        }
+    }
+
+    var distancia = 0;
+
+
+    function andarCaracol() {
+        var caracol = document.getElementById("caracol");
+        caracol.style.marginRight = `${distancia}px`;
+    }
+
+    document.addEventListener('keypress', function (event) {
+        if (distancia >= 1045) {
+            // calcularExibir();
+            return;
+        }
+        if (event.key == 'z') {
+            distancia += 5;
+            andarCaracol();
+            console.log('Você pressionou: ' + event.key);
+        }
+    });
+
 </script>
