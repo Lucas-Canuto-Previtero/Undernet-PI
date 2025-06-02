@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Fórum</title>
+    <title>Undernet - Personalidade</title>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -44,8 +44,9 @@
     <br><br>
     <br><br>
     <br><br>
+    <br><br>
 
-    <audio id="audio">
+    <audio loop id="audio">
         <source src="/assets/vesselCreator.mp3" type="audio/mp3">
     </audio>
 
@@ -78,7 +79,7 @@
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
     var idUsuario = sessionStorage.ID_USUARIO;
-    console.log(idUsuario)
+
 
     var chanceToriel = 0;
     var chanceSans = 0;
@@ -185,7 +186,7 @@
 
              <button onclick="chancePapyrus++, chanceMettaton++, nPergunta++, rodarQuiz()">Alegre e cheio(a) de energia</button>
 
-             <button onclick="chanceFrisk++, chanceNapstablook, nPergunta++, rodarQuiz()">Curioso(a) e reflexivo(a)</button>
+             <button onclick="chanceFrisk++, chanceNapstablook++, nPergunta++, rodarQuiz()">Curioso(a) e reflexivo(a)</button>
         </div>`
 
 
@@ -207,7 +208,7 @@
 
              <button onclick="chanceNapstablook++, nPergunta++, rodarQuiz()">“Você quer ouvir minha nova mixtape?”</button>
 
-             <button onclick="chanceMettaton, nPergunta++, rodarQuiz()">“O que é aquela estrela vindo? Ah sim, sou eu!”</button>
+             <button onclick="chanceMettaton++, nPergunta++, rodarQuiz()">“O que é aquela estrela vindo? Ah sim, sou eu!”</button>
         </div>`
 
 
@@ -227,9 +228,9 @@
 
              <button onclick="chanceAsriel++, chanceNapstablook++, nPergunta++, rodarQuiz()">"Isso me machuca mais do que deveria..."</button>
 
-             <button onclick="chanceChara++, chanceFlowey, nPergunta++, rodarQuiz()">"É só mais uma fraqueza dos outros."</button>
+             <button onclick="chanceChara++, chanceFlowey++, nPergunta++, rodarQuiz()">"É só mais uma fraqueza dos outros."</button>
 
-             <button onclick="chancePapyrus, nPergunta++, rodarQuiz()">"Vou convencê-la do contrário!"
+             <button onclick="chancePapyrus++, nPergunta++, rodarQuiz()">"Vou convencê-la do contrário!"
              </button>
         </div>`
 
@@ -485,7 +486,11 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                     div_contentQuiz.innerHTML = `<h1> Você já respondeu o teste e não pode refaze - lo.</h1>
                     <h2>Para ver o resultado do teste clique no botão abaixo para ser redirecionado para a página de usuário ou acesse diretamente a página.</h2>
-                    <button onclick="window.location = 'usuario.html'">Ir para a página de usuário</button>`
+                    <div class = "botaoBlockQuiz">
+                    <button onclick="window.location = 'minigames.html'">Voltar para minigames</button><br>
+                    <button onclick="window.location = 'usuario.html'">Ir para a página de usuário</button>
+                    </div>`
+
                 });
             } else {
                 throw ('Houve um erro na API!');

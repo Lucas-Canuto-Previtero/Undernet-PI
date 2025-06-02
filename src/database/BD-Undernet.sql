@@ -70,7 +70,8 @@ CREATE TABLE resultadoPersona (
   CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
 );
 
-
+use undernet;
+truncate resultadoPersona;
 
 CREATE TABLE resultadoPiano (
   idResultadoPiano INT NOT NULL AUTO_INCREMENT,
@@ -81,11 +82,10 @@ CREATE TABLE resultadoPiano (
   );
 
 
-
+ 
 CREATE TABLE resultadoQuiz (
   idResultadoQuiz INT NOT NULL AUTO_INCREMENT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  tempoPermanencia INT,
   acertos INT,
   erros INT,
   fk_idUsuario INT NOT NULL,

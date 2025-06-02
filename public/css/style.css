@@ -172,6 +172,7 @@ button:active {
 
 /* INICIANDO FOOTER */
 .footer {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -905,18 +906,18 @@ button:active {
 }
 
 /*INICIANDO BAD TIME SIMULATOR*/
-.iframe {
+.bodyBadTime {
     background-image: url("/assets/img/Backgrounds/lastCorridor.png");
     background-size: 2200px 1300px;
     background-position: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 740px;
-    overflow: scroll;
+    width: 100%;
 
 }
+
+
 
 iframe {
     display: flex;
@@ -928,20 +929,6 @@ iframe {
     border: 10px solid white;
 }
 
-.creditoBadTime {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    border-left: 10px white solid;
-    border-right: 10px white solid;
-    border-bottom: 10px white solid;
-    height: 40px;
-    width: 1000px;
-    font-size: 25px;
-    text-decoration: underline;
-}
 
 /*TERMINANDO BAD TIME SIMULATOR*/
 
@@ -960,9 +947,10 @@ iframe {
     align-items: center;
     font-size: 20px;
     width: 100%;
-    height: 900px;
+    height: 800px;
     text-align: center;
-
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .mainQuiz button {
@@ -988,7 +976,6 @@ iframe {
     object-fit: cover;
 }
 
-
 .contentQuiz h1 {
     margin: 5px;
 }
@@ -1003,7 +990,6 @@ iframe {
     align-items: center;
     justify-content: center;
 }
-
 
 #graficoPersona {
     size: 50px;
@@ -1020,9 +1006,59 @@ iframe {
 }
 
 
-
+.botaoBlockQuiz {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 /*TERMINANDO TESTE PERSONALIDADE*/
+
+/*INICIANDO QUIZ MTTGAMESHOW*/
+
+.contentQuiz2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    border: white 3px solid;
+    background-color: rgba(0, 0, 0, 0.366);
+}
+
+.contentQuiz2 .grafico {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 230px;
+    width: 500px;
+    zoom: 140% !important;
+}
+
+.contentQuiz2 h1 {
+    margin: 5px;
+}
+
+.contentQuiz2 h2 {
+    margin: 0px;
+}
+
+.confetti {
+    display: block;
+    position: absolute;
+    width: 90%;
+
+}
+
+
+/*TERMINANDO MTTGAMESHOW*/
+
+
+
+
+
 
 /* --------- TERMINANDO MINIGAMES.HTML ---------- */
 
@@ -1044,7 +1080,7 @@ iframe {
     position: fixed;
     flex-direction: column;
     width: 20%;
-    height: 700px;
+    height: 90%;
     margin-top: 90px;
     border-right: white 3px solid;
     border-top: white 3px solid;
