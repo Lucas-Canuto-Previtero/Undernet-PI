@@ -3,7 +3,7 @@ var router = express.Router();
 
 var corridaController = require("../controllers/corridaController");
 
-router.post("/listar", corridaController.listar);
+router.get("/listar", corridaController.listar);
 router.post("/registrar", corridaController.registrar);
 
 module.exports = router;

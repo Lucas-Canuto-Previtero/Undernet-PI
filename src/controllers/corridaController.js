@@ -1,7 +1,7 @@
 var corridaModel = require("../models/corridaModel"); // captura  váriaveis do arquivo MODEL
 
 function listar(req, res) {
-    forumModel.listar().then(function (resultado) {
+    corridaModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

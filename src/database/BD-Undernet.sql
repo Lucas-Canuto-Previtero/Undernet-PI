@@ -49,9 +49,9 @@ CREATE TABLE resultadoCorrida (
   PRIMARY KEY (idResultadoCorrida),
   CONSTRAINT fkUsuarioCorrida FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
-  drop table resultadoCorrida;
-  select * from resultadoCorrida;
-	
+  
+
+
 CREATE TABLE resultadoPersona (
   idResultadoPersona INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

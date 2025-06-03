@@ -8,7 +8,7 @@ function listar() {
         (SELECT DATE_FORMAT(c.dataHora, '%d/%m/%Y %H:%i:%s')) as "Data e Hora:"
         FROM resultadoCorrida c
         inner join usuario u on c.fk_idUsuario = u.idUsuario
-        order by c.idResultadoCorrida;
+        order by c.CPS desc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
