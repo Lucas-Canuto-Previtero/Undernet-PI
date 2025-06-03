@@ -110,8 +110,11 @@
     var contagem = 3;
     var distancia = 0;
     var valendo = false;
-    var tempoTotal = 10;
+    var tempoTotal = 9;
     var cliques = 0;
+    var tempoFinal;
+    var CPS;
+
 
     function iniciarCorrida() {
         contagemIniciar();
@@ -120,26 +123,22 @@
 
     function contagemIniciar() {
         if (contagem > 0) {
-            console.log(contagem);
             div_contagem.innerHTML = `<h1>${contagem}</h1>`
             contagem--;
             setTimeout(() => contagemIniciar(), 1000);
+
         } else if (contagem == 0) {
             contagem = 'VAI!';
             div_contagem.innerHTML = `<h1>${contagem}</h1>`
             valendo = true;
 
             if (valendo = true) {
-
                 somarMargem();
-
                 setTimeout(() => contagemRegressiva(), 1000);
-
 
                 function contagemRegressiva() {
                     contarR();
                 }
-
 
                 function contarR() {
                     if (tempoTotal > 0) {
@@ -147,11 +146,14 @@
                         tempoTotal--;
                         setTimeout(() => contarR(), 1000);
                     } else if (tempoTotal == 0) {
+                        tempoFinal = 10;
                         tempoTotal = 'Acabou o tempo!';
                         div_contagem.innerHTML = `<h1 style="color: red">${tempoTotal}</h1>`
-
+                        return tempoFinal, CPS = cliques / tempoFinal, salvarResultado();
                     }
                 }
+
+
 
 
                 function andarCaracol() {
@@ -164,20 +166,17 @@
 
                         if (tempoTotal >= -1) {
                             if (distancia >= 95) {
+                                tempoFinal = 9 - tempoTotal;
                                 tempoTotal = "Você venceu!";
-                                div_contagem.innerHTML = `<h1  style="color: green">${tempoTotal}</h1>`
-
-                                // calcularExibir();
-                                return;
+                                div_contagem.innerHTML = `<h1 style="color: green">${tempoTotal}</h1>`
+                                return tempoFinal, CPS = cliques / tempoFinal, salvarResultado();
                             }
                             if (event.key == 'z') {
                                 distancia += 0.85;
                                 cliques++;
                                 andarCaracol();
+                                return;
                             }
-                        } else {
-                            // calcularExibir();
-
                         }
                     });
                 }
@@ -185,31 +184,18 @@
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    let tempoCorrida = 0;
+    var tempoCorrida = 0;
 
     function atualizartempoCorrida() {
+        tempoCorrida = 0;
         tempoCorrida++;
+        return tempoCorrida;
     }
     setInterval(atualizartempoCorrida, 1000);
 
 
-    function enviarTempo() {
+
+    function salvarResultado() {
         const idUsuario = sessionStorage.ID_USUARIO;
 
         fetch("/corrida/registrar", {
@@ -219,7 +205,8 @@
             },
             body: JSON.stringify({
                 idUsuario: idUsuario,
-                tempoBT: tempoCorrida
+                tempoCorrida: tempoCorrida,
+                CPS: CPS
             })
         })
             .then(res => res.text())
@@ -227,9 +214,117 @@
                 console.log(msg);
             })
             .catch(err => {
-                console.error("Erro ao enviar tempo:", err);
+                console.error("Erro ao realizar o envio:", err);
             });
     }
+
+
+
+
+
+
+
+
+
+    //  function atualizarFeed() {
+    //         fetch("/forum/listar").then(function (resposta) {
+    //             if (resposta.ok) {
+    //                 if (resposta.status == 204) {
+    //                     var feed = document.getElementById("feed_container");
+    //                     var mensagem = document.createElement("span");
+    //                     mensagem.innerHTML = "Nenhum resultado encontrado."
+    //                     feed.appendChild(mensagem);
+    //                     throw "Nenhum resultado encontrado!!";
+    //                 }
+
+    //                 resposta.json().then(function (resposta) {
+    //                     console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+    //                     var feed = document.getElementById("feed_container");
+    //                     feed.innerHTML = "";
+    //                     for (let i = 0; i < resposta.length; i++) {
+    //                         var publicacao = resposta[i];
+
+    //                         // criando e manipulando elementos do HTML via JavaScript
+    //                         var divPublicacao = document.createElement("div");
+    //                         var divFotoContent = document.createElement("div");
+    //                         var divDadosPubli = document.createElement("div")
+    //                         var divfotoPerfil = document.createElement("div");
+    //                         var spanData = document.createElement("span");
+    //                         var spanNome = document.createElement("span");
+    //                         var spanTipo = document.createElement("span");
+    //                         var divDescricao = document.createElement("div");
+    //                         var divpostImg = document.createElement("div")
+    //                         var divButtons = document.createElement("div");
+    //                         var btnEditar = document.createElement("button");
+    //                         var btnDeletar = document.createElement("button");
+
+    //                         divPublicacao.className = "publicacao";
+    //                         divFotoContent.className = "FotoContent";
+    //                         divDadosPubli.className = "dadosPubli";
+
+    //                         divfotoPerfil.innerHTML = `<img src="${publicacao.fotoPerfil}">`;
+    //                         spanData.innerHTML = "<b>Data: </b>" + publicacao.dataHora_Formatada + "<br>";
+    //                         spanNome.innerHTML = "<b>Autor: </b>" + publicacao.nome + "<br>";
+    //                         spanTipo.innerHTML = `${publicacao.tipoPostagem}<br>`;
+    //                         divDescricao.innerHTML = "<b>Descrição: </b>" + publicacao.descricao + "<br>";
+
+
+    //                         divpostImg.innerHTML = `<img src="${publicacao.imagem}">`;
+
+
+    //                         btnEditar.innerHTML = "Editar";
+    //                         btnDeletar.innerHTML = "Deletar";
+
+    //                         divfotoPerfil.className = "publicacao-imgPerfil";
+    //                         spanNome.className = "publicacao-nome";
+    //                         divDescricao.className = "publicacao-descricao";
+    //                         divpostImg.className = "publicacao-img";
+    //                         spanTipo.className = "publicacao-tipo";
+
+    //                         divButtons.className = "div-buttons"
+
+    //                         btnEditar.className = "publicacao-btn-editar"
+    //                         btnEditar.id = "btnEditar" + publicacao.idPostagem;
+    //                         btnEditar.setAttribute("onclick", `editar(${publicacao.idPostagem})`);
+
+    //                         btnDeletar.className = "publicacao-btn-editar"
+    //                         btnDeletar.id = "btnDeletar" + publicacao.idPostagem;
+    //                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.idPostagem})`);
+
+    //                         divPublicacao.appendChild(divFotoContent);
+    //                         divFotoContent.appendChild(divfotoPerfil);
+    //                         divFotoContent.appendChild(divDadosPubli);
+    //                         divDadosPubli.appendChild(spanData);
+    //                         divDadosPubli.appendChild(spanNome);
+    //                         divPublicacao.appendChild(spanTipo);
+    //                         divDadosPubli.appendChild(divDescricao);
+    //                         divDadosPubli.appendChild(divpostImg);
+    //                         divDadosPubli.appendChild(divButtons);
+
+
+    //                         feed.appendChild(divPublicacao);
+    //                     }
+
+    //                     finalizarAguardar();
+    //                 });
+    //             } else {
+    //                 throw ('Houve um erro na API!');
+    //             }
+    //         }).catch(function (resposta) {
+    //             console.error(resposta);
+    //             finalizarAguardar();
+    //         });
+    //     }
+
+
+
+
+
+
+
+
+
 
 
 </script>

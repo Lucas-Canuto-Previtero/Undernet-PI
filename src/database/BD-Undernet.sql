@@ -43,14 +43,15 @@ CREATE TABLE resultadoBadTime (
 CREATE TABLE resultadoCorrida (
   idResultadoCorrida INT NOT NULL AUTO_INCREMENT,
   fk_idUsuario INT NOT NULL,
+  CPS DECIMAL(5,2) NULL DEFAULT NULL,
   tempoPermanencia INT NULL DEFAULT NULL,
   dataHora TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  CPS INT NULL DEFAULT NULL,
   PRIMARY KEY (idResultadoCorrida),
   CONSTRAINT fkUsuarioCorrida FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
-
-
+  drop table resultadoCorrida;
+  select * from resultadoCorrida;
+	
 CREATE TABLE resultadoPersona (
   idResultadoPersona INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
