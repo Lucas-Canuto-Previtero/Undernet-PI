@@ -180,7 +180,7 @@
                         tempoTotal = 'Acabou o tempo!';
                         pararAudio();
                         div_contagem.innerHTML = `<h1 style="color: red">${tempoTotal}</h1>`;
-                        return tempoFinal, CPS = cliques / tempoFinal, div_resultado.innerHTML = `<h2> Sua pontuação foi de:<br>${CPS}cps</h2>`, salvarResultado(), atualizarRanking();
+                        return tempoFinal, CPS = (cliques / tempoFinal).toFixed(2), div_resultado.innerHTML = `<h2> Sua pontuação foi de:<br>${CPS}cps</h2>`, salvarResultado(), atualizarRanking();
                     }
                 }
 
@@ -201,7 +201,7 @@
                                 tempoTotal = "Você venceu!";
                                 pararAudio()
                                 div_contagem.innerHTML = `<h1 style="color: green">${tempoTotal}</h1>`
-                                return tempoFinal, CPS = cliques / tempoFinal, div_resultado.innerHTML = `<h2> Sua pontuação foi de:<br>${CPS}cps</h2>`, salvarResultado(), atualizarRanking();
+                                return tempoFinal, CPS = (cliques / tempoFinal).toFixed(2), div_resultado.innerHTML = `<h2> Sua pontuação foi de:<br>${CPS}cps</h2>`, salvarResultado(), atualizarRanking();
                             }
                             if (event.key == 'z') {
                                 distancia += 0.85;

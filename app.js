@@ -23,6 +23,8 @@ var BadTimeSimulatorRouter = require("./src/routes/BadTimeSimulator");
 var quizPersonalidadeRouter = require("./src/routes/quizPersonalidade");
 var MTTgameshowRouter = require("./src/routes/MTTgameshow");
 var corridaRouter = require("./src/routes/corrida");
+var pianoRouter = require("./src/routes/piano");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +40,8 @@ app.use("/BadTimeSimulator", BadTimeSimulatorRouter);
 app.use("/quizPersonalidade", quizPersonalidadeRouter);
 app.use("/MTTgameshow", MTTgameshowRouter);
 app.use("/corrida", corridaRouter);
+app.use("/piano", pianoRouter);
+
 // Aqui é onde tenho que criar as rotas entre os arquivos Routers.
 
 app.listen(PORTA_APP, function () {

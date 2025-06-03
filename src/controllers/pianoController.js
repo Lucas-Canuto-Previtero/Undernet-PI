@@ -1,4 +1,4 @@
-var BadTimeSimulatorModel = require("../models/pianoModel");
+var pianoModel = require("../models/pianoModel");
 
 function listar(req, res) {
     var idUsuario = req.body.idUsuario;

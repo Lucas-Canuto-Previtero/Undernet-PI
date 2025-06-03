@@ -11,7 +11,7 @@
 </head>
 
 
-<body class="bodyBadTime">
+<body class="piano">
     <div class="header">
         <div class="container">
             <img src="assets/img/logoSITE.png" alt="">
@@ -88,12 +88,17 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
 
+
+
+
+
+    
     let tempoPiano = 0;
 
     function atualizarTempoPiano() {
         tempoPiano++;
     }
-    setInterval(atualizartempoPiano, 1000);
+    setInterval(atualizarTempoPiano, 1000);
 
 
     function enviarTempo() {

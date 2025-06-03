@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function listar(idUsuario) {
     var instrucao = `
-        SELECT tempoPermanencia FROM resultadoBadTime WHERE fk_idUsuario = ${idUsuario};
+        SELECT tempoPermanencia FROM resultadoPiano WHERE fk_idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -19,7 +19,7 @@ function cadastrar(idUsuario, tempoBT) {
 
 function atualizar(idUsuario, novoTempo) {
     var instrucao = `
-        UPDATE resultadoBadTime
+        UPDATE resultadoPiano
         SET tempoPermanencia = ${novoTempo}
         WHERE fk_idUsuario = ${idUsuario};
     `;
