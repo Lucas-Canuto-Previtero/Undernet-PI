@@ -11,7 +11,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body>
+<body class="bodyUsuario">
 
     <div class="header">
         <div class="container">
@@ -46,11 +46,48 @@
     <br><br>
     <br><br>
 
-    <a href="index.html" onclick="limparSessão()" class="btSair">
-        <p>Sair</p>
-    </a>
+    <div class="mainUser">
+        <h1>Info. Geral:</h1>
+        <div class="dataUser">
 
-    <!-- <div class="footer">
+            <div class="user">
+                <div class="usuarioInfo">
+                    <div id="fotoData" class="fotoData">
+                    </div>
+                    
+                    <h1 id="nome"></h1>
+                    <div class="dados">
+                    </div>
+                </div>
+
+                <a href="index.html" onclick="limparSessão()" class="btSair">
+                    <p>Sair</p>
+                </a>
+            </div>
+
+            <div class="dashIndividual">
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="footer">
         <img src="/assets/img/logoSITE.png" alt="">
 
         <ul class="footerPages">
@@ -80,17 +117,24 @@
             </a>
             <h3>Toby Fox e Temmie Chang (Criadores de Undertale)</h3>
         </div>
-    </div> -->
+    </div>
 </body>
 
 </html>
 
 <script>
+    var foto_usuario = sessionStorage.FOTO_PERFIL;
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
+    fotoData.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
+
+
     function limparSessão() {
         sessionStorage.clear();
     }
 
-    var foto_usuario = sessionStorage.FOTO_PERFIL;
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
+
+
+
 </script>

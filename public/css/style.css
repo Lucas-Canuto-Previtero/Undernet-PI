@@ -1238,7 +1238,7 @@ th {
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
-    
+
 }
 
 .filtro-addPost {
@@ -1436,3 +1436,59 @@ hr {
 }
 
 /* --------- TERMINANDO FÓRUM.HTML ------------*/
+
+/* --------- INICIANDO DASH/USUARIO ---------- */
+.bodyUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.mainUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    width: 90%;
+}
+
+.dataUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    border: 5px white solid;
+    border-radius: 15px;
+    padding: 20px;
+
+}
+
+.user img {
+    width: 400px;
+}
+
+.user p {
+    margin: 0px;
+}
+
+.dashIndividual {
+    border: 5px white solid;
+}
+
+
+
+
+
+
+/* --------- TERMINANDO DASH/USUARIO ---------- */
