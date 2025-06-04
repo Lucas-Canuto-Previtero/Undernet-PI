@@ -38,7 +38,22 @@ CREATE TABLE resultadoBadTime (
   CONSTRAINT fk_resultadobadtime_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
 );
 
+use undernet;
 
+ SELECT 
+		c.fk_idUsuario,
+        max(c.CPS)
+        FROM resultadoCorrida c
+        inner join usuario u on c.fk_idUsuario = u.idUsuario
+        group by c.fk_idUsuario;
+        
+        
+        
+      
+       
+		
+        
+        
 
 CREATE TABLE resultadoCorrida (
   idResultadoCorrida INT NOT NULL AUTO_INCREMENT,

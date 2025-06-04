@@ -61,33 +61,119 @@ button:active {
 
 /*INICIANDO HEADER */
 .header {
-    display: block;
     position: fixed;
     width: 100%;
     height: 90px;
     background-color: black;
     border-bottom: 1px white solid;
+
 }
 
 .header .container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
 }
 
-.navbar {
+.header .container a {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.logo,
+.navbar,
+.hello {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px;
     list-style: none;
     color: white;
 }
 
+.navbar {
+    margin-left: 35px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
 .navbar a:hover {
     color: rgb(255, 255, 101) !important;
 }
+
+
+
+.header .container li {
+    font-size: 30px;
+}
+
+.header .container img {
+    height: 50px;
+}
+
+.hello {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.hello img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.hello span {
+    color: white;
+    font-size: 25px;
+}
+
+.hello span:hover {
+    color: rgb(255, 255, 101);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .formulario {
@@ -121,48 +207,6 @@ button:active {
 .login_cadastro a:hover {
     color: rgb(255, 255, 101) !important;
 }
-
-
-
-
-
-
-
-
-.header .container a {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    margin: 10px;
-    font-size: 30px;
-}
-
-
-.header .container li {
-    font-size: 30px;
-}
-
-.header .container img {
-    /* width: 245px; */
-    height: 50px;
-    margin-left: 35px;
-
-}
-
-.hello {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 350px;
-    height: 90px;
-}
-
-.hello span:hover {
-    color: rgb(255, 255, 101);
-}
-
-
-
 
 
 
@@ -1104,8 +1148,8 @@ iframe {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 80%;
-    height: 700px;
+    width: 65%;
+    height: 600px;
     border: white solid 5px;
 }
 
@@ -1450,24 +1494,23 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 35px;
     width: 90%;
 }
 
 .dataUser {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
 }
 
 .user {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 50%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     border: 5px white solid;
     border-radius: 15px;
     padding: 20px;
@@ -1475,15 +1518,40 @@ hr {
 }
 
 .user img {
-    width: 400px;
+    width: 100%;
+}
+
+.user .fotoData {
+    width: 300px;
+    margin: 15px;
+}
+
+.user h1 {
+    font-size: 50px;
+    margin: 0px;
 }
 
 .user p {
     margin: 0px;
 }
 
+
+.usuarioInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .dashIndividual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 800px;
     border: 5px white solid;
+    border-radius: 15px;
 }
 
 

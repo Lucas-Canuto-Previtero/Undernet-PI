@@ -18,21 +18,18 @@ function autenticar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
                     if (resultadoAutenticar.length == 1) {
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                        //     .then((resultadoAquarios) => 
-                                {
-                                // if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        idUsuario: resultadoAutenticar[0].idUsuario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        fotoPerfil: resultadoAutenticar[0].fotoPerfil
-                                    });
-                                // } else {
-                                //     res.status(204).json({ aquarios: [] });
-                                // }
-                            }
+
+                        {
+                            res.json({
+                                idUsuario: resultadoAutenticar[0].idUsuario,
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                senha: resultadoAutenticar[0].senha,
+                                fotoPerfil: resultadoAutenticar[0].fotoPerfil,
+                                telefone: resultadoAutenticar[0].telefone
+                            });
+
+                        }
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

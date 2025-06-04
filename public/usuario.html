@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/icon/iconCellphone.ico">
-    <title>Undernet - Usuário</title>
+    <title>Undernet - User Dashboard</title>
 
     <link rel="stylesheet" href="css/style.css">
     <script src="../js/sessao.js"></script>
@@ -15,7 +15,9 @@
 
     <div class="header">
         <div class="container">
-            <img src="assets/img/logoSITE.png" alt="">
+            <div class="logo">
+                <img src="assets/img/logoSITE.png" alt="">
+            </div>
             <ul class="navbar">
 
                 <a href="index-logado.html">Home</a>
@@ -47,22 +49,20 @@
     <br><br>
 
     <div class="mainUser">
-        <h1>Info. Geral:</h1>
+        <h1>Informações do Usuário:</h1>
         <div class="dataUser">
-
             <div class="user">
-                <div class="usuarioInfo">
-                    <div id="fotoData" class="fotoData">
-                    </div>
-                    
-                    <h1 id="nome"></h1>
-                    <div class="dados">
-                    </div>
+                <div id="fotoData" class="fotoData">
                 </div>
+                <div class="usuarioInfo">
 
-                <a href="index.html" onclick="limparSessão()" class="btSair">
-                    <p>Sair</p>
-                </a>
+                    Nome:<h1 id="nome"></h1>
+                    <br>
+                    Email:<p id="email"></p>
+                    <br>
+                    Telefone:<p id="telefone"></p>
+
+                </div>
             </div>
 
             <div class="dashIndividual">
@@ -70,6 +70,9 @@
             </div>
 
         </div>
+        <a href="index.html" onclick="limparSessão()" class="btSair">
+            <p>Sair</p>
+        </a>
     </div>
 
 
@@ -124,6 +127,9 @@
 
 <script>
     var foto_usuario = sessionStorage.FOTO_PERFIL;
+
+    email.innerHTML = sessionStorage.EMAIL_USUARIO;
+    telefone.innerHTML = sessionStorage.TELEFONE;
     nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     fotoPerfil.innerHTML = `<img src="${foto_usuario}" style=" object-fit: cover; border-radius: 15px; border: white solid 3px;">`;
