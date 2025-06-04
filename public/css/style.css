@@ -533,7 +533,7 @@ button:active {
     height: 700px;
     background-image: url('/assets/img/Backgrounds/sobreSiteBG.png');
     background-position: center;
-    background-size: 100% 1200px;
+    background-size: 100% 200vh;
     margin-bottom: 200px;
 }
 
@@ -643,7 +643,7 @@ button:active {
     width: 100%;
     height: 1300px;
     background-image: url('/assets/img/Backgrounds/sobreMimBG.png');
-    background-position: 180px 520px;
+    background-position: 50% 520px;
     background-size: 83%;
     border-top: solid white 3px;
     border-bottom: solid white 3px;
@@ -713,7 +713,7 @@ button:active {
     width: 100%;
     height: 500px;
     background-image: url('/assets/img/Backgrounds/fimBG.png');
-    background-size: 100% 100%;
+    background-size: 70% 60vh;
     background-position: center;
 }
 
@@ -959,7 +959,6 @@ button:active {
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 
 
@@ -972,6 +971,8 @@ iframe {
     width: 1000px;
     height: 700px;
     border: 10px solid white;
+    margin-bottom: 16.8vh;
+
 }
 
 
@@ -982,7 +983,7 @@ iframe {
     background-image: url(/assets/img/Backgrounds/vesselCreator.gif);
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 130% 1010px;
+    background-size: 130% 150vh;
 }
 
 .mainQuiz {
@@ -1514,7 +1515,7 @@ hr {
     border: 5px white solid;
     border-radius: 15px;
     padding: 20px;
-
+    width: 800px;
 }
 
 .user img {
@@ -1545,14 +1546,97 @@ hr {
 
 .dashIndividual {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 800px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 60%;
     border: 5px white solid;
     border-radius: 15px;
 }
+
+.dashIndividual p {
+    margin: 0px;
+}
+
+
+.dashQuiz {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    zoom: 140% !important;
+    padding: 30px;
+    margin: 15px;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+.dashPersona {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    zoom: 140% !important;
+    padding: 30px;
+}
+
+.resultPersona {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 5px white solid;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    width: 50%;
+    font-size: 50px;
+    padding: 20px;
+}
+
+.divisoriaPersona {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+
+
+
+
+
+.dashMiniGames {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36%;
+    zoom: 140% !important;
+    padding: 30px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
 
 
 

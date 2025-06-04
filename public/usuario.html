@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/icon/iconCellphone.ico">
     <title>Undernet - User Dashboard</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="../js/sessao.js"></script>
 </head>
@@ -56,16 +57,62 @@
                 </div>
                 <div class="usuarioInfo">
 
-                    Nome:<h1 id="nome"></h1>
+                    <span style="color: yellow;">Nome:</span>
+                    <h1 id="nome"></h1>
                     <br>
-                    Email:<p id="email"></p>
+                    <span style="color: yellow;">Email:</span>
+                    <p id="email"></p>
                     <br>
-                    Telefone:<p id="telefone"></p>
+                    <span style="color: yellow;">Telefone:</span>
+                    <p id="telefone"></p>
 
                 </div>
             </div>
 
             <div class="dashIndividual">
+
+
+                <div class="dashQuiz">
+                    <p>Quiz (1° tentativa):</p>
+                    <canvas id="dashQuiz1"></canvas>
+                </div>
+
+                <div class="dashQuiz">
+                    <p>Quiz (última tentativa):</p>
+                    <canvas id="dashQuiz2"></canvas>
+                </div>
+
+
+                <div class="dashQuiz">
+                    <p>Quiz (maior pontuação):</p>
+                    <canvas id="dashQuiz3"></canvas>
+                </div>
+
+
+
+
+
+
+
+                <div class="resultPersona">
+                    <p>Personalidade:</p>
+
+                    <div class="divisoriaPersona">
+                        <div id="personaImg"> <img src="assets/img/caracol.png" alt=""></div>
+
+                        <div class="dashPersona">
+                            <canvas id="dashPersona"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="dashMiniGames">
+                    <p>Tempo em cada Minigame:</p>
+                    <canvas id="dashMinigame"></canvas>
+                </div>
+
 
             </div>
 
@@ -140,6 +187,180 @@
         sessionStorage.clear();
     }
 
+
+
+    /*GRÁFICO DE QUIZ*/
+    const dashQuiz1 = document.getElementById('dashQuiz1');
+
+    new Chart(dashQuiz1, {
+        type: 'pie',
+        data: {
+            labels:
+                ['Acertos', 'Erros'],
+            datasets: [{
+                label: 'Quantidade',
+                backgroundColor: [
+                    '#016d01',
+                    '#8e0000'
+                ],
+                data: [5, 5],
+                borderWidth: 1,
+                borderColor: 'white'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    display: true,
+                    labels: { color: "#fff" }
+                }
+            }
+        }
+    });
+
+
+
+    const dashQuiz2 = document.getElementById('dashQuiz2');
+
+    new Chart(dashQuiz2, {
+        type: 'pie',
+        data: {
+            labels:
+                ['Acertos', 'Erros'],
+            datasets: [{
+                label: 'Quantidade',
+                backgroundColor: [
+                    '#016d01',
+                    '#8e0000'
+                ],
+                data: [5, 5],
+                borderWidth: 1,
+                borderColor: 'white'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    display: true,
+                    labels: { color: "#fff" }
+                }
+            }
+        }
+    });
+
+
+
+    const dashQuiz3 = document.getElementById('dashQuiz3');
+
+    new Chart(dashQuiz3, {
+        type: 'pie',
+        data: {
+            labels:
+                ['Acertos', 'Erros'],
+            datasets: [{
+                label: 'Quantidade',
+                backgroundColor: [
+                    '#016d01',
+                    '#8e0000'
+                ],
+                data: [5, 5],
+                borderWidth: 1,
+                borderColor: 'white'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    display: true,
+                    labels: { color: "#fff" }
+                }
+            }
+        }
+    });
+    /**//**//**//**//**//**//**//**//**/
+
+
+
+
+
+
+
+
+    /*GRÁFICO PERSONALIDADE*/
+    const dashPersona = document.getElementById('dashPersona');
+
+    new Chart(dashPersona, {
+        type: 'pie',
+        data: {
+            labels:
+                ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
+            datasets: [{
+                label: 'Quantidade',
+                backgroundColor: [
+                    'purple',
+                    'lightseagreen',
+                    'orange',
+                    'white',
+                    'blue',
+                    'yellow',
+                    'red',
+                    'darkred',
+                    '#ff00a6',
+                    '#966100',
+                    'lightsalmon',
+                ],
+                data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+                borderWidth: 1,
+                borderColor: 'white'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    display: true,
+                    labels: { color: "#fff" }
+                }
+            }
+        }
+    });
+    /**//**//**//**//**//**//**//**//**/
+
+    /*GRÁFICO PERSONALIDADE*/
+    const dashMinigame = document.getElementById('dashMinigame');
+
+    new Chart(dashMinigame, {
+        type: 'pie',
+        data: {
+            labels:
+                ['Bad Time Simulator', 'Piano', 'Thundersnail'],
+            datasets: [{
+                label: 'Quantidade',
+                backgroundColor: [
+                    'purple',
+                    'lightseagreen',
+                    'orange',
+
+                ],
+                data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+                borderWidth: 1,
+                borderColor: 'white'
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right',
+                    display: true,
+                    labels: { color: "#fff" }
+                }
+            }
+        }
+    });
+    /**//**//**//**//**//**//**//**//**/
 
 
 
