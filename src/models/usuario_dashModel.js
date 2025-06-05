@@ -79,12 +79,58 @@ function listarPersona(idUsuario) {
 
 
 
+function listarMinigame(idUsuario) {
+    console.log("ACESSEI O FORUM  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucaoSql = `
+          SELECT round((rb.tempoPermanencia / 60), 1) AS tempo_permanencia
+    FROM resultadoBadTime rb
+    INNER JOIN usuario u ON u.idUsuario = rb.fk_idUsuario
+    WHERE rb.fk_idUsuario = ${idUsuario}
+    
+    UNION 
+    
+    SELECT round((rp.tempoPermanencia / 60), 1) AS tempo_permanencia1
+    FROM resultadoPiano rp
+    INNER JOIN usuario u ON u.idUsuario = rp.fk_idUsuario
+    WHERE rp.fk_idUsuario = ${idUsuario}
+    
+    UNION 
+    
+    SELECT round((COUNT(rc.tempoPermanencia) / 60), 1) AS tempo_permanencia2
+    FROM resultadoCorrida rc 
+    INNER JOIN usuario u ON u.idUsuario = rc.fk_idUsuario
+    WHERE rc.fk_idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
+function listarCPS(idUsuario) {
+    console.log("ACESSEI O FORUM  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucaoSql = `
+         SELECT 
+    (SELECT DATE_FORMAT(rc.dataHora, '%d/%m/%Y %H:%i:%s'))  as dataHora_Formatada,
+    rc.CPS
+    FROM resultadoCorrida rc
+    INNER JOIN usuario u ON u.idUsuario = rc.fk_idUsuario
+    WHERE rc.fk_idUsuario = ${idUsuario}
+    ORDER BY dataHora_Formatada;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 
 
 module.exports = {
     listarQuiz1,
     listarQuiz2,
     listarQuiz3,
-    listarPersona
+    listarPersona,
+    listarMinigame,
+    listarCPS
 
 }

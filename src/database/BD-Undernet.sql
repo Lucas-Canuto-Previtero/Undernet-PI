@@ -1,6 +1,6 @@
+
 CREATE DATABASE undernet;
 USE undernet;
-
 
 
 CREATE TABLE usuario (
@@ -14,7 +14,6 @@ CREATE TABLE usuario (
   );
 
 
-
 CREATE TABLE postagem (
   idPostagem INT NOT NULL AUTO_INCREMENT,
   fk_idUsuario INT NOT NULL,
@@ -23,37 +22,33 @@ CREATE TABLE postagem (
   tipoPostagem VARCHAR(30),
   imagem VARCHAR(10000),
   PRIMARY KEY (idPostagem),
-  CONSTRAINT fkUsuarioPostagem FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
+  FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
-  
 
 
-
-
-CREATE TABLE resultadoBadTime (
+CREATE TABLE resultadobadtime (
   idResultadoBadTime INT NOT NULL AUTO_INCREMENT,
   tempoPermanencia INT,
   fk_idUsuario INT NOT NULL,
   PRIMARY KEY (idResultadoBadTime),
-  CONSTRAINT fk_resultadobadtime_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
-);
+  FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
+  );
 
 
-CREATE TABLE resultadoCorrida (
+CREATE TABLE resultadocorrida (
   idResultadoCorrida INT NOT NULL AUTO_INCREMENT,
   fk_idUsuario INT NOT NULL,
-  CPS DECIMAL(5,2) NULL DEFAULT NULL,
-  tempoPermanencia INT NULL DEFAULT NULL,
-  dataHora TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (idResultadoCorrida),
-  CONSTRAINT fkUsuarioCorrida FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
-  );
-  
-
-
-CREATE TABLE resultadoPersona (
-  idResultadoPersona INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
+  CPS DECIMAL(5,2),
+  tempoPermanencia INT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (idResultadoCorrida),
+  FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
+  );
+
+
+CREATE TABLE resultadopersona (
+  idResultadoPersona INT NOT NULL UNIQUE AUTO_INCREMENT,
+  dataHora TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   chanceToriel DECIMAL(5,2),
   chanceSans DECIMAL(5,2),
   chancePapyrus DECIMAL(5,2),
@@ -67,48 +62,33 @@ CREATE TABLE resultadoPersona (
   chanceAsriel DECIMAL(5,2),
   fk_idUsuario INT NOT NULL,
   PRIMARY KEY (idResultadoPersona),
-  CONSTRAINT fk_resultadopersona_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
-);
+  FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
+  );
 
-
-
-CREATE TABLE resultadoPiano (
+CREATE TABLE resultadopiano (
   idResultadoPiano INT NOT NULL AUTO_INCREMENT,
   fk_idUsuario INT NOT NULL,
   tempoPermanencia INT,
   PRIMARY KEY (idResultadoPiano),
-  CONSTRAINT fkUsuarioPiano FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
+  FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
   );
 
- 
-CREATE TABLE resultadoQuiz (
+
+
+
+CREATE TABLE resultadoquiz (
   idResultadoQuiz INT NOT NULL AUTO_INCREMENT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   acertos INT,
   erros INT,
   fk_idUsuario INT NOT NULL,
-  PRIMARY KEY (idResultadoQuiz), 
-  CONSTRAINT fk_resultadoquiz_usuario1 FOREIGN KEY (fk_idUsuario) REFERENCES usuario (idUsuario)
-    );
+  PRIMARY KEY (idResultadoQuiz),
+  FOREIGN KEY (fk_idUsuario) REFERENCES undernet.usuario (idUsuario)
+  );
+
+
+
+
     
-    select * from resultadoQuiz;
-    
-    
-    
-     SELECT 
-     chanceToriel,
-	 chanceSans,
-	 chancePapyrus,
-	 chanceNapstablook,
-	 chanceUndyne,
-	 chanceFlowey,
-	 chanceFrisk,
-	 chanceChara,
-	 chanceMettaton,
-	 chanceAsgore,
-	 chanceAsriel
-        FROM resultadoQuiz rq
-            INNER JOIN usuario u
-                ON rq.fk_idUsuario = u.idUsuario 
-                where rq.acertos = (select max(acertos) from resultadoQuiz where fk_idUsuario = 1) 
-                and rq.fk_idUsuario = 1;
+
+

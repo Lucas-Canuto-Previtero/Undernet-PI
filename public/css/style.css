@@ -129,6 +129,7 @@ button:active {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 350px;
 }
 
 
@@ -1487,7 +1488,7 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 99.5%;
 }
 
 .mainUser {
@@ -1497,6 +1498,12 @@ hr {
     align-items: center;
     font-size: 35px;
     width: 100%;
+
+}
+
+.mainUser h1 {
+    margin: 50px;
+    font-size: 60px;
 }
 
 .dataUser {
@@ -1572,7 +1579,6 @@ hr {
     zoom: 140% !important;
     margin-top: 5px;
     margin-bottom: 5px;
-
     padding: 10px;
     border: 5px white solid;
     border-radius: 5px;
@@ -1594,7 +1600,7 @@ hr {
     text-align: center;
     width: 100%;
     zoom: 140% !important;
-    padding: 30px;
+    padding: 10px;
 
 }
 
@@ -1606,9 +1612,9 @@ hr {
     justify-content: space-evenly;
     border: 7px white solid;
     border-radius: 5px;
-    width: 50%;
+    width: 49%;
     font-size: 50px;
-    padding: 20px;
+    padding-right: 15px;
 }
 
 .divisoriaPersona {
@@ -1628,24 +1634,39 @@ hr {
     object-fit: cover;
 }
 
-
-
-
-
-
 .dashMiniGames {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    width: 40%;
+    width: 45%;
+    height: 340px;
     zoom: 140% !important;
-    padding: 15px;
+    padding: 1px;
     border: 5px white solid;
     border-radius: 5px;
 }
 
+
+.dashCPS {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    width: 89%;
+    zoom: 140% !important;
+    padding: 20px;
+    border: 5px white solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.dashCPS p {
+    margin: 0px;
+    font-size: 30px;
+}
 
 
 

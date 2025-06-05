@@ -25,6 +25,10 @@ router.get("/listarMinigame/:idUsuario", function (req, res) {
     usuario_dashController.listarMinigame(req, res);
 });
 
+router.get("/listarCPS/:idUsuario", function (req, res) {
+    usuario_dashController.listarCPS(req, res);
+});
+
 router.get("/listarQuizGeral/", function (req, res) {
     usuario_dashController.listarQuizGeral(req, res);
 });

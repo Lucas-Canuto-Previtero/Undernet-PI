@@ -12,7 +12,8 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body class="bodyUsuario" onload="listarQuiz1(), listarQuiz2(), listarQuiz3(), listarPersona()">
+<body class="bodyUsuario"
+    onload="listarQuiz1(), listarQuiz2(), listarQuiz3(), listarPersona(), listarMinigame(), listarCPS()">
 
     <div class="header">
         <div class="container">
@@ -49,24 +50,34 @@
     <br><br>
 
     <div class="mainUser">
-        <h1>Informações do Usuário:</h1>
+        <h1><span style="color: yellow;">✦</span>Informações do Usuário:<span style="color: yellow;">✦</span></h1>
         <div class="dataUser">
-            <div class="user">
-                <div id="fotoData" class="fotoData">
+            <div class="sideBlock">
+                <div class="user">
+                    <div id="fotoData" class="fotoData">
+                    </div>
+
+                    <div class="usuarioInfo">
+                        <span style="color: yellow;">Nome:</span>
+                        <h1 id="nome"></h1>
+                        <br>
+                        <span style="color: yellow;">Email:</span>
+                        <p id="email"></p>
+                        <br>
+                        <span style="color: yellow;">Telefone:</span>
+                        <p id="telefone"></p>
+                        <button style="width: 150px; font-size: 30px;"
+                            onclick="limparSessão(), window.location = 'index.html'">Sair</button>
+
+                    </div>
                 </div>
-                <div class="usuarioInfo">
-
-                    <span style="color: yellow;">Nome:</span>
-                    <h1 id="nome"></h1>
-                    <br>
-                    <span style="color: yellow;">Email:</span>
-                    <p id="email"></p>
-                    <br>
-                    <span style="color: yellow;">Telefone:</span>
-                    <p id="telefone"></p>
-
+                <div class="dashCPS">
+                    <p id="pCPS">CPS do usuário (Clique por segundo):</p>
+                    <canvas id="dashCPS"></canvas>
                 </div>
             </div>
+
+
 
             <div class="dashIndividual">
 
@@ -90,7 +101,10 @@
 
 
 
-
+                <div class="dashMiniGames">
+                    <p id="pGames">Tempo em cada Minigame:</p>
+                    <canvas id="dashMinigame"></canvas>
+                </div>
 
 
                 <div class="resultPersona">
@@ -107,18 +121,13 @@
 
 
 
-                <div class="dashMiniGames">
-                    <p id="pMinigames">Tempo em cada Minigame:</p>
-                    <canvas id="dashMinigame"></canvas>
-                </div>
+
 
 
             </div>
 
         </div>
-        <a href="index.html" onclick="limparSessão()" class="btSair">
-            <p>Sair</p>
-        </a>
+
     </div>
 
 
@@ -186,46 +195,6 @@
     function limparSessão() {
         sessionStorage.clear();
     }
-
-
-
-
-    /*GRÁFICO MINIGAME*/
-    const dashMinigame = document.getElementById('dashMinigame');
-
-    new Chart(dashMinigame, {
-        type: 'bar',
-        data: {
-            labels:
-                ['Bad Time Simulator', 'Piano', 'Thundersnail'],
-            datasets: [{
-                label: 'Quantidade',
-                backgroundColor: [
-                    '#34b5ff',
-                    'white',
-                    'orange',
-
-                ],
-                data: [5, 5, 5],
-                borderWidth: 1,
-                borderColor: 'white'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'right',
-                    display: true,
-                    labels: { color: "#fff" }
-                }
-            }
-        }
-    });
-    /**//**//**//**//**//**//**//**//**/
-
-
-
-
 
 
     function listarQuiz1() {
@@ -456,12 +425,6 @@
                     }
 
 
-
-
-
-
-
-
                     const dashPersona = document.getElementById('dashPersona');
 
                     new Chart(dashPersona, {
@@ -476,7 +439,7 @@
                                     '#34b5ff',
                                     'orange',
                                     'white',
-                                    'blue',
+                                    'darkblue',
                                     'yellow',
                                     'red',
                                     'darkred',
@@ -509,4 +472,121 @@
         });
     }
 
+
+
+
+
+    function listarMinigame() {
+        fetch(`/usuario_dash/listarMinigame/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+
+                    return pGames.innerHTML = "Nenhum dado de minigame existente";
+
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    console.log(resposta)
+
+                    const dashMinigame = document.getElementById('dashMinigame');
+
+                    new Chart(dashMinigame, {
+                        type: 'bar',
+                        data: {
+                            labels:
+                                ['Bad Time Simulator', 'Piano', 'Thundersnail'],
+                            datasets: [{
+                                label: 'Tempo em Minutos',
+                                backgroundColor: ['#9a0e8c'],
+                                data: [resposta[0].tempo_permanencia, resposta[1].tempo_permanencia, resposta[2].tempo_permanencia],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+    function listarCPS() {
+        fetch(`/usuario_dash/listarCPS/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+
+                    return pCPS.innerHTML = "Nenhum dado de minigame existente";
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    var label = [];
+                    var data = [];
+
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                        label.push(registro.dataHora_Formatada);
+                        data.push(registro.CPS);
+                    }
+
+                    const dashCPS = document.getElementById('dashCPS');
+
+                    new Chart(dashCPS, {
+                        type: 'line',
+                        data: {
+                            labels: label,
+                            datasets: [{
+                                label: 'CPS/data',
+                                backgroundColor: ['white'],
+                                data: data,
+                                borderWidth: 2,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
 </script>
