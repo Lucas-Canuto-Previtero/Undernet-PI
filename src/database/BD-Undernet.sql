@@ -75,7 +75,6 @@ CREATE TABLE resultadopiano (
 
 
 
-
 CREATE TABLE resultadoquiz (
   idResultadoQuiz INT NOT NULL AUTO_INCREMENT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -85,6 +84,7 @@ CREATE TABLE resultadoquiz (
   PRIMARY KEY (idResultadoQuiz),
   FOREIGN KEY (fk_idUsuario) REFERENCES undernet.usuario (idUsuario)
   );
+  
 
 
 

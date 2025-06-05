@@ -475,21 +475,28 @@
 
 
 
-
+    var temDadoJogo = true;
     function listarMinigame() {
         fetch(`/usuario_dash/listarMinigame/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
 
+                    temDadoJogo = false;
+
                     console.log("NENHUM DADO ENCONTRADO");
 
-                    return pGames.innerHTML = "Nenhum dado de minigame existente";
-
+                    if (temDadoJogo == false) {
+                        return pGames.innerHTML = "Nenhum dado de minigame existente";
+                    }
 
                 }
                 resposta.json().then(function (resposta) {
 
-                    console.log(resposta)
+
+
+
+
+                    console.log("resposta", resposta)
 
                     const dashMinigame = document.getElementById('dashMinigame');
 
