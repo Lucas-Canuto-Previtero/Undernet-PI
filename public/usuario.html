@@ -24,7 +24,7 @@
 
                 <a href="index-logado.html">Home</a>
                 <li> | </li>
-                <a href="sobre.html">Sobre o site</a>
+                <a href="sobre-logado.html">Sobre o site</a>
                 <li> | </li>
                 <a href="forum.html">Fórum</a>
                 <li> | </li>
@@ -118,23 +118,57 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
-
         </div>
-
     </div>
 
 
 
 
+    <br><br>
+    <br><br>
 
 
+
+    <h1 style="font-size: 70px;"><span style="color: yellow;">✦</span>Dashboard global:<span
+            style="color: yellow;">✦</span></h1>
+    <div class="dashGeral">
+
+        <div class="resultPersonaGeral">
+            <p id="pPersonaGeral">Personalidade Geral:</p>
+
+            <div class="divisoriaPersonaGeral">
+                <div id="personaImgGeral"></div>
+
+                <div class="dashPersonaGeral">
+                    <canvas id="dashPersonaGeral"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="rigthInfo">
+            <div class="dashQuizGeral">
+                <p id="pQuizGeral">Resultado Quiz Geral:</p>
+                <canvas id="dashQuizGeral"></canvas>
+            </div>
+
+
+            <div class="dashCPSgeral">
+                <p id="pCPSgeral">CPS do Geral (Clique por segundo):</p>
+                <canvas id="dashCPSgeral"></canvas>
+            </div>
+
+            <div class="dashMiniGamesGeral">
+                <p id="pGamesGeral">Tempo em cada Minigame Geral:</p>
+                <canvas id="dashMinigameGeral"></canvas>
+            </div>
+        </div>
+
+
+
+    </div>
 
 
 
@@ -479,24 +513,21 @@
     function listarMinigame() {
         fetch(`/usuario_dash/listarMinigame/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
-                if (resposta.status == 204) {
-
-                    temDadoJogo = false;
-
-                    console.log("NENHUM DADO ENCONTRADO");
-
-                    if (temDadoJogo == false) {
-                        return pGames.innerHTML = "Nenhum dado de minigame existente";
-                    }
-
-                }
                 resposta.json().then(function (resposta) {
-
-
-
-
-
                     console.log("resposta", resposta)
+                if (resposta.status == 204 || resposta[0].tempo_permanencia == null) {
+                    
+                    console.log("NENHUM DADO DO GRAFICO GAME ENCONTRADO");
+                    
+                    
+                    
+                    return pGames.innerHTML = "Nenhum dado de minigame existente";
+                }
+
+
+
+
+
 
                     const dashMinigame = document.getElementById('dashMinigame');
 

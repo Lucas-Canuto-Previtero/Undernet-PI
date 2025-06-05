@@ -160,31 +160,6 @@ button:active {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .formulario {
     margin-bottom: 30px;
 }
@@ -1582,7 +1557,7 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35vh;
+    width: 40vh;
     height: 45vh;
     zoom: 140% !important;
     margin-top: 5px;
@@ -1645,11 +1620,11 @@ hr {
 .dashMiniGames {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     width: 45%;
-    height: 340px;
+    height: 380px;
     zoom: 140% !important;
     padding: 1px;
     border: 5px white solid;
@@ -1660,10 +1635,11 @@ hr {
 .dashCPS {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     text-align: center;
     width: 89%;
+    height: 430px;
     zoom: 140% !important;
     padding: 20px;
     border: 5px white solid;
@@ -1678,6 +1654,78 @@ hr {
 
 
 
+
+
+
+
+
+
+.dashGeral {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
+    width: 99%;
+    margin: 10px;
+    border: white 5px solid;
+}
+
+.resultPersonaGeral {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 7px white solid;
+    border-radius: 5px;
+    width: 45%;
+    margin: 10px;
+    padding-right: 15px;
+}
+
+
+.resultPersonaGeral p {
+    font-size: 60px;
+    margin: 10px;
+
+}
+
+
+
+
+
+
+
+.rigthInfo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 10px;
+
+}
+
+
+.dashQuizGeral {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
+    height: 45vh;
+    zoom: 140% !important;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
+.dashQuizGeral p {
+    font-size: 50px;
+    margin: 10px;
+
+}
 
 
 
