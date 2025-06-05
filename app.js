@@ -24,6 +24,8 @@ var quizPersonalidadeRouter = require("./src/routes/quizPersonalidade");
 var MTTgameshowRouter = require("./src/routes/MTTgameshow");
 var corridaRouter = require("./src/routes/corrida");
 var pianoRouter = require("./src/routes/piano");
+var usuario_dashRouter = require("./src/routes/usuario_dash");
+
 
 
 app.use(express.json());
@@ -41,6 +43,8 @@ app.use("/quizPersonalidade", quizPersonalidadeRouter);
 app.use("/MTTgameshow", MTTgameshowRouter);
 app.use("/corrida", corridaRouter);
 app.use("/piano", pianoRouter);
+app.use("/usuario_dash", usuario_dashRouter);
+
 
 // Aqui é onde tenho que criar as rotas entre os arquivos Routers.
 

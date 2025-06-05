@@ -12,7 +12,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body class="bodyUsuario">
+<body class="bodyUsuario" onload="listarQuiz1(), listarQuiz2(), listarQuiz3(), listarPersona()">
 
     <div class="header">
         <div class="container">
@@ -37,13 +37,12 @@
                 <a href="usuario.html">
                     <div id="fotoPerfil"></div>
                 </a>
-                <a style="color: yellow;" href="usuario.html">
-                    <span id="b_usuario">usuário</span>
+                <a href="usuario.html">
+                    <span style="color: yellow;" id="b_usuario">usuário</span>
                 </a>
             </div>
         </div>
     </div>
-
 
     <br><br>
     <br><br>
@@ -73,18 +72,18 @@
 
 
                 <div class="dashQuiz">
-                    <p>Quiz (1° tentativa):</p>
+                    <p id="pQuiz1">Quiz (1° tentativa):</p>
                     <canvas id="dashQuiz1"></canvas>
                 </div>
 
                 <div class="dashQuiz">
-                    <p>Quiz (última tentativa):</p>
+                    <p id="pQuiz2">Quiz (última tentativa):</p>
                     <canvas id="dashQuiz2"></canvas>
                 </div>
 
 
                 <div class="dashQuiz">
-                    <p>Quiz (maior pontuação):</p>
+                    <p id="pQuiz3">Quiz (maior pontuação):</p>
                     <canvas id="dashQuiz3"></canvas>
                 </div>
 
@@ -95,10 +94,10 @@
 
 
                 <div class="resultPersona">
-                    <p>Personalidade:</p>
+                    <p id="pPersona">Personalidade:</p>
 
                     <div class="divisoriaPersona">
-                        <div id="personaImg"> <img src="assets/img/caracol.png" alt=""></div>
+                        <div id="personaImg"></div>
 
                         <div class="dashPersona">
                             <canvas id="dashPersona"></canvas>
@@ -109,7 +108,7 @@
 
 
                 <div class="dashMiniGames">
-                    <p>Tempo em cada Minigame:</p>
+                    <p id="pMinigames">Tempo em cada Minigame:</p>
                     <canvas id="dashMinigame"></canvas>
                 </div>
 
@@ -173,6 +172,7 @@
 </html>
 
 <script>
+    var idUsuario = sessionStorage.ID_USUARIO;
     var foto_usuario = sessionStorage.FOTO_PERFIL;
 
     email.innerHTML = sessionStorage.EMAIL_USUARIO;
@@ -189,163 +189,24 @@
 
 
 
-    /*GRÁFICO DE QUIZ*/
-    const dashQuiz1 = document.getElementById('dashQuiz1');
 
-    new Chart(dashQuiz1, {
-        type: 'pie',
-        data: {
-            labels:
-                ['Acertos', 'Erros'],
-            datasets: [{
-                label: 'Quantidade',
-                backgroundColor: [
-                    '#016d01',
-                    '#8e0000'
-                ],
-                data: [5, 5],
-                borderWidth: 1,
-                borderColor: 'white'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'right',
-                    display: true,
-                    labels: { color: "#fff" }
-                }
-            }
-        }
-    });
-
-
-
-    const dashQuiz2 = document.getElementById('dashQuiz2');
-
-    new Chart(dashQuiz2, {
-        type: 'pie',
-        data: {
-            labels:
-                ['Acertos', 'Erros'],
-            datasets: [{
-                label: 'Quantidade',
-                backgroundColor: [
-                    '#016d01',
-                    '#8e0000'
-                ],
-                data: [5, 5],
-                borderWidth: 1,
-                borderColor: 'white'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'right',
-                    display: true,
-                    labels: { color: "#fff" }
-                }
-            }
-        }
-    });
-
-
-
-    const dashQuiz3 = document.getElementById('dashQuiz3');
-
-    new Chart(dashQuiz3, {
-        type: 'pie',
-        data: {
-            labels:
-                ['Acertos', 'Erros'],
-            datasets: [{
-                label: 'Quantidade',
-                backgroundColor: [
-                    '#016d01',
-                    '#8e0000'
-                ],
-                data: [5, 5],
-                borderWidth: 1,
-                borderColor: 'white'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'right',
-                    display: true,
-                    labels: { color: "#fff" }
-                }
-            }
-        }
-    });
-    /**//**//**//**//**//**//**//**//**/
-
-
-
-
-
-
-
-
-    /*GRÁFICO PERSONALIDADE*/
-    const dashPersona = document.getElementById('dashPersona');
-
-    new Chart(dashPersona, {
-        type: 'pie',
-        data: {
-            labels:
-                ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
-            datasets: [{
-                label: 'Quantidade',
-                backgroundColor: [
-                    'purple',
-                    'lightseagreen',
-                    'orange',
-                    'white',
-                    'blue',
-                    'yellow',
-                    'red',
-                    'darkred',
-                    '#ff00a6',
-                    '#966100',
-                    'lightsalmon',
-                ],
-                data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-                borderWidth: 1,
-                borderColor: 'white'
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'right',
-                    display: true,
-                    labels: { color: "#fff" }
-                }
-            }
-        }
-    });
-    /**//**//**//**//**//**//**//**//**/
-
-    /*GRÁFICO PERSONALIDADE*/
+    /*GRÁFICO MINIGAME*/
     const dashMinigame = document.getElementById('dashMinigame');
 
     new Chart(dashMinigame, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels:
                 ['Bad Time Simulator', 'Piano', 'Thundersnail'],
             datasets: [{
                 label: 'Quantidade',
                 backgroundColor: [
-                    'purple',
-                    'lightseagreen',
+                    '#34b5ff',
+                    'white',
                     'orange',
 
                 ],
-                data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+                data: [5, 5, 5],
                 borderWidth: 1,
                 borderColor: 'white'
             }]
@@ -363,5 +224,289 @@
     /**//**//**//**//**//**//**//**//**/
 
 
+
+
+
+
+    function listarQuiz1() {
+        fetch(`/usuario_dash/listarQuiz1/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+                    return pQuiz1.innerHTML = "Nenhum dado do quiz existente";
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    console.log(resposta[0].acertos)
+
+                    const dashQuiz1 = document.getElementById('dashQuiz1');
+
+                    new Chart(dashQuiz1, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Acertos', 'Erros'],
+                            datasets: [{
+                                label: 'Quantidade',
+                                backgroundColor: [
+                                    '#016d01',
+                                    '#8e0000'
+                                ],
+                                data: [resposta[0].acertos, resposta[0].erros],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+
+
+    function listarQuiz2() {
+        fetch(`/usuario_dash/listarQuiz2/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+                    return pQuiz2.innerHTML = "Nenhum dado do quiz existente";
+
+
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    console.log(resposta[0].acertos)
+
+                    const dashQuiz2 = document.getElementById('dashQuiz2');
+
+                    new Chart(dashQuiz2, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Acertos', 'Erros'],
+                            datasets: [{
+                                label: 'Quantidade',
+                                backgroundColor: [
+                                    '#016d01',
+                                    '#8e0000'
+                                ],
+                                data: [resposta[0].acertos, resposta[0].erros],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+
+    function listarQuiz3() {
+        fetch(`/usuario_dash/listarQuiz3/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+
+                    return pQuiz3.innerHTML = "Nenhum dado do quiz existente";
+
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    console.log(resposta[0].acertos)
+
+                    const dashQuiz3 = document.getElementById('dashQuiz3');
+
+                    new Chart(dashQuiz3, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Acertos', 'Erros'],
+                            datasets: [{
+                                label: 'Quantidade',
+                                backgroundColor: [
+                                    '#016d01',
+                                    '#8e0000'
+                                ],
+                                data: [resposta[0].acertos, resposta[0].erros],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+    function listarPersona() {
+        fetch(`/usuario_dash/listarPersona/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+                    return pPersona.innerHTML = 'Nenhum dado de personagem existente'
+
+                }
+
+                resposta.json().then(function (resposta) {
+
+                    var personagemFinal = 0;
+
+                    for (var i = 0; i < Object.values(resposta[0]).length; i++) {
+                        if (Number(Object.values(resposta[0])[i]) > personagemFinal || Number(Object.values(resposta[0])[i]) == personagemFinal) {
+                            personagemFinal = Number(Object.values(resposta[0])[i]);
+                        }
+                    }
+
+                    if (personagemFinal == Number(Object.values(resposta[0])[0])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/Toriel.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[1])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/Sans.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[2])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/Papyrus.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[3])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/napstablook.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[4])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/undyne.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[5])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/flowey.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[6])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/frisk.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[7])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/chara.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[8])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/Mettaton.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[9])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/asgore.png" alt="">`
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[10])) {
+                        personaImg.innerHTML = `<img src="/assets/img/personagemResult/asriel.png" alt="">`
+
+                    }
+
+
+
+
+
+
+
+
+                    const dashPersona = document.getElementById('dashPersona');
+
+                    new Chart(dashPersona, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
+                            datasets: [{
+                                label: 'Quantidade %',
+                                backgroundColor: [
+                                    'purple',
+                                    '#34b5ff',
+                                    'orange',
+                                    'white',
+                                    'blue',
+                                    'yellow',
+                                    'red',
+                                    'darkred',
+                                    '#ff00a6',
+                                    '#966100',
+                                    'lightsalmon',
+                                ],
+                                data: [resposta[0].chanceToriel, resposta[0].chanceSans, resposta[0].chancePapyrus, resposta[0].chanceNapstablook, resposta[0].chanceUndyne, resposta[0].chanceFlowey, resposta[0].chanceFrisk, resposta[0].chanceChara, resposta[0].chanceMetatton, resposta[0].chanceAsgore, resposta[0].chanceAsriel],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
 
 </script>
