@@ -385,7 +385,7 @@ button:active {
 
 
 .atualizacoes .container .updates .noticia {
-    width: 40%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1583,8 +1583,6 @@ hr {
     text-align: center;
     width: 100%;
     zoom: 140% !important;
-    padding: 10px;
-
 }
 
 .resultPersona {
@@ -1605,7 +1603,7 @@ hr {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 80%;
+    width: 85%;
 }
 
 .resultPersona p {
@@ -1638,13 +1636,12 @@ hr {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    width: 89%;
+    width: 95%;
     height: 430px;
-    zoom: 140% !important;
-    padding: 20px;
+    zoom: 145% !important;
+    padding: 10px;
     border: 5px white solid;
     border-radius: 5px;
-    margin: 10px;
 }
 
 .dashCPS p {
@@ -1662,15 +1659,91 @@ hr {
 
 .dashGeral {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
     max-width: 100%;
-    width: 99%;
+    width: 95%;
     margin: 10px;
-    border: white 5px solid;
 }
+
+
+
+
+
+
+
+
+.rigthInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+
+}
+
+
+.dashQuizGeral {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 250px;
+    zoom: 145% !important;
+    padding: 20px;
+    margin: 10px;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
+.dashQuizGeral p,
+.dashMiniGamesGeral p,
+.dashCPSgeral p {
+    font-size: 40px;
+    margin: 10px;
+
+}
+
+.dashMiniGamesGeral {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 88%;
+    height: 250px;
+    zoom: 145% !important;
+    padding: 30px;
+    margin: 10px;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
+.dashCPSgeral {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 250px;
+    zoom: 145% !important;
+    padding: 20px;
+    margin: 10px;
+    border: 5px white solid;
+    border-radius: 5px;
+}
+
+
+
+
+
 
 .resultPersonaGeral {
     display: flex;
@@ -1680,7 +1753,7 @@ hr {
     justify-content: space-evenly;
     border: 7px white solid;
     border-radius: 5px;
-    width: 45%;
+    width: 100%;
     margin: 10px;
     padding-right: 15px;
 }
@@ -1692,40 +1765,44 @@ hr {
 
 }
 
-
-
-
-
-
-
-.rigthInfo {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 10px;
-
+.resultPersonaGeral h2 {
+    font-size: 60px;
+    margin: 50px;
 }
 
 
-.dashQuizGeral {
-    text-align: center;
+.dashPersonaGeral {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 99%;
-    height: 45vh;
-    zoom: 140% !important;
-    border: 5px white solid;
-    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    zoom: 145% !important;
+    padding: 40px;
+
+}
+
+
+.divisoriaPersonaGeral {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 95%;
+    max-height: 600px;
 }
 
 
-.dashQuizGeral p {
-    font-size: 50px;
-    margin: 10px;
-
+#personaImgGeral img {
+    width: 350px;
+    object-fit: cover;
 }
+
+
+
+
+
 
 
 

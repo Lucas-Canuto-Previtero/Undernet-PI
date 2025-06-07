@@ -2,6 +2,7 @@
 CREATE DATABASE undernet;
 USE undernet;
 
+
 CREATE TABLE usuario (
   idUsuario INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(50),
@@ -74,6 +75,7 @@ CREATE TABLE resultadopiano (
 
 
 
+
 CREATE TABLE resultadoquiz (
   idResultadoQuiz INT NOT NULL AUTO_INCREMENT,
   dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -83,32 +85,4 @@ CREATE TABLE resultadoquiz (
   PRIMARY KEY (idResultadoQuiz),
   FOREIGN KEY (fk_idUsuario) REFERENCES undernet.usuario (idUsuario)
   );
-  
-
-
-     SELECT round((rb.tempoPermanencia / 60), 1) AS tempo_permanencia
-    FROM resultadobadtime rb
-    INNER JOIN usuario u ON u.idUsuario = rb.fk_idUsuario
-    WHERE rb.fk_idUsuario = 1
-    
-    UNION 
-    
-    SELECT round((rp.tempoPermanencia / 60), 1) AS tempo_permanencia
-    FROM resultadopiano rp
-    INNER JOIN usuario u ON u.idUsuario = rp.fk_idUsuario
-    WHERE rp.fk_idUsuario = 1
-    
-    UNION 
-    
-    SELECT round((sum(rc.tempoPermanencia) / 60), 1) AS tempo_permanencia
-    FROM resultadocorrida rc 
-    INNER JOIN usuario u ON u.idUsuario = rc.fk_idUsuario
-    WHERE rc.fk_idUsuario = 1;
-
-
-truncate resultadopersona;
-
-
-    
-
 

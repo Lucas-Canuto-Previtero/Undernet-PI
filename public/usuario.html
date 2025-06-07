@@ -13,7 +13,7 @@
 </head>
 
 <body class="bodyUsuario"
-    onload="listarQuiz1(), listarQuiz2(), listarQuiz3(), listarPersona(), listarMinigame(), listarCPS()">
+    onload="listarQuiz1(), listarQuiz2(), listarQuiz3(), listarPersona(), listarMinigame(), listarCPS(), listarPersonaGeral(), listarQuizGeral(), listarCPSgeral(), listarMinigameGeral()">
 
     <div class="header">
         <div class="container">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="dashCPS">
-                    <p id="pCPS">CPS do usuário (Clique por segundo):</p>
+                    <p id="pCPS">CPS do usuário (Clique por segundo no Thundersnail):</p>
                     <canvas id="dashCPS"></canvas>
                 </div>
             </div>
@@ -80,8 +80,6 @@
 
 
             <div class="dashIndividual">
-
-
                 <div class="dashQuiz">
                     <p id="pQuiz1">Quiz (1° tentativa):</p>
                     <canvas id="dashQuiz1"></canvas>
@@ -130,8 +128,7 @@
 
 
 
-    <h1 style="font-size: 70px;"><span style="color: yellow;">✦</span>Dashboard global:<span
-            style="color: yellow;">✦</span></h1>
+    <h1 style="font-size: 70px;">🌍Dashboard global:🌍</h1>
     <div class="dashGeral">
 
         <div class="resultPersonaGeral">
@@ -145,6 +142,8 @@
                 </div>
             </div>
 
+            <h2 id="descComunidade"></h2>
+
         </div>
 
 
@@ -156,8 +155,8 @@
 
 
             <div class="dashCPSgeral">
-                <p id="pCPSgeral">CPS do Geral (Clique por segundo):</p>
-                <canvas id="dashCPSgeral"></canvas>
+                <p id="pCPSgeral">Média atual de CPS geral(Clique por segundo no Thundersnail):</p>
+                <p style="color: orange; font-size: 80px;" id="dashCPSgeral">Nenhum dado adquirido</p>
             </div>
 
             <div class="dashMiniGamesGeral">
@@ -165,11 +164,7 @@
                 <canvas id="dashMinigameGeral"></canvas>
             </div>
         </div>
-
-
-
     </div>
-
 
 
 
@@ -241,9 +236,6 @@
 
                 }
                 resposta.json().then(function (resposta) {
-
-                    console.log(resposta[0].acertos)
-
                     const dashQuiz1 = document.getElementById('dashQuiz1');
 
                     new Chart(dashQuiz1, {
@@ -301,7 +293,6 @@
                 }
                 resposta.json().then(function (resposta) {
 
-                    console.log(resposta[0].acertos)
 
                     const dashQuiz2 = document.getElementById('dashQuiz2');
 
@@ -359,7 +350,6 @@
                 }
                 resposta.json().then(function (resposta) {
 
-                    console.log(resposta[0].acertos)
 
                     const dashQuiz3 = document.getElementById('dashQuiz3');
 
@@ -404,7 +394,12 @@
 
 
     function listarPersona() {
+
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+
         fetch(`/usuario_dash/listarPersona/${idUsuario}`).then(function (resposta) {
+
             if (resposta.ok) {
                 if (resposta.status == 204) {
 
@@ -509,21 +504,19 @@
 
 
 
-    var temDadoJogo = true;
     function listarMinigame() {
         fetch(`/usuario_dash/listarMinigame/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-                    console.log("resposta", resposta)
-                if (resposta.status == 204 || resposta[0].tempo_permanencia == null) {
-                    
-                    console.log("NENHUM DADO DO GRAFICO GAME ENCONTRADO");
-                    
-                    
-                    
-                    return pGames.innerHTML = "Nenhum dado de minigame existente";
-                }
+                    if (resposta.status == 204 || resposta[0].tempo_permanencia == null) {
 
+                        console.log("NENHUM DADO DO GRAFICO GAME ENCONTRADO");
+
+                        return pGames.innerHTML = "Nenhum dado de minigame existente";
+                    }
+
+
+                  
 
 
 
@@ -627,4 +620,259 @@
 
         });
     }
+
+    /*------------------------------------------------------------------------------------------------------------------------*/
+
+    function listarPersonaGeral() {
+        fetch(`/usuario_dash/listarPersonaGeral`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+                    return pPersona.innerHTML = 'Nenhum dado de personagem existente'
+
+                }
+
+                resposta.json().then(function (resposta) {
+
+                    var personagemFinal = 0;
+
+                    for (var i = 0; i < Object.values(resposta[0]).length; i++) {
+                        if (Number(Object.values(resposta[0])[i]) > personagemFinal || Number(Object.values(resposta[0])[i]) == personagemFinal) {
+                            personagemFinal = Number(Object.values(resposta[0])[i]);
+                        }
+                    }
+
+                    if (personagemFinal == Number(Object.values(resposta[0])[0])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/Toriel.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima da <span style="color: yellow";>Toriel</span>. Isso quer dizer que somos acolhedores, empáticos e guiados pelo cuidado mútuo. Valorizamos o bem-estar de todos e buscamos sempre criar um espaço seguro, onde cada pessoa se sinta ouvida e protegida. Carregamos um senso natural de responsabilidade emocional — mesmo quando ninguém pede, estamos lá, oferecendo apoio e conforto.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[1])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/Sans.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Sans</span>. Isso significa que somos observadores, bem-humorados e, muitas vezes, mais profundos do que parecemos. Usamos o humor como escudo e conexão, mas enxergamos o mundo com olhos atentos e críticos. Preferimos o silêncio ao exagero, mas quando falamos, dizemos muito. Carregamos uma certa exaustão do mundo — e mesmo assim, seguimos sorrindo juntos.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[2])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/Papyrus.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Papyrus</span>. Isso quer dizer que somos animados, determinados e cheios de boas intenções. Temos um entusiasmo quase contagiante e acreditamos no melhor das pessoas. Nos apoiamos, vibramos com as conquistas uns dos outros e não desistimos fácil. Mesmo quando caímos, nos levantamos com o mesmo sorriso e vontade de tentar de novo. Aqui, o otimismo é uma força real.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[3])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/napstablook.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Napstablook</span>. Isso significa que somos sensíveis, introspectivos e emocionalmente profundos. Valorizamos o silêncio, o espaço e a arte como formas de conexão. Não somos os mais barulhentos, mas somos presentes, atentos e verdadeiros. Nos entendemos sem muitas palavras — porque sentimos mais do que dizemos. Nossa gentileza está nas entrelinhas.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[4])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/undyne.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima da <span style="color: yellow";>Undyne</span>. Isso quer dizer que somos intensos, corajosos e movidos por paixão e justiça. Defendemos uns aos outros com garra, enfrentamos desafios sem medo e não deixamos ninguém para trás. Temos energia, temos voz e não hesitamos em usá-la. Aqui, errar faz parte da luta — e lutar juntos é o que nos torna fortes.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[5])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/flowey.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Flowey</span>. Isso significa que somos racionais, estratégicos e moldados pelas experiências duras da vida. Não nos guiamos por ilusões, e sim por resultados. Às vezes parecemos frios, mas isso nos ajuda a tomar decisões difíceis. Somos críticos, diretos e temos uma habilidade afiada de entender o que está acontecendo à nossa volta. Aqui, transformação é inevitável — e necessária.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[6])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/frisk.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima de <span style="color: yellow";>Frisk</span>. Isso quer dizer que somos empáticos, silenciosamente corajosos e buscamos sempre fazer o certo. Valorizamos o entendimento, a escuta e o crescimento coletivo. Não estamos aqui para brilhar individualmente, mas para criar laços fortes e duradouros. Cada gesto importa — porque acreditamos que a mudança começa nas pequenas escolhas.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[7])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/chara.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima de <span style="color: yellow";>Chara</span>. Isso significa que somos intensos, questionadores e não temos medo da verdade. Olhamos para o que os outros evitam, enfrentamos nossas sombras e buscamos crescer mesmo com a dor. Aqui, não fugimos do conflito — transformamos ele em aprendizado. Somos complexos, mas autênticos. Somos luz e sombra — e nos orgulhamos disso.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[8])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/Mettaton.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Mettaton</span>. Isso quer dizer que somos expressivos, criativos e apaixonados por deixar nossa marca. Gostamos de ser vistos, de nos comunicar com estilo e de fazer tudo com intensidade. Mesmo que por trás da performance exista insegurança, aqui nos apoiamos para brilhar. Acreditamos que viver também é arte — e o palco é de todos nós.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[9])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/asgore.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Asgore</span>. Isso significa que somos gentis, conscientes e constantemente equilibramos razão e emoção. Tomamos decisões difíceis com o coração pesado, mas sempre com a intenção de fazer o bem. Carregamos culpas, saudades e arrependimentos — e mesmo assim continuamos tentando acertar. Aqui, cada gesto carrega história — e cada história importa.'
+
+                    } else if (personagemFinal == Number(Object.values(resposta[0])[10])) {
+                        personaImgGeral.innerHTML = `<img src="/assets/img/personagemResult/asriel.png" alt="">`
+                        descComunidade.innerHTML = 'Hoje, somos uma comunidade mais próxima do <span style="color: yellow";>Asriel</span>. Isso quer dizer que sentimos profundamente, amamos intensamente e acreditamos em recomeços. Carregamos nossas dores, sim, mas também a esperança de reconstruir. Somos vulneráveis, mas não fracos. Somos fortes, mas não indiferentes. Aqui, o que nos une é o amor — mesmo quando ele nos pede para mudar por completo.'
+
+                    }
+
+                    console.log(resposta)
+
+
+                    const dashPersonaGeral = document.getElementById('dashPersonaGeral');
+
+                    new Chart(dashPersonaGeral, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Toriel', 'Sans', 'Papyrus', 'Napstablook', 'Undyne', 'Flowey', 'Frisk', 'Chara', 'Mettaton', 'Asgore', 'Asriel'],
+                            datasets: [{
+                                label: 'Quantidade %',
+                                backgroundColor: [
+                                    'purple',
+                                    '#34b5ff',
+                                    'orange',
+                                    'white',
+                                    'darkblue',
+                                    'yellow',
+                                    'red',
+                                    'darkred',
+                                    '#ff00a6',
+                                    '#966100',
+                                    'lightsalmon',
+                                ],
+                                data: [resposta[0].chanceToriel, resposta[0].chanceSans, resposta[0].chancePapyrus, resposta[0].chanceNapstablook, resposta[0].chanceUndyne, resposta[0].chanceFlowey, resposta[0].chanceFrisk, resposta[0].chanceChara, resposta[0].chanceMetatton, resposta[0].chanceAsgore, resposta[0].chanceAsriel],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+
+    function listarQuizGeral() {
+        fetch(`/usuario_dash/listarQuizGeral`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+                    return pQuiz1.innerHTML = "Nenhum dado do quiz existente";
+
+                }
+                resposta.json().then(function (resposta) {
+                    const dashQuizGeral = document.getElementById('dashQuizGeral');
+
+                    new Chart(dashQuizGeral, {
+                        type: 'pie',
+                        data: {
+                            labels:
+                                ['Acertos', 'Erros'],
+                            datasets: [{
+                                label: 'Quantidade',
+                                backgroundColor: [
+                                    '#016d01',
+                                    '#8e0000'
+                                ],
+                                data: [resposta[0].acertos, resposta[0].erros],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+    function listarCPSgeral() {
+        fetch(`/usuario_dash/listarCPSgeral`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+
+                    return pCPS.innerHTML = "Nenhum dado de minigame existente";
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    var CPS = resposta[0].CPS;
+
+                    dashCPSgeral.innerHTML = `${CPS} CPS`
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+    function listarMinigameGeral() {
+        fetch(`/usuario_dash/listarMinigameGeral`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    if (resposta.status == 204 || resposta[0].tempo_permanencia == null) {
+
+                        console.log("NENHUM DADO DO GRAFICO GAME ENCONTRADO");
+
+                        return pGames.innerHTML = "Nenhum dado de minigame existente";
+                    }
+
+
+
+
+
+
+                    const dashMinigameGeral = document.getElementById('dashMinigameGeral');
+
+                    new Chart(dashMinigameGeral, {
+                        type: 'bar',
+                        data: {
+                            labels:
+                                ['Bad Time Simulator', 'Piano', 'Thundersnail'],
+                            datasets: [{
+                                label: 'Tempo em Minutos',
+                                backgroundColor: ['#9a0e8c'],
+                                data: [resposta[0].tempo_permanencia, resposta[1].tempo_permanencia, resposta[2].tempo_permanencia],
+                                borderWidth: 1,
+                                borderColor: 'white'
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    display: true,
+                                    labels: { color: "#fff" }
+                                }
+                            }
+                        }
+                    });
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
 </script>

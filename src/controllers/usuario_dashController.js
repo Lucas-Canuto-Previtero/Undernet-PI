@@ -125,6 +125,80 @@ function listarCPS(req, res) {
 
 
 
+function listarPersonaGeral(req, res) {
+
+    usuario_dashModel.listarPersonaGeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+function listarQuizGeral(req, res) {
+    usuario_dashModel.listarQuizGeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
+
+function listarCPSgeral(req, res) {
+
+
+
+    usuario_dashModel.listarCPSgeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
+function listarMinigameGeral(req, res) {
+
+    usuario_dashModel.listarMinigameGeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
+
 
 
 
@@ -141,5 +215,9 @@ module.exports = {
     listarQuiz3,
     listarPersona,
     listarMinigame,
-    listarCPS
+    listarCPS,
+    listarPersonaGeral,
+    listarQuizGeral,
+    listarCPSgeral,
+    listarMinigameGeral
 }
