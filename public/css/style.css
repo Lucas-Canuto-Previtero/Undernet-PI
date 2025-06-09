@@ -1248,8 +1248,11 @@ th {
 /*INICIANDO PIANO*/
 
 .mainPiano {
-    height: 100vh;
+    height: 150vh;
+    /* width: 100%; */
+
 }
+
 .img {
     background-image: url(/assets/img/Backgrounds/pianoMinigame.png);
     background-size: 100% 100%;
@@ -1257,6 +1260,18 @@ th {
     background-repeat: no-repeat;
     height: 100vh;
     width: 100%;
+}
+
+
+.moldura {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: white solid 5px;
+    border-radius: 5px;
+    height: 200px;
+    width: 80%;
 }
 
 
