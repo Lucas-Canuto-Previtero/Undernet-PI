@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-// var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -19,17 +18,17 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
 
-                        {
-                            res.json({
-                                idUsuario: resultadoAutenticar[0].idUsuario,
-                                email: resultadoAutenticar[0].email,
-                                nome: resultadoAutenticar[0].nome,
-                                senha: resultadoAutenticar[0].senha,
-                                fotoPerfil: resultadoAutenticar[0].fotoPerfil,
-                                telefone: resultadoAutenticar[0].telefone
-                            });
 
-                        }
+                        res.json({
+                            idUsuario: resultadoAutenticar[0].idUsuario,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha,
+                            fotoPerfil: resultadoAutenticar[0].fotoPerfil,
+                            telefone: resultadoAutenticar[0].telefone
+                        });
+
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
