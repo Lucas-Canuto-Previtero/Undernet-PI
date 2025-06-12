@@ -1255,19 +1255,11 @@ th {
 
 
 .mainPiano {
-    height: 150vh;
+    height: 120vh;
     width: 100%;
 
 }
 
-.img {
-    background-image: url(/assets/img/Backgrounds/pianoMinigame.png);
-    background-size: 100% 100%;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100%;
-}
 
 
 .moldura {
@@ -1278,10 +1270,32 @@ th {
     align-items: center;
     border: white solid 5px;
     border-radius: 5px;
-    height: 600px;
+    height: 1000px;
     width: 80%;
 }
 
+.teclas {
+    width: 80%;
+    height: 0px;
+}
+
+.teclas iframe {
+    background-image: url(/assets/img/Backgrounds/pianoMinigame.png);
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 10px solid white;
+}
+
+.fontPiano:hover {
+color: yellow;
+
+}
 
 
 

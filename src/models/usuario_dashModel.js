@@ -82,19 +82,19 @@ function listarPersona(idUsuario) {
 function listarMinigame(idUsuario) {
     console.log("ACESSEI O FORUM  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMinigame()");
     var instrucaoSql = `
-          SELECT round((rb.tempoPermanencia / 60), 1) AS tempo_permanencia
+          SELECT round((sum(rb.tempoPermanencia) / 60), 1) AS tempo_permanencia
     FROM resultadobadtime rb
     INNER JOIN usuario u ON u.idUsuario = rb.fk_idUsuario
     WHERE rb.fk_idUsuario = ${idUsuario}
     
-    UNION 
+    UNION ALL
     
-    SELECT round((rp.tempoPermanencia / 60), 1) AS tempo_permanencia
+    SELECT round((sum(rp.tempoPermanencia) / 60), 1) AS tempo_permanencia
     FROM resultadopiano rp
     INNER JOIN usuario u ON u.idUsuario = rp.fk_idUsuario
     WHERE rp.fk_idUsuario = ${idUsuario}
     
-    UNION 
+    UNION ALL
     
     SELECT round((sum(rc.tempoPermanencia) / 60), 1) AS tempo_permanencia
     FROM resultadocorrida rc 
@@ -184,19 +184,19 @@ function listarCPSgeral() {
 function listarMinigameGeral() {
     console.log("ACESSEI O FORUM  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarMinigameGeral()");
     var instrucaoSql = `
-         SELECT round(sum(rb.tempoPermanencia / 60), 1) AS tempo_permanencia
+        SELECT round(avg(rb.tempoPermanencia / 60), 1) AS tempo_permanencia
     FROM resultadobadtime rb
    
     
-    UNION 
+    UNION ALL
     
-    SELECT round(sum(rp.tempoPermanencia / 60), 1) AS tempo_permanencia
+    SELECT round(avg(rp.tempoPermanencia / 60), 1) AS tempo_permanencia
     FROM resultadopiano rp
   
     
-    UNION 
+    UNION ALL
     
-    SELECT round(sum(rc.tempoPermanencia / 60), 1) AS tempo_permanencia
+    SELECT round(avg(rc.tempoPermanencia / 60), 1) AS tempo_permanencia
     FROM resultadocorrida rc;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

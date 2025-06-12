@@ -26,9 +26,29 @@ function registrar(req, res) {
     });
 }
 
+
+function listarCPSgeral(req, res) {
+
+    corridaModel.listarCPSgeral().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as postagens: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
 module.exports = {
     listar,
-    registrar
+    registrar,
+    listarCPSgeral
 }; // literalmente exporta as FUNÇÕES
 
 // Aqui será meio que a corrente entre o front e o backend. Na hora de listar ele ira acessar o json do resultado do ultimo arquivo Model

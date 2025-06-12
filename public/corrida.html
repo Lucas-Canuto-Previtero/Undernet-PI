@@ -11,7 +11,7 @@
 </head>
 
 
-<body class="bodyCorrida" onload="atualizarRanking()">
+<body class="bodyCorrida" onload="atualizarRanking(), listarCPSgeral()">
     <div class="header">
         <div class="container">
             <img src="assets/img/logoSITE.png" alt="">
@@ -53,6 +53,9 @@
             de CPS e sua
             posição no ranking de jogadores! <br>Boa sorte, corredor!</h1>
     </div>
+
+    <h1>Média geral de CPS atual: <h1 style="color: orange; font-weight: bolder;" id="mediaClique"></h1>
+    </h1>
 
     <div class="mainCorrida">
         <div class="pista">
@@ -235,6 +238,40 @@
 
 
 
+
+
+    function listarCPSgeral() {
+        fetch(`/corrida/listarCPSgeral`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+
+                    console.log("NENHUM DADO ENCONTRADO");
+
+                    return mediaClique.innerHTML = "Nenhum dado existente";
+
+                }
+                resposta.json().then(function (resposta) {
+
+                    var CPS = resposta[0].CPS;
+
+                    mediaClique.innerHTML = `${CPS} CPS`
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+
+
+
+
+
+
     function salvarResultado() {
         const idUsuario = sessionStorage.ID_USUARIO;
 
@@ -278,6 +315,17 @@
                 }
 
                 resposta.json().then(function (resposta) {
+                    var totalCPS = 0;
+                    // var mediaCPS;
+
+                    // for (var i = 0; i < resposta.length; i++) {
+                    //     totalCPS += Number(resposta[i].CPS);
+                    // }
+
+                    // mediaCPS = totalCPS / resposta.length;
+
+
+                    // mediaClique.innerHTML = mediaCPS.toFixed(2);
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var ranking = document.getElementById("ranking_container");
@@ -342,10 +390,7 @@
                         trRegistro.appendChild(thNome);
                         trRegistro.appendChild(thCPS);
                         trRegistro.appendChild(thData);
-                        // divPublicacao.appendChild(spanTipo);
-                        // divDadosPubli.appendChild(divDescricao);
-                        // divDadosPubli.appendChild(divpostImg);
-                        // divDadosPubli.appendChild(divButtons);
+
 
 
                         ranking.appendChild(trRegistro);
