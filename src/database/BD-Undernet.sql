@@ -84,7 +84,5 @@ CREATE TABLE resultadoquiz (
   FOREIGN KEY (fk_idUsuario) REFERENCES undernet.usuario (idUsuario)
   );
   
-  select * from usuario;
-  
-  
+
 
