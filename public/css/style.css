@@ -96,13 +96,11 @@ button:active {
     color: white;
 }
 
-.hello {
+
+#b_usuario {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    list-style: none;
-    color: white;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .navbar {
@@ -133,10 +131,9 @@ button:active {
 .hello {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
-    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     width: 350px;
 }
 
@@ -167,11 +164,11 @@ button:active {
 .login_cadastro {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0px;
     list-style: none;
-    margin-right: 50px;
     color: white;
+    width: 350px;
 }
 
 #loading-gif {
@@ -1293,7 +1290,7 @@ th {
 }
 
 .fontPiano:hover {
-color: yellow;
+    color: yellow;
 
 }
 
